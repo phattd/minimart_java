@@ -7,9 +7,10 @@ public class SanPham {
     private int donGia;
     private String donViTinh;
     private int soLuong;
+    private String hinhAnh;
 
     public SanPham(){}
-    public SanPham(String idSanPham,String tenSanPham,String idLoaiSanPham,int donGia,String donViTinh, int soLuong)
+    public SanPham(String idSanPham,String tenSanPham,String idLoaiSanPham,int donGia,String donViTinh, int soLuong,String hinhAnh)
     {
         this.idSanPham=idSanPham;
         this.tenSanPham=tenSanPham;
@@ -17,10 +18,11 @@ public class SanPham {
         this.donGia=donGia;
         this.donViTinh=donViTinh;
         this.soLuong=soLuong;
+        this.hinhAnh=hinhAnh;
     }
     public SanPham(SanPham sanPham)
     {
-        this(sanPham.idSanPham, sanPham.tenSanPham, sanPham.idLoaiSanPham, sanPham.donGia,sanPham.donViTinh, sanPham.soLuong);
+        this(sanPham.idSanPham, sanPham.tenSanPham, sanPham.idLoaiSanPham, sanPham.donGia,sanPham.donViTinh, sanPham.soLuong, sanPham.hinhAnh);
     }
 
     public String getIdSanPham() {
@@ -70,7 +72,7 @@ public class SanPham {
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }
-    public void setSanPham(String idSanPham,String tenSanPham,String idLoaiSanPham,int donGia,String donViTinh, int soLuong)
+    public void setSanPham(String idSanPham,String tenSanPham,String idLoaiSanPham,int donGia,String donViTinh, int soLuong,String hinhAnh)
     {
         this.idSanPham=idSanPham;
         this.tenSanPham=tenSanPham;
@@ -78,6 +80,7 @@ public class SanPham {
         this.donGia=donGia;
         this.donViTinh=donViTinh;
         this.soLuong=soLuong;
+        this.hinhAnh=hinhAnh;
     }
     public void setSanPham(SanPham sanPham)
     {
@@ -87,6 +90,7 @@ public class SanPham {
         this.donGia=sanPham.donGia;
         this.donViTinh=sanPham.donViTinh;
         this.soLuong=sanPham.soLuong;
+        this.hinhAnh=sanPham.hinhAnh;
     }
     public SanPham getSanPham()
     {

@@ -9,11 +9,12 @@ public class NhanVien {
     private String password;
     private int luong;
     private int idChucVu;
+    private String hinhAnh;
 
     public NhanVien()
     {
     }
-    public NhanVien(String idNhanVien, String ho, String ten, String diaChi, int soDienThoai, String password, int luong, int idChucVu)
+    public NhanVien(String idNhanVien, String ho, String ten, String diaChi, int soDienThoai, String password, int luong, int idChucVu,String hinhAnh)
     {
         this.idNhanVien=idNhanVien;
         this.ho=ho;
@@ -23,10 +24,11 @@ public class NhanVien {
         this.password=password;
         this.luong=luong;
         this.idChucVu=idChucVu;
+        this.hinhAnh=hinhAnh;
     }
     public NhanVien(NhanVien nhanVien)
     {
-        this(nhanVien.idNhanVien, nhanVien.ho, nhanVien.ten, nhanVien.diaChi, nhanVien.soDienThoai, nhanVien.password, nhanVien.luong, nhanVien.idChucVu);
+        this(nhanVien.idNhanVien, nhanVien.ho, nhanVien.ten, nhanVien.diaChi, nhanVien.soDienThoai, nhanVien.password, nhanVien.luong, nhanVien.idChucVu, nhanVien.hinhAnh);
     }
 
     public String getIdNhanVien() {
@@ -41,7 +43,7 @@ public class NhanVien {
         return ten;
     }
 
-    public String getdiaChi() {
+    public String getDiaChi() {
         return diaChi;
     }
 
@@ -51,6 +53,14 @@ public class NhanVien {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getHinhAnh() {
+        return hinhAnh;
+    }
+
+    public void setHinhAnh(String hinhAnh) {
+        this.hinhAnh = hinhAnh;
     }
 
     public int getLuong() {
@@ -92,7 +102,7 @@ public class NhanVien {
     public void setIdChucVu(int idChucVu) {
         this.idChucVu = idChucVu;
     }
-    public  void setNhanVien(String idNhanVien,String ho,String ten,String diaChi,int soDienThoai,String password,int luong,int idChucVu)
+    public  void setNhanVien(String idNhanVien,String ho,String ten,String diaChi,int soDienThoai,String password,int luong,int idChucVu,String hinhAnh)
     {
         this.idNhanVien=idNhanVien;
         this.ho=ho;
@@ -102,6 +112,7 @@ public class NhanVien {
         this.password=password;
         this.luong=luong;
         this.idChucVu=idChucVu;
+        this.hinhAnh=hinhAnh;
     }
     public  void setNhanVien(NhanVien nhanVien)
     {
@@ -113,6 +124,7 @@ public class NhanVien {
         this.password=nhanVien.password;
         this.luong=nhanVien.luong;
         this.idChucVu=nhanVien.idChucVu;
+        this.hinhAnh=hinhAnh;
     }
     public NhanVien getNhanVien()
     {
