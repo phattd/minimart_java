@@ -7,21 +7,29 @@ public class HoaDon {
     private Date ngayLapHoaDon;
     private String idNhanVien;
     private int tongTien;
+    private int tienKhachDua;
+    private int tongTienKhuyenMai;
+    private int tienConLai;
+    private int tienThua;
     private String idKhachHang;
 
     public HoaDon(){}
 
-    public HoaDon(String idHoaDon,Date ngayLapHoaDon,String idNhanVien,int tongTien,String idKhachHang)
+    public HoaDon(String idHoaDon,Date ngayLapHoaDon,String idNhanVien,int tongTien,int tienKhachDua,int tongTienKhuyenMai,int tienConLai,int tienThua,String idKhachHang)
     {
         this.idHoaDon=idHoaDon;
         this.ngayLapHoaDon=ngayLapHoaDon;
         this.idNhanVien=idNhanVien;
         this.tongTien=tongTien;
+        this.tienKhachDua=tienKhachDua;
+        this.tongTienKhuyenMai=tongTienKhuyenMai;
+        this.tienConLai=tienConLai;
+        this.tienThua=tienThua;
         this.idKhachHang=idKhachHang;
     }
     public  HoaDon(HoaDon hoaDon)
     {
-        this(hoaDon.idHoaDon, hoaDon.ngayLapHoaDon, hoaDon.idNhanVien, hoaDon.tongTien, hoaDon.idKhachHang);
+        this(hoaDon.idHoaDon, hoaDon.ngayLapHoaDon, hoaDon.idNhanVien, hoaDon.tongTien, hoaDon.tienKhachDua, hoaDon.tongTienKhuyenMai, hoaDon.tienConLai, hoaDon.tienThua, hoaDon.idKhachHang);
     }
 
     public String getIdHoaDon() {
@@ -63,21 +71,29 @@ public class HoaDon {
     public void setTongTien(int tongTien) {
         this.tongTien = tongTien;
     }
-    public void setHoaDon(String idHoaDon,Date ngayLapHoaDon,String idNhanVien,int tongTien,String idKhachHang)
+    public void setHoaDon(String idHoaDon,Date ngayLapHoaDon,String idNhanVien,int tongTien,int tienKhachDua,int tongTienKhuyenMai,int tienConLai,int tienThua,String idKhachHang)
     {
         this.idHoaDon=idHoaDon;
         this.ngayLapHoaDon=ngayLapHoaDon;
         this.idNhanVien=idNhanVien;
         this.tongTien=tongTien;
+        this.tienKhachDua=tienKhachDua;
+        this.tongTienKhuyenMai=tongTienKhuyenMai;
+        this.tienConLai=tienConLai;
+        this.tienThua=tienThua;
         this.idKhachHang=idKhachHang;
     }
     public void setHoaDon(HoaDon hoaDon)
     {
-        this.idHoaDon=hoaDon.idHoaDon;
-        this.ngayLapHoaDon=hoaDon.ngayLapHoaDon;
-        this.idNhanVien=hoaDon.idNhanVien;
-        this.tongTien=hoaDon.tongTien;
-        this.idKhachHang=hoaDon.idKhachHang;
+        this.idHoaDon=idHoaDon;
+        this.ngayLapHoaDon=ngayLapHoaDon;
+        this.idNhanVien=idNhanVien;
+        this.tongTien=tongTien;
+        this.tienKhachDua=tienKhachDua;
+        this.tongTienKhuyenMai=tongTienKhuyenMai;
+        this.tienConLai=tienConLai;
+        this.tienThua=tienThua;
+        this.idKhachHang=idKhachHang;
     }
     public HoaDon getHoaDon()
     {

@@ -16,13 +16,7 @@ public class KhuyenMai {
         this.ngayBatDau=ngayBatDau;
         this.ngayKetThuc=ngayKetThuc;
     }
-    public KhuyenMai(KhuyenMai khuyenMai)
-    {
-        this.idDotKhuyenMai=khuyenMai.idDotKhuyenMai;
-        this.tenDotKhuyeMai=khuyenMai.tenDotKhuyeMai;
-        this.ngayBatDau=khuyenMai.ngayBatDau;
-        this.ngayKetThuc=khuyenMai/ngayKetThuc;
-    }
+
     public KhuyenMai(KhuyenMai khuyenMai)
     {
         this(khuyenMai.idDotKhuyenMai,khuyenMai.tenDotKhuyeMai,khuyenMai.ngayBatDau,khuyenMai.ngayKetThuc);
@@ -58,6 +52,13 @@ public class KhuyenMai {
 
     public void setNgayKetThuc(Date ngayKetThuc) {
         this.ngayKetThuc = ngayKetThuc;
+    }
+    public void setKhuyenMai(KhuyenMai khuyenMai)
+    {
+        this.idDotKhuyenMai=khuyenMai.idDotKhuyenMai;
+        this.tenDotKhuyeMai=khuyenMai.tenDotKhuyeMai;
+        this.ngayBatDau=khuyenMai.ngayBatDau;
+        this.ngayKetThuc=khuyenMai.ngayKetThuc;
     }
     public  void setKhuyenMai(String idDotKhuyenMai,String tenDotKhuyeMai,Date ngayBatDau,Date ngayKetThuc)
     {

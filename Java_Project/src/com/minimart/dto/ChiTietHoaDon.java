@@ -7,8 +7,9 @@ public class ChiTietHoaDon {
     private int donGia;
     private String idKhuyenMai;
     private int thanhTien;
+    private int tienKhuyenMai;
     public ChiTietHoaDon(){}
-    public ChiTietHoaDon(String idHoaDon,String idSanPham,int soLuong,int donGia,String idKhuyenMai,int thanhTien)
+    public ChiTietHoaDon(String idHoaDon,String idSanPham,int soLuong,int donGia,String idKhuyenMai,int thanhTien,int tienKhuyenMai)
     {
         this.idHoaDon=idHoaDon;
         this.idSanPham=idSanPham;
@@ -16,11 +17,12 @@ public class ChiTietHoaDon {
         this.donGia=donGia;
         this.idKhuyenMai=idKhuyenMai;
         this.thanhTien=thanhTien;
+        this.tienKhuyenMai=tienKhuyenMai;
     }
     public ChiTietHoaDon(ChiTietHoaDon chiTietHoaDon)
     {
         this(chiTietHoaDon.idHoaDon, chiTietHoaDon.idSanPham, chiTietHoaDon.soLuong,
-                chiTietHoaDon.donGia, chiTietHoaDon.idKhuyenMai, chiTietHoaDon.thanhTien);
+                chiTietHoaDon.donGia, chiTietHoaDon.idKhuyenMai, chiTietHoaDon.thanhTien, chiTietHoaDon.tienKhuyenMai);
     }
 
     public String getIdHoaDon() {
@@ -33,6 +35,10 @@ public class ChiTietHoaDon {
 
     public int getSoLuong() {
         return soLuong;
+    }
+
+    public int getTienKhuyenMai() {
+        return tienKhuyenMai;
     }
 
     public int getDonGia() {
@@ -70,6 +76,11 @@ public class ChiTietHoaDon {
     public void setThanhTien(int thanhTien) {
         this.thanhTien = thanhTien;
     }
+
+    public void setTienKhuyenMai(int tienKhuyenMai) {
+        this.tienKhuyenMai = tienKhuyenMai;
+    }
+
     public void setChiTietThanhTien(ChiTietHoaDon chiTietHoaDon)
     {
         this.idHoaDon=chiTietHoaDon.idHoaDon;
@@ -78,8 +89,9 @@ public class ChiTietHoaDon {
         this.donGia=chiTietHoaDon.donGia;
         this.idKhuyenMai=chiTietHoaDon.idKhuyenMai;
         this.thanhTien=chiTietHoaDon.thanhTien;
+        this.tienKhuyenMai=tienKhuyenMai;
     }
-    public void setChiTietThanhTien(String idHoaDon,String idSanPham,int soLuong,int donGia,String idKhuyenMai,int thanhTien)
+    public void setChiTietThanhTien(String idHoaDon,String idSanPham,int soLuong,int donGia,String idKhuyenMai,int thanhTien,int tienKhuyenMai)
     {
         this.idHoaDon=idHoaDon;
         this.idSanPham=idSanPham;
@@ -87,6 +99,7 @@ public class ChiTietHoaDon {
         this.donGia=donGia;
         this.idKhuyenMai=idKhuyenMai;
         this.thanhTien=thanhTien;
+        this.tienKhuyenMai=tienKhuyenMai;
     }
     public ChiTietHoaDon getChiTietHoaDon()
     {
