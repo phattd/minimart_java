@@ -3,7 +3,10 @@ package com.minimart.dto;
 public class LoaiSanPham {
     private String idLoaiSanPham;
     private String tenSanPham;
-    public LoaiSanPham(){}
+    public LoaiSanPham(){
+        idLoaiSanPham="";
+        tenSanPham="";
+    }
     public LoaiSanPham(String idLoaiSanPham,String tenSanPham)
     {
         this.idLoaiSanPham=idLoaiSanPham;

@@ -8,7 +8,12 @@ public class KhuyenMai {
     private Date   ngayBatDau;
     private Date    ngayKetThuc;
 
-    public KhuyenMai(){}
+    public KhuyenMai(){
+        this.idDotKhuyenMai="";
+        this.tenDotKhuyeMai="";
+        this.ngayBatDau=null;
+        this.ngayKetThuc=null;
+    }
     public KhuyenMai(String idDotKhuyenMai,String tenDotKhuyeMai,Date ngayBatDau,Date ngayKetThuc)
     {
         this.idDotKhuyenMai=idDotKhuyenMai;

@@ -8,6 +8,11 @@ public class KhachHang {
     private int diemTichLuy;
     public KhachHang()
     {
+        this.idKhachHang="";
+        this.hoKhachHang="";
+        this.tenKhachHang=""
+        this.bacTichLuy=BacTichLuy.Normal;
+        this.diemTichLuy=0;
     }
     public KhachHang(String idKhachHang,String hoKhachHang,String tenKhachHang, BacTichLuy bacTichLuy,int diemTichLuy)
     {

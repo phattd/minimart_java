@@ -7,7 +7,13 @@ public class ChiTietPhieuNhap {
     private int donGia;
     private int thanhTien;
 
-    public ChiTietPhieuNhap(){}
+    public ChiTietPhieuNhap(){
+        idPhieuNhap="";
+        idSanPham="";
+        soLuong=0;
+        donGia=0;
+        thanhTien=0;
+    }
     public ChiTietPhieuNhap(String idPhieuNhap,String idSanPham,int soLuong,int donGia,int thanhTien){
         this.idPhieuNhap=idPhieuNhap;
         this.idSanPham=idSanPham;

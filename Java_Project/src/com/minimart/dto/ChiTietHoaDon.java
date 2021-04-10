@@ -8,7 +8,15 @@ public class ChiTietHoaDon {
     private String idKhuyenMai;
     private int thanhTien;
     private int tienKhuyenMai;
-    public ChiTietHoaDon(){}
+    public ChiTietHoaDon(){
+        idHoaDon="";
+        idSanPham="";
+        soLuong=0;
+        donGia=0;
+        idKhuyenMai="";
+        thanhTien=0;
+        tienKhuyenMai=0;
+    }
     public ChiTietHoaDon(String idHoaDon,String idSanPham,int soLuong,int donGia,String idKhuyenMai,int thanhTien,int tienKhuyenMai)
     {
         this.idHoaDon=idHoaDon;

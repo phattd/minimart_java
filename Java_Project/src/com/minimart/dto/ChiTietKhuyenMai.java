@@ -8,7 +8,14 @@ public class ChiTietKhuyenMai {
     private String noiDungKhuyenMai;
     private String idSanPham;
 
-    public ChiTietKhuyenMai(){}
+    public ChiTietKhuyenMai(){
+        idKhuyenMai="";
+        tenKhuyenMai="";
+        idDotKhuyenMai="";
+        phanTramKhuyenMai=0;
+        noiDungKhuyenMai="";
+        idSanPham="";
+    }
     public ChiTietKhuyenMai(String idKhuyenMai,String tenKhuyenMai,String idDotKhuyenMai,byte phanTramKhuyenMai,String noiDungKhuyenMai,String idSanPham)
     {
         this.idKhuyenMai=idKhuyenMai;

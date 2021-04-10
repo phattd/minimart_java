@@ -4,7 +4,10 @@ public class ChucVu {
     private String idChucVu;
     private String tenChucVu;
 
-    public ChucVu(){}
+    public ChucVu(){
+        idChucVu="";
+        tenChucVu="";
+    }
     public ChucVu(String idChucVu,String tenChucVu)
     {
         this.idChucVu=idChucVu;

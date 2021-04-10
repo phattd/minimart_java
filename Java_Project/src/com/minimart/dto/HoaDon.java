@@ -13,7 +13,17 @@ public class HoaDon {
     private int tienThua;
     private String idKhachHang;
 
-    public HoaDon(){}
+    public HoaDon(){
+        this.idHoaDon="";
+        this.ngayLapHoaDon=null;
+        this.idNhanVien="";
+        this.tongTien=0;
+        this.tienKhachDua=0;
+        this.tongTienKhuyenMai=0;
+        this.tienConLai=0;
+        this.tienThua=0;
+        this.idKhachHang="";
+    }
 
     public HoaDon(String idHoaDon,Date ngayLapHoaDon,String idNhanVien,int tongTien,int tienKhachDua,int tongTienKhuyenMai,int tienConLai,int tienThua,String idKhachHang)
     {

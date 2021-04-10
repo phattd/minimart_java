@@ -8,7 +8,13 @@ public class PhieuNhap {
     private Date ngayNhap;
     private String idNhanVien;
     private int tongTien;
-    public PhieuNhap(){}
+    public PhieuNhap(){
+        this.idPhieuNhap="";
+        this.idNhaCungCap="";
+        this.ngayNhap=null;
+        this.idNhanVien="";
+        this.tongTien=0;
+    }
     public PhieuNhap(String idPhieuNhap,String idNhaCungCap,Date ngayNhap,String idNhanVien,int tongTien)
     {
         this.idPhieuNhap=idPhieuNhap;

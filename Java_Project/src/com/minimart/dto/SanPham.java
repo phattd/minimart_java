@@ -9,7 +9,15 @@ public class SanPham {
     private int soLuong;
     private String hinhAnh;
 
-    public SanPham(){}
+    public SanPham(){
+        this.idSanPham="";
+        this.tenSanPham="";
+        this.idLoaiSanPham="";
+        this.donGia=0;
+        this.donViTinh="";
+        this.soLuong=0;
+        this.hinhAnh="";
+    }
     public SanPham(String idSanPham,String tenSanPham,String idLoaiSanPham,int donGia,String donViTinh, int soLuong,String hinhAnh)
     {
         this.idSanPham=idSanPham;

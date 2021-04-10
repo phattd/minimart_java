@@ -5,7 +5,12 @@ public class NhaCungCap {
     private String tenNhaCungCap;
     private int soDienThoaiNCC;
     private String diaChiNCC;
-    public NhaCungCap(){}
+    public NhaCungCap(){
+        this.idNhaCungCap="";
+        this.tenNhaCungCap="";
+        this.soDienThoaiNCC=0;
+        this.diaChiNCC="";
+    }
     public NhaCungCap(String idNhaCungCap,String tenNhaCungCap,int soDienThoaiNCC,String diaChiNCC)
     {
         this.idNhaCungCap=idNhaCungCap;

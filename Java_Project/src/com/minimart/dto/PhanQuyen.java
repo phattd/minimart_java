@@ -3,7 +3,10 @@ package com.minimart.dto;
 public class PhanQuyen {
     private String idQuyen;
     private String tenQuyen;
-    public PhanQuyen(){}
+    public PhanQuyen(){
+        this.idQuyen="";
+        this.tenQuyen="";
+    }
     public PhanQuyen(String idQuyen,String tenQuyen)
     {
         this.idQuyen=idQuyen;
