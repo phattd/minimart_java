@@ -10,7 +10,7 @@ public class KhachHang {
     {
         this.idKhachHang="";
         this.hoKhachHang="";
-        this.tenKhachHang=""
+        this.tenKhachHang="";
         this.bacTichLuy=BacTichLuy.Normal;
         this.diemTichLuy=0;
     }
