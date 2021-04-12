@@ -8,8 +8,8 @@ public class ChiTietPhieuNhap {
     private int thanhTien;
 
     public ChiTietPhieuNhap(){
-        idPhieuNhap="";
-        idSanPham="";
+        idPhieuNhap=null;
+        idSanPham=null;
         soLuong=0;
         donGia=0;
         thanhTien=0;

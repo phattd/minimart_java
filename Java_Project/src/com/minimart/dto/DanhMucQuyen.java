@@ -4,8 +4,8 @@ public class DanhMucQuyen {
     private String idChucVu;
     private String idQuyen;
     public DanhMucQuyen(){
-        idChucVu="";
-        idQuyen="";
+        idChucVu=null;
+        idQuyen=null;
     }
     public DanhMucQuyen(String idChucVu,String idQuyen)
     {

@@ -13,15 +13,15 @@ public class NhanVien {
 
     public NhanVien()
     {
-        this.idNhanVien="";
-        this.ho="";
-        this.ten="";
-        this.diaChi="";
-        this.soDienThoai="";
-        this.password="";
+        this.idNhanVien=null;
+        this.ho=null;
+        this.ten=null;
+        this.diaChi=null;
+        this.soDienThoai=null;
+        this.password=null;
         this.luong=0;
-        this.idChucVu="";
-        this.hinhAnh="";
+        this.idChucVu=null;
+        this.hinhAnh=null;
     }
     public NhanVien(String idNhanVien, String ho, String ten, String diaChi, String soDienThoai, String password, int luong, String idChucVu,String hinhAnh)
     {

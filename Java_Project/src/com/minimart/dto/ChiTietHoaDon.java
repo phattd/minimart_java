@@ -9,11 +9,11 @@ public class ChiTietHoaDon {
     private int thanhTien;
     private int tienKhuyenMai;
     public ChiTietHoaDon(){
-        idHoaDon="";
-        idSanPham="";
+        idHoaDon=null;
+        idSanPham=null;
         soLuong=0;
         donGia=0;
-        idKhuyenMai="";
+        idKhuyenMai=null;
         thanhTien=0;
         tienKhuyenMai=0;
     }

@@ -4,8 +4,8 @@ public class PhanQuyen {
     private String idQuyen;
     private String tenQuyen;
     public PhanQuyen(){
-        this.idQuyen="";
-        this.tenQuyen="";
+        this.idQuyen=null;
+        this.tenQuyen=null;
     }
     public PhanQuyen(String idQuyen,String tenQuyen)
     {

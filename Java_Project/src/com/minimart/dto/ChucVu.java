@@ -5,8 +5,8 @@ public class ChucVu {
     private String tenChucVu;
 
     public ChucVu(){
-        idChucVu="";
-        tenChucVu="";
+        idChucVu=null;
+        tenChucVu=null;
     }
     public ChucVu(String idChucVu,String tenChucVu)
     {

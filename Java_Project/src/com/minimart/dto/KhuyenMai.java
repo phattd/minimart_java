@@ -9,8 +9,8 @@ public class KhuyenMai {
     private Date    ngayKetThuc;
 
     public KhuyenMai(){
-        this.idDotKhuyenMai="";
-        this.tenDotKhuyeMai="";
+        this.idDotKhuyenMai=null;
+        this.tenDotKhuyeMai=null;
         this.ngayBatDau=null;
         this.ngayKetThuc=null;
     }

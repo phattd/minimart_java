@@ -8,9 +8,9 @@ public class KhachHang {
     private int diemTichLuy;
     public KhachHang()
     {
-        this.idKhachHang="";
-        this.hoKhachHang="";
-        this.tenKhachHang="";
+        this.idKhachHang=null;
+        this.hoKhachHang=null;
+        this.tenKhachHang=null;
         this.bacTichLuy=BacTichLuy.Normal;
         this.diemTichLuy=0;
     }

@@ -9,12 +9,12 @@ public class ChiTietKhuyenMai {
     private String idSanPham;
 
     public ChiTietKhuyenMai(){
-        idKhuyenMai="";
-        tenKhuyenMai="";
-        idDotKhuyenMai="";
+        idKhuyenMai=null;
+        tenKhuyenMai=null;
+        idDotKhuyenMai=null;
         phanTramKhuyenMai=0;
-        noiDungKhuyenMai="";
-        idSanPham="";
+        noiDungKhuyenMai=null;
+        idSanPham=null;
     }
     public ChiTietKhuyenMai(String idKhuyenMai,String tenKhuyenMai,String idDotKhuyenMai,byte phanTramKhuyenMai,String noiDungKhuyenMai,String idSanPham)
     {

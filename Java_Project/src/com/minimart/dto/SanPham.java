@@ -10,13 +10,13 @@ public class SanPham {
     private String hinhAnh;
 
     public SanPham(){
-        this.idSanPham="";
-        this.tenSanPham="";
-        this.idLoaiSanPham="";
+        this.idSanPham=null;
+        this.tenSanPham=null;
+        this.idLoaiSanPham=null;
         this.donGia=0;
-        this.donViTinh="";
+        this.donViTinh=null;
         this.soLuong=0;
-        this.hinhAnh="";
+        this.hinhAnh=null;
     }
     public SanPham(String idSanPham,String tenSanPham,String idLoaiSanPham,int donGia,String donViTinh, int soLuong,String hinhAnh)
     {

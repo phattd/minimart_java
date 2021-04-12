@@ -4,8 +4,8 @@ public class LoaiSanPham {
     private String idLoaiSanPham;
     private String tenSanPham;
     public LoaiSanPham(){
-        idLoaiSanPham="";
-        tenSanPham="";
+        idLoaiSanPham=null;
+        tenSanPham=null;
     }
     public LoaiSanPham(String idLoaiSanPham,String tenSanPham)
     {

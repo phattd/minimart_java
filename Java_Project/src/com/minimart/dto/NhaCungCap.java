@@ -6,10 +6,10 @@ public class NhaCungCap {
     private int soDienThoaiNCC;
     private String diaChiNCC;
     public NhaCungCap(){
-        this.idNhaCungCap="";
-        this.tenNhaCungCap="";
+        this.idNhaCungCap=null;
+        this.tenNhaCungCap=null;
         this.soDienThoaiNCC=0;
-        this.diaChiNCC="";
+        this.diaChiNCC=null;
     }
     public NhaCungCap(String idNhaCungCap,String tenNhaCungCap,int soDienThoaiNCC,String diaChiNCC)
     {

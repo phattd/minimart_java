@@ -9,10 +9,10 @@ public class PhieuNhap {
     private String idNhanVien;
     private int tongTien;
     public PhieuNhap(){
-        this.idPhieuNhap="";
-        this.idNhaCungCap="";
+        this.idPhieuNhap=null;
+        this.idNhaCungCap=null;
         this.ngayNhap=null;
-        this.idNhanVien="";
+        this.idNhanVien=null;
         this.tongTien=0;
     }
     public PhieuNhap(String idPhieuNhap,String idNhaCungCap,Date ngayNhap,String idNhanVien,int tongTien)
