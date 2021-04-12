@@ -5,5 +5,6 @@ public enum BacTichLuy {
     Silver,
     Gold,
     Diamond,
-    Premium
+    Premium,
+    Super
 }
