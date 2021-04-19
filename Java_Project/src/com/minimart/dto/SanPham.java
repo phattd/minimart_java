@@ -9,7 +9,7 @@ public class SanPham {
     private int soLuong;
     private String hinhAnh;
 
-    public SanPham(){
+    public SanPham(String idSanPham, String idLoaiSanPham, String tenSanPham, int donGia, int soLuong, String hinhAnh){
         this.idSanPham=null;
         this.tenSanPham=null;
         this.idLoaiSanPham=null;
@@ -80,7 +80,16 @@ public class SanPham {
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }
-    public void setSanPham(String idSanPham,String tenSanPham,String idLoaiSanPham,int donGia,String donViTinh, int soLuong,String hinhAnh)
+
+    public String getHinhAnh() {
+        return hinhAnh;
+    }
+
+    public void setHinhAnh(String hinhAnh) {
+        this.hinhAnh = hinhAnh;
+    }
+
+    public void setSanPham(String idSanPham, String tenSanPham, String idLoaiSanPham, int donGia, String donViTinh, int soLuong, String hinhAnh)
     {
         this.idSanPham=idSanPham;
         this.tenSanPham=tenSanPham;
