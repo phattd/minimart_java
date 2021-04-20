@@ -3,15 +3,15 @@ package com.minimart.dto;
 public class NhaCungCap {
     private String idNhaCungCap;
     private String tenNhaCungCap;
-    private int soDienThoaiNCC;
+    private String soDienThoaiNCC;
     private String diaChiNCC;
     public NhaCungCap(){
         this.idNhaCungCap=null;
         this.tenNhaCungCap=null;
-        this.soDienThoaiNCC=0;
+        this.soDienThoaiNCC=null;
         this.diaChiNCC=null;
     }
-    public NhaCungCap(String idNhaCungCap,String tenNhaCungCap,int soDienThoaiNCC,String diaChiNCC)
+    public NhaCungCap(String idNhaCungCap, String tenNhaCungCap, String soDienThoaiNCC, String diaChiNCC)
     {
         this.idNhaCungCap=idNhaCungCap;
         this.tenNhaCungCap=tenNhaCungCap;
@@ -31,7 +31,7 @@ public class NhaCungCap {
         return tenNhaCungCap;
     }
 
-    public int getSoDienThoaiNCC() {
+    public String getSoDienThoaiNCC() {
         return soDienThoaiNCC;
     }
 
@@ -43,7 +43,7 @@ public class NhaCungCap {
         this.idNhaCungCap = idNhaCungCap;
     }
 
-    public void setSoDienThoaiNCC(int soDienThoaiNCC) {
+    public void setSoDienThoaiNCC(String soDienThoaiNCC) {
         this.soDienThoaiNCC = soDienThoaiNCC;
     }
 
@@ -54,7 +54,7 @@ public class NhaCungCap {
     public void setDiaChiNCC(String diaChiNCC) {
         this.diaChiNCC = diaChiNCC;
     }
-    public void setNhaCungCap(String idNhaCungCap,String tenNhaCungCap,int soDienThoaiNCC,String diaChiNCC)
+    public void setNhaCungCap(String idNhaCungCap,String tenNhaCungCap,String soDienThoaiNCC,String diaChiNCC)
     {
         this.idNhaCungCap=idNhaCungCap;
         this.tenNhaCungCap=tenNhaCungCap;

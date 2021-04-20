@@ -1,5 +1,7 @@
 package com.minimart.dto;
 
+import java.time.LocalDate;
+
 public class NhanVien {
     private String idNhanVien;
     private String ho;
@@ -11,7 +13,7 @@ public class NhanVien {
     private String idChucVu;
     private String hinhAnh;
 
-    public NhanVien()
+    public NhanVien(String idNhanVien, String ho, String ten, String diaChi, LocalDate ngaySinh, String sdt, String password, int luong, String idChucVu, String hinhAnh)
     {
         this.idNhanVien=null;
         this.ho=null;
