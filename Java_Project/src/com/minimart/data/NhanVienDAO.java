@@ -102,7 +102,7 @@ public class NhanVienDAO {
 
     public boolean update(String idNhanVien, String ho, String ten, String diaChi, LocalDate ngaySinh, String SDT, int luong, String idChucVu, String hinhAnh) throws IOException {
         qlnvConnection = new ConnectSQL();
-        boolean ok = qlnvConnection.sqlUpdate("Update NhanVien Set "
+        boolean ok = qlnvConnection.sqlUpdate("Update NHANVIEN Set "
                 + "Ho='" + ho
                 + "Ten='" + ten
                 + "',DiaChi='" + diaChi

@@ -1,5 +1,6 @@
 package com.minimart.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class KhuyenMai {
@@ -8,7 +9,7 @@ public class KhuyenMai {
     private Date   ngayBatDau;
     private Date    ngayKetThuc;
 
-    public KhuyenMai(){
+    public KhuyenMai(String idDotKhuyenMai, String tenDotKhuyenMai, LocalDate ngayBatDau, LocalDate ngayKetThuc){
         this.idDotKhuyenMai=null;
         this.tenDotKhuyeMai=null;
         this.ngayBatDau=null;
@@ -31,7 +32,7 @@ public class KhuyenMai {
         return idDotKhuyenMai;
     }
 
-    public String getTenDotKhuyeMai() {
+    public String getTenDotKhuyenMai() {
         return tenDotKhuyeMai;
     }
 

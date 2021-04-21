@@ -105,7 +105,7 @@ public class SanPhamDAO {
 
     public boolean updatesoLuong(String idSanPham, int soLuong) throws IOException {
         sanPhamConnection = new ConnectSQL();
-        boolean ok = sanPhamConnection.sqlUpdate("Update SanPham Set "
+        boolean ok = sanPhamConnection.sqlUpdate("Update SANPHAM Set "
                 + "SoLuong='" + soLuong
                 + "' where IdSanPham='" + idSanPham + "'");
         sanPhamConnection.closeConnect();
