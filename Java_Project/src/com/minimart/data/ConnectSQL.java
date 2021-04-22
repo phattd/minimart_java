@@ -25,7 +25,7 @@ public class ConnectSQL {
     String user_Name = null;
     String pass = null;
 
-    String ipAddress = "localhost:3306";
+    String ipAddress = null;
 
     public ConnectSQL() throws IOException {
         checkDriver();
@@ -86,7 +86,7 @@ public class ConnectSQL {
     }
 
     // ghi data theo câu update
-    public Boolean sqlUpdate(String qry) {
+    public boolean sqlUpdate(String qry) {
         if (checkConnect()) {
             try {
                 stmt.executeUpdate(qry);

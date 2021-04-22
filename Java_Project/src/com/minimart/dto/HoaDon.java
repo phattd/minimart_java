@@ -50,6 +50,7 @@ public class HoaDon {
         return ngayLapHoaDon;
     }
 
+
     public String getIdKhachHang() {
         return idKhachHang;
     }
