@@ -1,10 +1,13 @@
 package com.minimart.dto;
 
+import java.time.LocalDate;
+
 public class NhanVien {
     private String idNhanVien;
     private String ho;
     private String  ten;
     private String diaChi;
+    private LocalDate ngaySinh;
     private String soDienThoai;
     private String password;
     private int luong;
@@ -17,29 +20,26 @@ public class NhanVien {
         this.ho=null;
         this.ten=null;
         this.diaChi=null;
+        this.ngaySinh = null;
         this.soDienThoai=null;
         this.password=null;
         this.luong=0;
         this.idChucVu=null;
         this.hinhAnh=null;
     }
-    public NhanVien(String idNhanVien, String ho, String ten, String diaChi, String soDienThoai, String password, int luong, String idChucVu,String hinhAnh)
+    public NhanVien(String idNhanVien, String ho, String ten, String diaChi, LocalDate ngaySinh, String soDienThoai, String password, int luong, String idChucVu,String hinhAnh)
     {
         this.idNhanVien=idNhanVien;
         this.ho=ho;
         this.ten=ten;
         this.diaChi=diaChi;
+        this.ngaySinh = ngaySinh;
         this.soDienThoai=soDienThoai;
         this.password=password;
         this.luong=luong;
         this.idChucVu=idChucVu;
         this.hinhAnh=hinhAnh;
     }
-    public NhanVien(NhanVien nhanVien)
-    {
-        this(nhanVien.idNhanVien, nhanVien.ho, nhanVien.ten, nhanVien.diaChi, nhanVien.soDienThoai, nhanVien.password, nhanVien.luong, nhanVien.idChucVu, nhanVien.hinhAnh);
-    }
-
     public String getIdNhanVien() {
         return idNhanVien;
     }
@@ -80,6 +80,10 @@ public class NhanVien {
         return idChucVu;
     }
 
+    public LocalDate getNgaySinh() {
+        return ngaySinh;
+    }
+
     public void setIdNhanVien(String idNhanVien) {
         this.idNhanVien = idNhanVien;
     }
@@ -108,15 +112,20 @@ public class NhanVien {
         this.luong = luong;
     }
 
+    public void setNgaySinh(LocalDate ngaySinh) {
+        this.ngaySinh = ngaySinh;
+    }
+
     public void setIdChucVu(String idChucVu) {
         this.idChucVu = idChucVu;
     }
-    public  void setNhanVien(String idNhanVien,String ho,String ten,String diaChi,String soDienThoai,String password,int luong,String idChucVu,String hinhAnh)
+    public  void setNhanVien(String idNhanVien,String ho,String ten,String diaChi, LocalDate ngaySinh, String soDienThoai,String password,int luong,String idChucVu,String hinhAnh)
     {
         this.idNhanVien=idNhanVien;
         this.ho=ho;
         this.ten=ten;
         this.diaChi=diaChi;
+        this.ngaySinh = ngaySinh;
         this.soDienThoai=soDienThoai;
         this.password=password;
         this.luong=luong;
@@ -129,6 +138,7 @@ public class NhanVien {
         this.ho=nhanVien.ho;
         this.ten=nhanVien.ten;
         this.diaChi=nhanVien.diaChi;
+        this.ngaySinh = ngaySinh;
         this.soDienThoai=nhanVien.soDienThoai;
         this.password=nhanVien.password;
         this.luong=nhanVien.luong;

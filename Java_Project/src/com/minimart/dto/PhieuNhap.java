@@ -1,11 +1,11 @@
 package com.minimart.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class PhieuNhap {
     private String idPhieuNhap;
     private String idNhaCungCap;
-    private Date ngayNhap;
+    private LocalDate ngayNhap;
     private String idNhanVien;
     private int tongTien;
     public PhieuNhap(){
@@ -15,7 +15,7 @@ public class PhieuNhap {
         this.idNhanVien=null;
         this.tongTien=0;
     }
-    public PhieuNhap(String idPhieuNhap,String idNhaCungCap,Date ngayNhap,String idNhanVien,int tongTien)
+    public PhieuNhap(String idPhieuNhap, String idNhaCungCap, LocalDate ngayNhap, String idNhanVien, int tongTien)
     {
         this.idPhieuNhap=idPhieuNhap;
         this.idNhaCungCap=idNhaCungCap;
@@ -37,7 +37,7 @@ public class PhieuNhap {
         return idNhaCungCap;
     }
 
-    public Date getNgayNhap() {
+    public LocalDate getNgayNhap() {
         return ngayNhap;
     }
 
@@ -57,7 +57,7 @@ public class PhieuNhap {
         this.idNhaCungCap = idNhaCungCap;
     }
 
-    public void setNgayNhap(Date ngayNhap) {
+    public void setNgayNhap(LocalDate ngayNhap) {
         this.ngayNhap = ngayNhap;
     }
 
@@ -68,7 +68,7 @@ public class PhieuNhap {
     public void setTongTien(int tongTien) {
         this.tongTien = tongTien;
     }
-    public  void setPhieuNhap(String idPhieuNhap,String idNhaCungCap,Date ngayNhap,String idNhanVien,int tongTien)
+    public  void setPhieuNhap(String idPhieuNhap, String idNhaCungCap, LocalDate ngayNhap, String idNhanVien, int tongTien)
     {
         this.idPhieuNhap=idPhieuNhap;
         this.idNhaCungCap=idNhaCungCap;

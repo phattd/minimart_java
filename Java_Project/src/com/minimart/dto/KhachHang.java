@@ -6,7 +6,7 @@ public class KhachHang {
     private String tenKhachHang;
     private BacTichLuy bacTichLuy;
     private int diemTichLuy;
-    public KhachHang()
+    public KhachHang(String idKhachHang, String tenKhachHang, String hoKhachHang, String bacTichLuy, int trangthai)
     {
         this.idKhachHang=null;
         this.hoKhachHang=null;

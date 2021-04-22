@@ -1,10 +1,10 @@
 package com.minimart.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class HoaDon {
     private String idHoaDon;
-    private Date ngayLapHoaDon;
+    private LocalDate ngayLapHoaDon;
     private String idNhanVien;
     private int tongTien;
     private int tienKhachDua;
@@ -25,7 +25,7 @@ public class HoaDon {
         this.idKhachHang=null;
     }
 
-    public HoaDon(String idHoaDon,Date ngayLapHoaDon,String idNhanVien,int tongTien,int tienKhachDua,int tongTienKhuyenMai,int tienConLai,int tienThua,String idKhachHang)
+    public HoaDon(String idHoaDon, LocalDate ngayLapHoaDon, String idNhanVien, int tongTien, int tienKhachDua, int tongTienKhuyenMai, int tienConLai, int tienThua, String idKhachHang)
     {
         this.idHoaDon=idHoaDon;
         this.ngayLapHoaDon=ngayLapHoaDon;
@@ -37,16 +37,11 @@ public class HoaDon {
         this.tienThua=tienThua;
         this.idKhachHang=idKhachHang;
     }
-    public  HoaDon(HoaDon hoaDon)
-    {
-        this(hoaDon.idHoaDon, hoaDon.ngayLapHoaDon, hoaDon.idNhanVien, hoaDon.tongTien, hoaDon.tienKhachDua, hoaDon.tongTienKhuyenMai, hoaDon.tienConLai, hoaDon.tienThua, hoaDon.idKhachHang);
-    }
-
     public String getIdHoaDon() {
         return idHoaDon;
     }
 
-    public Date getNgayLapHoaDon() {
+    public LocalDate getNgayLapHoaDon() {
         return ngayLapHoaDon;
     }
 
@@ -63,6 +58,38 @@ public class HoaDon {
         return idNhanVien;
     }
 
+    public int getTienConLai() {
+        return tienConLai;
+    }
+
+    public int getTienKhachDua() {
+        return tienKhachDua;
+    }
+
+    public int getTienThua() {
+        return tienThua;
+    }
+
+    public int getTongTienKhuyenMai() {
+        return tongTienKhuyenMai;
+    }
+
+    public void setTienConLai(int tienConLai) {
+        this.tienConLai = tienConLai;
+    }
+
+    public void setTienKhachDua(int tienKhachDua) {
+        this.tienKhachDua = tienKhachDua;
+    }
+
+    public void setTienThua(int tienThua) {
+        this.tienThua = tienThua;
+    }
+
+    public void setTongTienKhuyenMai(int tongTienKhuyenMai) {
+        this.tongTienKhuyenMai = tongTienKhuyenMai;
+    }
+
     public void setIdHoaDon(String idHoaDon) {
         this.idHoaDon = idHoaDon;
     }
@@ -75,14 +102,14 @@ public class HoaDon {
         this.idNhanVien = idNhanVien;
     }
 
-    public void setNgayLapHoaDon(Date ngayLapHoaDon) {
+    public void setNgayLapHoaDon(LocalDate ngayLapHoaDon) {
         this.ngayLapHoaDon = ngayLapHoaDon;
     }
 
     public void setTongTien(int tongTien) {
         this.tongTien = tongTien;
     }
-    public void setHoaDon(String idHoaDon,Date ngayLapHoaDon,String idNhanVien,int tongTien,int tienKhachDua,int tongTienKhuyenMai,int tienConLai,int tienThua,String idKhachHang)
+    public void setHoaDon(String idHoaDon, LocalDate ngayLapHoaDon, String idNhanVien, int tongTien, int tienKhachDua, int tongTienKhuyenMai, int tienConLai, int tienThua, String idKhachHang)
     {
         this.idHoaDon=idHoaDon;
         this.ngayLapHoaDon=ngayLapHoaDon;
