@@ -4,17 +4,17 @@ public class KhachHang {
     private String idKhachHang;
     private String hoKhachHang;
     private String tenKhachHang;
-    private BacTichLuy bacTichLuy;
+    private String bacTichLuy;
     private int diemTichLuy;
-    public KhachHang(String idKhachHang, String tenKhachHang, String hoKhachHang, String bacTichLuy, int trangthai)
+    public KhachHang()
     {
         this.idKhachHang=null;
         this.hoKhachHang=null;
         this.tenKhachHang=null;
-        this.bacTichLuy=BacTichLuy.Normal;
+        this.bacTichLuy=BacTichLuy.Normal.getString();
         this.diemTichLuy=0;
     }
-    public KhachHang(String idKhachHang,String hoKhachHang,String tenKhachHang, BacTichLuy bacTichLuy,int diemTichLuy)
+    public KhachHang(String idKhachHang,String hoKhachHang,String tenKhachHang, String bacTichLuy,int diemTichLuy)
     {
         this.idKhachHang=idKhachHang;
         this.hoKhachHang=hoKhachHang;
@@ -39,8 +39,11 @@ public class KhachHang {
         return tenKhachHang;
     }
 
-    public BacTichLuy getBacTichLuy() {
+    public String getBacTichLuyByString() {
         return bacTichLuy;
+    }
+    public BacTichLuy getBacTichLuyByBacTicLuy() {
+        return BacTichLuy.getBacTichLuy(bacTichLuy);
     }
 
     public int getDiemTichLuy() {
@@ -60,13 +63,15 @@ public class KhachHang {
     }
 
     public void setBacTichLuy(BacTichLuy bacTichLuy) {
+        this.bacTichLuy = bacTichLuy.getString();
+    }
+    public void setBacTichLuy(String bacTichLuy) {
         this.bacTichLuy = bacTichLuy;
     }
-
     public void setDiemTichLuy(int diemTichLuy) {
         this.diemTichLuy = diemTichLuy;
     }
-    public void setKhachHang(String idKhachHang,String hoKhachHang,String tenKhachHang, BacTichLuy bacTichLuy,int diemTichLuy)
+    public void setKhachHang(String idKhachHang,String hoKhachHang,String tenKhachHang, String bacTichLuy,int diemTichLuy)
     {
         this.idKhachHang=idKhachHang;
         this.hoKhachHang=hoKhachHang;

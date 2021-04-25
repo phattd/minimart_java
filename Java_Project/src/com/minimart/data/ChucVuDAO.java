@@ -15,12 +15,7 @@ public class ChucVuDAO {
 
     public ArrayList<ChucVu> readData()
     {
-        try {
-            connectSQL = new ConnectSQL();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-
-        }
+         connectSQL = new ConnectSQL();
         ArrayList<ChucVu> danhSachChucVu=new ArrayList<>();
         try {
             String query = "SELECT * FROM CHUCVU";
@@ -45,12 +40,7 @@ public class ChucVuDAO {
 
     public boolean addData(ChucVu chucVu)
     {
-        try {
-            connectSQL = new ConnectSQL();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-
-        }
+         connectSQL = new ConnectSQL();
         boolean executeSqlCommand=connectSQL.sqlUpdate("INSERT INTO CHUCVU(IdChucVu,TenChucVu) VALUES ('"+chucVu.getIdChucVu()
                 +"','"+chucVu.getTenChucVu()+"')");
         connectSQL.closeConnect();
@@ -58,12 +48,7 @@ public class ChucVuDAO {
     }
     public boolean removeData(String idChucVu)
     {
-        try {
-            connectSQL = new ConnectSQL();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-
-        }
+         connectSQL = new ConnectSQL();
         boolean executeSqlCommand = connectSQL.sqlUpdate("DELETE FROM CHUCVU WHERE IdChucVU='"+idChucVu+"' ");
         connectSQL.closeConnect();
         return executeSqlCommand;
@@ -71,11 +56,9 @@ public class ChucVuDAO {
 
     public boolean updateData(ChucVu chucVu)
     {
-        try {
+
             connectSQL = new ConnectSQL();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
+
         boolean executeSqlCommand = connectSQL.sqlUpdate("UPDATE CHUCVU SET IdChucVu='"+chucVu.getIdChucVu()+"', " +
                 "TenChucVu='"+chucVu.getTenChucVu()+"' WHERE IdChucVU='"+chucVu.getIdChucVu()+"';");
         connectSQL.closeConnect();

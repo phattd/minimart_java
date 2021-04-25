@@ -27,7 +27,7 @@ public class ConnectSQL {
 
     String ipAddress = null;
 
-    public ConnectSQL() throws IOException {
+    public ConnectSQL() {
         checkDriver();
         ReadFile();
         setupConnect();
@@ -150,7 +150,7 @@ public class ConnectSQL {
         }
         return headers;
     }
-    public void ReadFile() throws IOException {
+    public void ReadFile()  {
         File myObj = new File("D:\\hk2-2021\\java\\minimart_java\\Java_Project\\src\\com\\minimart\\SQL");
         if (myObj.exists()) {
             try {

@@ -12,11 +12,9 @@ public class ChiTietKhuyenMaiDAO {
     private ConnectSQL connectSQL;
     public ArrayList<ChiTietKhuyenMai> readData()
     {
-        try {
+
             connectSQL = new ConnectSQL();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
+
         ArrayList<ChiTietKhuyenMai> danhSachChiTietKhuyenMai=new ArrayList<>();
         try
         {
@@ -45,11 +43,9 @@ public class ChiTietKhuyenMaiDAO {
     }
     public boolean addData(ChiTietKhuyenMai chiTietKhuyenMai)
     {
-        try {
+
             connectSQL = new ConnectSQL();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
+
         String query="INSERT INTO CHITIETKHUYENMAI(IdKhuyenMai,TenKhuyenMai,IdDotKhuyenMai,PhanTramKhuyenMai,NoiDungKhuyenMai,IdSanPham) " +
                 "VALUES ('"+chiTietKhuyenMai.getIdKhuyenMai()+
                 "','" + chiTietKhuyenMai.getTenKhuyenMai()+"','" + chiTietKhuyenMai.getIdDotKhuyenMai()+ "'," +
@@ -59,28 +55,24 @@ public class ChiTietKhuyenMaiDAO {
         return executeCommandSQL;
 
     }
-    public boolean removeData(String idKhuyenMai){
-        try {
+    public boolean removeData(String idKhuyenMai,String idDotKhuyenMai){
+
             connectSQL = new ConnectSQL();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
-        boolean executeCommandSQL=connectSQL.sqlUpdate("DELETE FROM CHITIETKHUYENMAI WHERE IdKhuyenMai='"+idKhuyenMai+"';");
+
+        boolean executeCommandSQL=connectSQL.sqlUpdate("DELETE FROM CHITIETKHUYENMAI WHERE IdKhuyenMai='"+idKhuyenMai+"', IdDotKhuyenMai='"+idDotKhuyenMai+"';");
         connectSQL.closeConnect();
         return  executeCommandSQL;
     }
     public boolean updateData(ChiTietKhuyenMai chiTietKhuyenMai)
     {
-        try {
+
             connectSQL = new ConnectSQL();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
+
         boolean executeCommandSQL=connectSQL.sqlUpdate("UPDATE CHITIETKHUYENMAI SET IdKhuyenMai='"+chiTietKhuyenMai.getIdKhuyenMai()+"',TenKhuyenMai='"
                 +chiTietKhuyenMai.getTenKhuyenMai()+"',IdDotKhuyenMai='"+chiTietKhuyenMai.getIdDotKhuyenMai()+"',PhanTramKhuyenMai="
                         +chiTietKhuyenMai.getPhanTramKhuyenMai()+",NoiDungKhuyenMai='"+chiTietKhuyenMai.getNoiDungKhuyenMai()+"',IdSanPham='"
                         +chiTietKhuyenMai.getIdSanPham()+"' " +
-                "WHERE IdKhuyenMai='"+chiTietKhuyenMai.getIdKhuyenMai()+"';");
+                "WHERE IdKhuyenMai='"+chiTietKhuyenMai.getIdKhuyenMai()+"' AND IdDotKhuyenMai='"+chiTietKhuyenMai.getIdDotKhuyenMai()+"';");
         connectSQL.closeConnect();
         return executeCommandSQL;
     }

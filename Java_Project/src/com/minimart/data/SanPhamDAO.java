@@ -16,7 +16,7 @@ public class SanPhamDAO {
 
     }
 
-    public ArrayList<SanPham> readDB() throws IOException {
+    public ArrayList<SanPham> readDB() {
         sanPhamConnection = new ConnectSQL();
         ArrayList<SanPham> dssp = new ArrayList<>();
         try {
@@ -42,7 +42,7 @@ public class SanPhamDAO {
         return dssp;
     }
 
-    public ArrayList<SanPham> search(String columnName, String value) throws IOException {
+    public ArrayList<SanPham> search(String columnName, String value)  {
         sanPhamConnection = new ConnectSQL();
         ArrayList<SanPham> dssp = new ArrayList<>();
 
@@ -70,7 +70,7 @@ public class SanPhamDAO {
         return dssp;
     }
 
-    public boolean add(SanPham sp) throws IOException {
+    public boolean add(SanPham sp)  {
         sanPhamConnection = new ConnectSQL();
         boolean ok = sanPhamConnection.sqlUpdate("INSERT INTO `SANPHAM` (`IdSanPham`, `IdLoaiSanPham`, `TenSanPham`, `DonGia`, `SoLuong`, `HinhAnh`) VALUES ('"
                 + sp.getIdSanPham() + "', '"
@@ -83,14 +83,14 @@ public class SanPhamDAO {
         return ok;
     }
 
-    public boolean delete(String idSanPham) throws IOException {
+    public boolean delete(String idSanPham)  {
         sanPhamConnection = new ConnectSQL();
         boolean ok = sanPhamConnection.sqlUpdate("DELETE FROM `SANPHAM` WHERE `SANPHAM`.`IdSanPham` = '" + idSanPham + "'");
         sanPhamConnection.closeConnect();
         return ok;
     }
 
-    public boolean update(String idSanPham, String idLoaiSanPham, String tenSanPham, float donGia, int soLuong, String hinhAnh) throws IOException {
+    public boolean update(String idSanPham, String idLoaiSanPham, String tenSanPham, float donGia, int soLuong, String hinhAnh)  {
         sanPhamConnection = new ConnectSQL();
         boolean ok = sanPhamConnection.sqlUpdate("Update SanPham Set "
                 + "IdLoaiSanPham='" + idLoaiSanPham
@@ -103,7 +103,7 @@ public class SanPhamDAO {
         return ok;
     }
 
-    public boolean updatesoLuong(String idSanPham, int soLuong) throws IOException {
+    public boolean updatesoLuong(String idSanPham, int soLuong)  {
         sanPhamConnection = new ConnectSQL();
         boolean ok = sanPhamConnection.sqlUpdate("Update SANPHAM Set "
                 + "SoLuong='" + soLuong

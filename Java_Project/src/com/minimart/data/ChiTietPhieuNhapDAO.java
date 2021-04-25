@@ -13,11 +13,9 @@ public class ChiTietPhieuNhapDAO {
 
     public ArrayList<ChiTietPhieuNhap> readData()
     {
-        try {
+
             connectSQL = new ConnectSQL();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
+
         ArrayList<ChiTietPhieuNhap> danhSachChiTietPhieuNhap=new ArrayList<>();
 
         try
@@ -46,11 +44,9 @@ public class ChiTietPhieuNhapDAO {
     }
     public boolean addData(ChiTietPhieuNhap chiTietPhieuNhap)
     {
-        try {
+
             connectSQL = new ConnectSQL();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
+
         boolean executeSQL = connectSQL.sqlUpdate("INSERT INTO CHITIETPHIEUNHAP(IdPhieuNhap,IdSanPham,SoLuong,DonGia,ThanhTien)" +
                 " VALUES ('"+chiTietPhieuNhap.getIdPhieuNhap()+"','"
                 +chiTietPhieuNhap.getIdSanPham()+"',"+
@@ -62,11 +58,9 @@ public class ChiTietPhieuNhapDAO {
     }
     public boolean removeData(String idPhieuNhap,String idSanPham)
     {
-        try {
+
             connectSQL = new ConnectSQL();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
+
         boolean executeCommandSQL=connectSQL.sqlUpdate("DELETE FROM CHITIETPHIEUNHAP WHERE IdPhieuNhap='"
                 +idPhieuNhap+"' AND IdSanPham='"+idSanPham+"';");
         connectSQL.closeConnect();
@@ -75,22 +69,18 @@ public class ChiTietPhieuNhapDAO {
     }
     public boolean removeAllData(String idPhieuNhap)
     {
-        try {
+
             connectSQL = new ConnectSQL();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
+
         boolean executeSQLCommad=connectSQL.sqlUpdate("DELETE FROM CHITIETPHIEUNHAP WHERE IdPhieuNhap='"+idPhieuNhap+"';");
         connectSQL.closeConnect();
         return executeSQLCommad;
     }
     public boolean updateData(ChiTietPhieuNhap chiTietPhieuNhap)
     {
-        try {
+
             connectSQL = new ConnectSQL();
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
+
         boolean executeSQLCommand=connectSQL.sqlUpdate("UPDATE ChiTietHoaDon SET IdPhieuNhap='"
                 +chiTietPhieuNhap.getIdPhieuNhap()+"', IdSanPham='"
                 +chiTietPhieuNhap.getIdSanPham()+"', SoLuong="

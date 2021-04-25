@@ -15,7 +15,7 @@ public class PhanQuyenDAO {
 
     }
 
-    public ArrayList<PhanQuyen> readDB() throws IOException {
+    public ArrayList<PhanQuyen> readDB()  {
         pqConnection = new ConnectSQL();
         ArrayList<PhanQuyen> dsq = new ArrayList<>();
         try {
@@ -38,7 +38,7 @@ public class PhanQuyenDAO {
         return dsq;
     }
 
-    public ArrayList<PhanQuyen> search(String columnName, String value) throws IOException {
+    public ArrayList<PhanQuyen> search(String columnName, String value)  {
         pqConnection = new ConnectSQL();
         ArrayList<PhanQuyen> dsq = new ArrayList<>();
 
@@ -63,7 +63,7 @@ public class PhanQuyenDAO {
         return dsq;
     }
 
-    public boolean add(PhanQuyen q) throws IOException {
+    public boolean add(PhanQuyen q)  {
         pqConnection = new ConnectSQL();
         boolean ok = pqConnection.sqlUpdate("INSERT INTO `PHANQUYEN` (`IdQuyen`, `TenQuyenuyen`) VALUES ('"
                 + q.getIdQuyen()+ "', '"
@@ -72,14 +72,14 @@ public class PhanQuyenDAO {
         return ok;
     }
 
-    public boolean delete(String idQuyen) throws IOException {
+    public boolean delete(String idQuyen)  {
         pqConnection = new ConnectSQL();
         boolean ok = pqConnection.sqlUpdate("DELETE FROM `PHANQUYEN` WHERE `PHANQUYEN`.`IdQuyen` = '" + idQuyen + "'");
         pqConnection.closeConnect();
         return ok;
     }
 
-    public boolean update(String idQuyen, String tenQuyenuyen, String chitietquyen) throws IOException {
+    public boolean update(String idQuyen, String tenQuyenuyen, String chitietquyen)  {
         pqConnection = new ConnectSQL();
         boolean ok = pqConnection.sqlUpdate("Update PHANQUYEN Set "
                 + "TenQuyenuyen='" + tenQuyenuyen

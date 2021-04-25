@@ -6,16 +6,16 @@ import java.util.Date;
 public class KhuyenMai {
     private String idDotKhuyenMai;
     private String tenDotKhuyeMai;
-    private Date   ngayBatDau;
-    private Date    ngayKetThuc;
+    private LocalDate   ngayBatDau;
+    private LocalDate    ngayKetThuc;
 
-    public KhuyenMai(String idDotKhuyenMai, String tenDotKhuyenMai, LocalDate ngayBatDau, LocalDate ngayKetThuc){
+    public KhuyenMai(){
         this.idDotKhuyenMai=null;
         this.tenDotKhuyeMai=null;
         this.ngayBatDau=null;
         this.ngayKetThuc=null;
     }
-    public KhuyenMai(String idDotKhuyenMai,String tenDotKhuyeMai,Date ngayBatDau,Date ngayKetThuc)
+    public KhuyenMai(String idDotKhuyenMai,String tenDotKhuyeMai,LocalDate ngayBatDau,LocalDate ngayKetThuc)
     {
         this.idDotKhuyenMai=idDotKhuyenMai;
         this.tenDotKhuyeMai=tenDotKhuyeMai;
@@ -36,11 +36,11 @@ public class KhuyenMai {
         return tenDotKhuyeMai;
     }
 
-    public Date getNgayBatDau() {
+    public LocalDate getNgayBatDau() {
         return ngayBatDau;
     }
 
-    public Date getNgayKetThuc() {
+    public LocalDate getNgayKetThuc() {
         return ngayKetThuc;
     }
 
@@ -52,11 +52,11 @@ public class KhuyenMai {
         this.tenDotKhuyeMai = tenDotKhuyeMai;
     }
 
-    public void setNgayBatDau(Date ngayBatDau) {
+    public void setNgayBatDau(LocalDate ngayBatDau) {
         this.ngayBatDau = ngayBatDau;
     }
 
-    public void setNgayKetThuc(Date ngayKetThuc) {
+    public void setNgayKetThuc(LocalDate ngayKetThuc) {
         this.ngayKetThuc = ngayKetThuc;
     }
     public void setKhuyenMai(KhuyenMai khuyenMai)
@@ -66,7 +66,7 @@ public class KhuyenMai {
         this.ngayBatDau=khuyenMai.ngayBatDau;
         this.ngayKetThuc=khuyenMai.ngayKetThuc;
     }
-    public  void setKhuyenMai(String idDotKhuyenMai,String tenDotKhuyeMai,Date ngayBatDau,Date ngayKetThuc)
+    public  void setKhuyenMai(String idDotKhuyenMai,String tenDotKhuyeMai,LocalDate ngayBatDau,LocalDate ngayKetThuc)
     {
         this.idDotKhuyenMai=idDotKhuyenMai;
         this.tenDotKhuyeMai=tenDotKhuyeMai;

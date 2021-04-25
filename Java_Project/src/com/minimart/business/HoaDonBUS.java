@@ -1,9 +1,12 @@
 package com.minimart.business;
 
 import com.minimart.data.HoaDonDAO;
+import com.minimart.dto.ChiTietKhuyenMai;
 import com.minimart.dto.HoaDon;
 
+import java.io.IOException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class HoaDonBUS {
@@ -12,12 +15,20 @@ public class HoaDonBUS {
 
     public HoaDonBUS()
     {
-        danhSachHoaDon= hoaDonDAO.readData();
+        try {
+            danhSachHoaDon= hoaDonDAO.readData();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void readData()
     {
-        danhSachHoaDon= hoaDonDAO.readData();
+        try {
+            danhSachHoaDon= hoaDonDAO.readData();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public ArrayList<HoaDon> getDanhSachHoaDon()
     {
@@ -30,53 +41,210 @@ public class HoaDonBUS {
         return rawIdHoaDon.hashCode()+"";
     }
     public HoaDon getHoaDonById(String idHoaDon){
-        for(HoaDon hoaDon : danhSachHoaDon )
+        for(int index=0;index<danhSachHoaDon.size();index++ )
         {
-            if(hoaDon.getIdHoaDon().equals(idHoaDon))
-                return hoaDon;
+            if(danhSachHoaDon.get(index).getIdHoaDon().equals(idHoaDon))
+                return danhSachHoaDon.get(index);
         }
         return  null;
     }
     public boolean addData(HoaDon hoaDon)
     {
-        if(hoaDonDAO.addData(hoaDon))
-        {
-            danhSachHoaDon.add(hoaDon);
-            return true;
+        try {
+            if(hoaDonDAO.addData(hoaDon))
+            {
+                danhSachHoaDon.add(hoaDon);
+                return true;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return false;
     }
     public  boolean removeData(String idHoaDon)
     {
-        if(hoaDonDAO.removeData(idHoaDon))
-        {
-            for(HoaDon element : danhSachHoaDon)
+        try {
+            if(hoaDonDAO.removeData(idHoaDon))
             {
-                if(element.getIdHoaDon().equals(idHoaDon))
+                for(int index=0;index<danhSachHoaDon.size();index++)
                 {
-                    danhSachHoaDon.remove(element);
-                    return true;
+                    if(danhSachHoaDon.get(index).getIdHoaDon().equals(idHoaDon))
+                    {
+                        danhSachHoaDon.remove(danhSachHoaDon.get(index));
+                        return true;
+                    }
                 }
-            }
 
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return false;
     }
     public boolean updateData(HoaDon hoaDon)
     {
-        if(hoaDonDAO.updateData(hoaDon))
-        {
-            for(HoaDon element : danhSachHoaDon)
+        try {
+            if(hoaDonDAO.updateData(hoaDon))
             {
-                if(element.getIdHoaDon().equals(hoaDon.getIdHoaDon()))
+                for(int index=0;index<danhSachHoaDon.size();index++)
                 {
-                    element=hoaDon;
-                    return true;
+                    if(danhSachHoaDon.get(index).getIdHoaDon().equals(hoaDon.getIdHoaDon()))
+                    {
+                        danhSachHoaDon.set(index,hoaDon);
+                        return true;
+                    }
                 }
-            }
 
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return false;
     }
+
+    public ArrayList<HoaDon> searchByidHoaDon(String idHoaDon)
+    {
+        ArrayList<HoaDon> result=new ArrayList<>();
+        for (int index=0;index<danhSachHoaDon.size();index++)
+        {
+            HoaDon temp =danhSachHoaDon.get(index);
+            if (temp.getIdHoaDon().toLowerCase().contains(idHoaDon.toLowerCase()))
+            {
+                result.add(temp);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<HoaDon> searchByidHoaDon(String idHoaDon,ArrayList<HoaDon> input)
+    {
+        ArrayList<HoaDon> result=new ArrayList<>();
+        for (int index=0;index<input.size();index++)
+        {
+            HoaDon temp =input.get(index);
+            if (temp.getIdHoaDon().toLowerCase().contains(idHoaDon.toLowerCase()))
+            {
+                result.add(temp);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<HoaDon> searchByidNhanVien(String idNhanVien)
+    {
+        ArrayList<HoaDon> result=new ArrayList<>();
+        for (int index=0;index<danhSachHoaDon.size();index++)
+        {
+            HoaDon temp =danhSachHoaDon.get(index);
+            if (temp.getIdNhanVien().toLowerCase().contains(idNhanVien.toLowerCase()))
+            {
+                result.add(temp);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<HoaDon> searchByidNhanVien(String idNhanVien,ArrayList<HoaDon> input)
+    {
+        ArrayList<HoaDon> result=new ArrayList<>();
+        for (int index=0;index<input.size();index++)
+        {
+            HoaDon temp =input.get(index);
+            if (temp.getIdNhanVien().toLowerCase().contains(idNhanVien.toLowerCase()))
+            {
+                result.add(temp);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<HoaDon> searchByidKhachHang(String idKhachHang)
+    {
+        ArrayList<HoaDon> result=new ArrayList<>();
+        for (int index=0;index<danhSachHoaDon.size();index++)
+        {
+            HoaDon temp =danhSachHoaDon.get(index);
+            if (temp.getIdKhachHang().toLowerCase().contains(idKhachHang.toLowerCase()))
+            {
+                result.add(temp);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<HoaDon> searchByidKhachHang(String idKhachHang,ArrayList<HoaDon> input)
+    {
+        ArrayList<HoaDon> result=new ArrayList<>();
+        for (int index=0;index<input.size();index++)
+        {
+            HoaDon temp =input.get(index);
+            if (temp.getIdKhachHang().toLowerCase().contains(idKhachHang.toLowerCase()))
+            {
+                result.add(temp);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<HoaDon> searchByTongTien(int startValue, int endValue)
+    {
+        ArrayList<HoaDon> result=new ArrayList<>();
+        for(int index=0;index<danhSachHoaDon.size();index++)
+        {
+            HoaDon temp=danhSachHoaDon.get(index);
+            if (temp.getTongTien()>=startValue && temp.getTongTien()<=endValue)
+            {
+                result.add(temp);
+            }
+        }
+        return result;
+    }
+    public ArrayList<HoaDon> searchByTongTien(int startValue, int endValue,ArrayList<HoaDon> input)
+    {
+        ArrayList<HoaDon> result=new ArrayList<>();
+        for(int index=0;index<input.size();index++)
+        {
+            HoaDon temp=input.get(index);
+            if (temp.getTongTien()>=startValue && temp.getTongTien()<=endValue)
+            {
+                result.add(temp);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<HoaDon> searchByNgayLapHoaDon(LocalDate startValue, LocalDate endValue)
+    {
+        ArrayList<HoaDon> result=new ArrayList<>();
+        for(int index=0;index<danhSachHoaDon.size();index++)
+        {
+            HoaDon temp=danhSachHoaDon.get(index);
+            LocalDate timeTemp=temp.getNgayLapHoaDon();
+            if ( (timeTemp.isEqual(startValue) || timeTemp.isAfter(startValue)) &&
+                    (timeTemp.isEqual(endValue) || timeTemp.isBefore(endValue)) )
+            {
+                result.add(temp);
+            }
+        }
+        return result;
+    }
+    public ArrayList<HoaDon> searchByTongTien(LocalDate startValue, LocalDate endValue,ArrayList<HoaDon> input)
+    {
+        ArrayList<HoaDon> result=new ArrayList<>();
+        for(int index=0;index<input.size();index++)
+        {
+            HoaDon temp=input.get(index);
+            LocalDate timeTemp=temp.getNgayLapHoaDon();
+            if ((timeTemp.isEqual(startValue) || timeTemp.isAfter(startValue)) &&
+                    (timeTemp.isEqual(endValue) || timeTemp.isBefore(endValue)))
+            {
+                result.add(temp);
+            }
+        }
+        return result;
+    }
+
+
+
 
 }

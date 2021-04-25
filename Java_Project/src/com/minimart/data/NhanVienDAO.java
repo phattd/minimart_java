@@ -16,7 +16,7 @@ public class NhanVienDAO {
 
     }
 
-    public ArrayList<NhanVien> readDB() throws IOException {
+    public ArrayList<NhanVien> readDB()  {
         ArrayList<NhanVien> dsnv = new ArrayList<>();
         qlnvConnection = new ConnectSQL();
         try {
@@ -46,7 +46,7 @@ public class NhanVienDAO {
         return dsnv;
     }
 
-    public ArrayList<NhanVien> search(String columnName, String value) throws IOException {
+    public ArrayList<NhanVien> search(String columnName, String value)  {
         qlnvConnection = new ConnectSQL();
         ArrayList<NhanVien> dsnv = new ArrayList<>();
 
@@ -78,7 +78,7 @@ public class NhanVienDAO {
         return dsnv;
     }
 
-    public boolean add(NhanVien nv) throws IOException {
+    public boolean add(NhanVien nv)  {
         qlnvConnection = new ConnectSQL();
         boolean ok = qlnvConnection.sqlUpdate("INSERT INTO `NHANVIEN` (`IdNhanVien`, 'Ho', `Ten`, 'DiaChi', `NgaySinh`, `SDT`, `Luong`, 'IdChucVu', 'HinhAnh') VALUES ('"
                 + nv.getIdNhanVien() + "', '"
@@ -93,14 +93,14 @@ public class NhanVienDAO {
         qlnvConnection.closeConnect();
         return ok;
     }
-    public boolean delete(String idNhanVien) throws IOException {
+    public boolean delete(String idNhanVien)  {
         qlnvConnection = new ConnectSQL();
         boolean ok = qlnvConnection.sqlUpdate("DELETE FROM `NHANVIEN` WHERE `NHANVIEN`.`IdNhanVien` = '" + idNhanVien + "'");
         qlnvConnection.closeConnect();
         return ok;
     }
 
-    public boolean update(String idNhanVien, String ho, String ten, String diaChi, LocalDate ngaySinh, String SDT, int luong, String idChucVu, String hinhAnh) throws IOException {
+    public boolean update(String idNhanVien, String ho, String ten, String diaChi, LocalDate ngaySinh, String SDT, int luong, String idChucVu, String hinhAnh)  {
         qlnvConnection = new ConnectSQL();
         boolean ok = qlnvConnection.sqlUpdate("Update NHANVIEN Set "
                 + "Ho='" + ho

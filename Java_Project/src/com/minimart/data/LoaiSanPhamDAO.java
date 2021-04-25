@@ -14,7 +14,7 @@ public class LoaiSanPhamDAO {
 
     }
 
-    public ArrayList<LoaiSanPham> readDB() throws IOException {
+    public ArrayList<LoaiSanPham> readDB()  {
         qllspConnection = new ConnectSQL();
         ArrayList<LoaiSanPham> dslsp = new ArrayList<>();
         try {
@@ -37,7 +37,7 @@ public class LoaiSanPhamDAO {
         return dslsp;
     }
 
-    public ArrayList<LoaiSanPham> search(String columnName, String value) throws IOException {
+    public ArrayList<LoaiSanPham> search(String columnName, String value)  {
         qllspConnection = new ConnectSQL();
         ArrayList<LoaiSanPham> dslsp = new ArrayList<>();
 
@@ -62,7 +62,7 @@ public class LoaiSanPhamDAO {
         return dslsp;
     }
 
-    public boolean add(LoaiSanPham lsp) throws IOException {
+    public boolean add(LoaiSanPham lsp)  {
         qllspConnection = new ConnectSQL();
         boolean ok = qllspConnection.sqlUpdate("INSERT INTO `LOAISANPHAM` (`IdSanPham`, `TenSanPham`) VALUES ('"
                 + lsp.getIdLoaiSanPham() + "', '" + lsp.getTenSanPham() + "', '" + "');");
@@ -70,18 +70,22 @@ public class LoaiSanPhamDAO {
         return ok;
     }
 
-    public boolean delete(String idSanPham) throws IOException {
+    public boolean delete(String idSanPham)  {
         qllspConnection = new ConnectSQL();
         boolean ok = qllspConnection.sqlUpdate("DELETE FROM `LOAISANPHAM` WHERE `LOAISANPHAM`.`IdSanPham` = '" + idSanPham + "'");
         qllspConnection.closeConnect();
         return ok;
     }
 
-    public boolean update(String idSanPham, String tenSanPham, String Mota) throws IOException {
+    public boolean update(String idSanPham, String tenSanPham)  {
         qllspConnection = new ConnectSQL();
         boolean ok = qllspConnection.sqlUpdate("Update LOAISANPHAM Set TenSanPham='" + tenSanPham + "' where IdSanPham='" + idSanPham + "'");
         qllspConnection.closeConnect();
         return ok;
+    }
+    public boolean update(LoaiSanPham loaiSanPham)
+    {
+        return update(loaiSanPham.getIdLoaiSanPham(), loaiSanPham.getTenSanPham());
     }
 
     public void close() {

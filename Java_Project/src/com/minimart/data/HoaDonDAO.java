@@ -16,7 +16,7 @@ public class HoaDonDAO {
     public HoaDonDAO() {
     }
 
-    public ArrayList readDB() throws IOException {
+    public ArrayList readData() throws IOException {
         connection = new ConnectSQL();
         ArrayList<HoaDon> dshd = new ArrayList<>();
         try {
@@ -44,7 +44,7 @@ public class HoaDonDAO {
         return dshd;
     }
 
-    public boolean add(HoaDon hd) throws IOException {
+    public boolean addData(HoaDon hd) throws IOException {
         connection = new ConnectSQL();
         boolean success = connection.sqlUpdate("INSERT INTO HOADOON('IdHoaDon','IdNhanVien','IdKhachHang','NgayLapHoaDon','TongTienKhuyenMai','TongTien','TienKhachDua','TienConLai') VALUES ('"
                 + hd.getIdHoaDon() + "','"
@@ -59,7 +59,7 @@ public class HoaDonDAO {
         return success;
     }
 
-    public boolean delete(String IdHoaDon) throws IOException {
+    public boolean removeData(String IdHoaDon) throws IOException {
         connection = new ConnectSQL();
         if (!connection.sqlUpdate("DELETE FROM HOADON WHERE IdHoaDon='" + IdHoaDon + "';")) {
             JOptionPane.showMessageDialog(null, "Vui long xoa het chi tiet cua hoa don truoc !!!");
@@ -70,7 +70,7 @@ public class HoaDonDAO {
         return true;
     }
 
-    public boolean update(HoaDon hd) throws IOException {
+    public boolean updateData(HoaDon hd) throws IOException {
         connection = new ConnectSQL();
         boolean success = connection.sqlUpdate("UPDATE HOADON SET "
                 + "IdNhanVien='" + hd.getIdNhanVien()
@@ -92,7 +92,7 @@ public class HoaDonDAO {
         return success;
     }
 
-    public boolean update(String IdHoaDon, String IdNhanVien, String IdKhachHang, LocalDate NgayLapHoaDon, int TongTienKhuyenMai, int TongTien, int TienKhachDua, int TienConLai) throws IOException {
+    public boolean updateData(String IdHoaDon, String IdNhanVien, String IdKhachHang, LocalDate NgayLapHoaDon, int TongTienKhuyenMai, int TongTien, int TienKhachDua, int TienConLai) throws IOException {
         HoaDon hd = new HoaDon();
         hd.setIdHoaDon(IdHoaDon);
         hd.setIdNhanVien(IdNhanVien);
@@ -102,6 +102,6 @@ public class HoaDonDAO {
         hd.setTongTien(TongTien);
         hd.setTienKhachDua(TienKhachDua);
         hd.setTienConLai(TienConLai);
-        return update(hd);
+        return updateData(hd);
     }
 }

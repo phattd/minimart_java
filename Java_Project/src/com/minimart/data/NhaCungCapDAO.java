@@ -15,7 +15,7 @@ public class NhaCungCapDAO {
     //    public QuanLyNhaCungCapDAO(){
 //        nhaCungCapDB.logIn("root","");
 //    }
-    public ArrayList<NhaCungCap> readDB() throws IOException {
+    public ArrayList<NhaCungCap> readDB()  {
         ArrayList<NhaCungCap> dsncc = new ArrayList<>();
         qlnccConnection = new ConnectSQL();
         try {
@@ -39,7 +39,7 @@ public class NhaCungCapDAO {
         return dsncc;
     }
 
-    public ArrayList<NhaCungCap> search(String columnName, String value) throws IOException {
+    public ArrayList<NhaCungCap> search(String columnName, String value)  {
         qlnccConnection = new ConnectSQL();
         ArrayList<NhaCungCap> dsncc = new ArrayList<>();
 
@@ -65,7 +65,7 @@ public class NhaCungCapDAO {
         return dsncc;
     }
 
-    public boolean add(NhaCungCap ncc) throws IOException {
+    public boolean add(NhaCungCap ncc)  {
         qlnccConnection = new ConnectSQL();
         boolean ok = qlnccConnection.sqlUpdate("INSERT INTO `NHACUNGCAP` (`IdNhaCungCapNCC`, `TenNhaCungCapNCC`, `SoDienThoaiNCC`,`DiaChiNCC`,`Fax`) VALUES ('"
                 + ncc.getIdNhaCungCap() + "', '"
@@ -77,14 +77,14 @@ public class NhaCungCapDAO {
         return ok;
     }
 
-    public boolean delete(String idNhaCungCapncc) throws IOException {
+    public boolean delete(String idNhaCungCapncc)  {
         qlnccConnection = new ConnectSQL();
         boolean ok = qlnccConnection.sqlUpdate("DELETE FROM `NHACUNGCAP` WHERE `NHACUNGCAP`.`IdNhaCungCapNCC` = '" + idNhaCungCapncc + "'");
         qlnccConnection.closeConnect();
         return ok;
     }
 
-    public boolean update(String idNhaCungCap, String tenNhaCungCap, String soDienThoaiNCC, String diaChiNCC, String fax) throws IOException {
+    public boolean update(String idNhaCungCap, String tenNhaCungCap, String soDienThoaiNCC, String diaChiNCC, String fax)  {
         qlnccConnection = new ConnectSQL();
         boolean ok = qlnccConnection.sqlUpdate("Update NHACUNGCAP Set " +
                 "IdNhaCungCapNCC='" + idNhaCungCap 
