@@ -24,9 +24,9 @@ public class ChiTietKhuyenMaiDAO {
             {
                 while (rs.next())
                 {
-                    ChiTietKhuyenMai chiTietKhuyenMai=new ChiTietKhuyenMai(rs.getString("IdKhuyenMai"),
-                            rs.getString("TenKhuyenMai"),
-                           rs.getString("IdDotKhuyenMai"),
+                    ChiTietKhuyenMai chiTietKhuyenMai=new ChiTietKhuyenMai(
+                            rs.getString("IdKhuyenMai"),
+                           rs.getString("TenKhuyenMai"),
                             rs.getByte("PhanTramKhuyenMai"),
                             rs.getString("NoiDungKhuyenMai"),
                             rs.getString("IdSanPham"));
@@ -46,20 +46,20 @@ public class ChiTietKhuyenMaiDAO {
 
             connectSQL = new ConnectSQL();
 
-        String query="INSERT INTO CHITIETKHUYENMAI(IdKhuyenMai,TenKhuyenMai,IdDotKhuyenMai,PhanTramKhuyenMai,NoiDungKhuyenMai,IdSanPham) " +
+        String query="INSERT INTO CHITIETKHUYENMAI(IdKhuyenMai,TenKhuyenMai,PhanTramKhuyenMai,NoiDungKhuyenMai,IdSanPham) " +
                 "VALUES ('"+chiTietKhuyenMai.getIdKhuyenMai()+
-                "','" + chiTietKhuyenMai.getTenKhuyenMai()+"','" + chiTietKhuyenMai.getIdDotKhuyenMai()+ "'," +
+                "','" + chiTietKhuyenMai.getTenKhuyenMai()+"'," +
                 chiTietKhuyenMai.getPhanTramKhuyenMai()+",'"+chiTietKhuyenMai.getNoiDungKhuyenMai()+"','"+chiTietKhuyenMai.getIdSanPham()+"');";
         boolean executeCommandSQL = connectSQL.sqlUpdate(query);
         connectSQL.closeConnect();
         return executeCommandSQL;
 
     }
-    public boolean removeData(String idKhuyenMai,String idDotKhuyenMai){
+    public boolean removeData(String idKhuyenMai,String idSanPham){
 
             connectSQL = new ConnectSQL();
 
-        boolean executeCommandSQL=connectSQL.sqlUpdate("DELETE FROM CHITIETKHUYENMAI WHERE IdKhuyenMai='"+idKhuyenMai+"', IdDotKhuyenMai='"+idDotKhuyenMai+"';");
+        boolean executeCommandSQL=connectSQL.sqlUpdate("DELETE FROM CHITIETKHUYENMAI WHERE IdKhuyenMai='"+idKhuyenMai+"', IdSanPham='"+idSanPham+"';");
         connectSQL.closeConnect();
         return  executeCommandSQL;
     }
@@ -69,16 +69,16 @@ public class ChiTietKhuyenMaiDAO {
             connectSQL = new ConnectSQL();
 
         boolean executeCommandSQL=connectSQL.sqlUpdate("UPDATE CHITIETKHUYENMAI SET IdKhuyenMai='"+chiTietKhuyenMai.getIdKhuyenMai()+"',TenKhuyenMai='"
-                +chiTietKhuyenMai.getTenKhuyenMai()+"',IdDotKhuyenMai='"+chiTietKhuyenMai.getIdDotKhuyenMai()+"',PhanTramKhuyenMai="
+                +chiTietKhuyenMai.getTenKhuyenMai()+"',PhanTramKhuyenMai="
                         +chiTietKhuyenMai.getPhanTramKhuyenMai()+",NoiDungKhuyenMai='"+chiTietKhuyenMai.getNoiDungKhuyenMai()+"',IdSanPham='"
                         +chiTietKhuyenMai.getIdSanPham()+"' " +
-                "WHERE IdKhuyenMai='"+chiTietKhuyenMai.getIdKhuyenMai()+"' AND IdDotKhuyenMai='"+chiTietKhuyenMai.getIdDotKhuyenMai()+"';");
+                "WHERE IdKhuyenMai='"+chiTietKhuyenMai.getIdKhuyenMai()+"' AND IdSanPham='"+chiTietKhuyenMai.getIdSanPham()+"';");
         connectSQL.closeConnect();
         return executeCommandSQL;
     }
-    public boolean updateData(String idKhuyenMai,String tenKhuyenMai,String idDotKhuyenMai,byte phanTramKhuyenMai,String noiDungKhuyenMai,String idSanPham)
+    public boolean updateData(String idKhuyenMai,String tenKhuyenMai,byte phanTramKhuyenMai,String noiDungKhuyenMai,String idSanPham)
     {
-        ChiTietKhuyenMai chiTietKhuyenMai=new ChiTietKhuyenMai(idKhuyenMai, tenKhuyenMai, idDotKhuyenMai, phanTramKhuyenMai, noiDungKhuyenMai, idSanPham);
+        ChiTietKhuyenMai chiTietKhuyenMai=new ChiTietKhuyenMai(idKhuyenMai, tenKhuyenMai, phanTramKhuyenMai, noiDungKhuyenMai, idSanPham);
         return updateData(chiTietKhuyenMai);
     }
 }

@@ -3,7 +3,6 @@ package com.minimart.dto;
 public class ChiTietKhuyenMai {
     private String idKhuyenMai;
     private String tenKhuyenMai;
-    private String idDotKhuyenMai;
     private byte phanTramKhuyenMai;
     private String noiDungKhuyenMai;
     private String idSanPham;
@@ -11,23 +10,21 @@ public class ChiTietKhuyenMai {
     public ChiTietKhuyenMai(){
         idKhuyenMai=null;
         tenKhuyenMai=null;
-        idDotKhuyenMai=null;
         phanTramKhuyenMai=0;
         noiDungKhuyenMai=null;
         idSanPham=null;
     }
-    public ChiTietKhuyenMai(String idKhuyenMai,String tenKhuyenMai,String idDotKhuyenMai,byte phanTramKhuyenMai,String noiDungKhuyenMai,String idSanPham)
+    public ChiTietKhuyenMai(String idKhuyenMai,String tenKhuyenMai,byte phanTramKhuyenMai,String noiDungKhuyenMai,String idSanPham)
     {
         this.idKhuyenMai=idKhuyenMai;
         this.tenKhuyenMai=tenKhuyenMai;
-        this.idDotKhuyenMai=idDotKhuyenMai;
         this.phanTramKhuyenMai=phanTramKhuyenMai;
         this.noiDungKhuyenMai=noiDungKhuyenMai;
         this.idSanPham=idSanPham;
     }
     public ChiTietKhuyenMai(ChiTietKhuyenMai chiTietKhuyenMai)
     {
-        this(chiTietKhuyenMai.idKhuyenMai, chiTietKhuyenMai.tenKhuyenMai, chiTietKhuyenMai.idDotKhuyenMai, chiTietKhuyenMai.phanTramKhuyenMai, chiTietKhuyenMai.noiDungKhuyenMai, chiTietKhuyenMai.idSanPham);
+        this(chiTietKhuyenMai.idKhuyenMai, chiTietKhuyenMai.tenKhuyenMai, chiTietKhuyenMai.phanTramKhuyenMai, chiTietKhuyenMai.noiDungKhuyenMai, chiTietKhuyenMai.idSanPham);
     }
 
     public String getIdKhuyenMai() {
@@ -38,9 +35,6 @@ public class ChiTietKhuyenMai {
         return tenKhuyenMai;
     }
 
-    public String getIdDotKhuyenMai() {
-        return idDotKhuyenMai;
-    }
 
     public byte getPhanTramKhuyenMai() {
         return phanTramKhuyenMai;
@@ -62,9 +56,7 @@ public class ChiTietKhuyenMai {
         this.tenKhuyenMai = tenKhuyenMai;
     }
 
-    public void setIdDotKhuyenMai(String idDotKhuyenMai) {
-        this.idDotKhuyenMai = idDotKhuyenMai;
-    }
+
 
     public void setPhanTramKhuyenMai(byte phanTramKhuyenMai) {
         this.phanTramKhuyenMai = phanTramKhuyenMai;
@@ -81,16 +73,14 @@ public class ChiTietKhuyenMai {
     {
         this.idKhuyenMai= chiTietKhuyenMai.idKhuyenMai;
         this.tenKhuyenMai= chiTietKhuyenMai.tenKhuyenMai;
-        this.idDotKhuyenMai= chiTietKhuyenMai.idDotKhuyenMai;
         this.phanTramKhuyenMai= chiTietKhuyenMai.phanTramKhuyenMai;
         this.noiDungKhuyenMai= chiTietKhuyenMai.noiDungKhuyenMai;
         this.idSanPham= chiTietKhuyenMai.idSanPham;
     }
-    public void setChiTietKhuyenMai(String idKhuyenMai,String tenKhuyenMai,String idDotKhuyenMai,byte phanTramKhuyenMai,String noiDungKhuyenMai,String idSanPham)
+    public void setChiTietKhuyenMai(String idKhuyenMai,String tenKhuyenMai,byte phanTramKhuyenMai,String noiDungKhuyenMai,String idSanPham)
     {
         this.idKhuyenMai=idKhuyenMai;
         this.tenKhuyenMai=tenKhuyenMai;
-        this.idDotKhuyenMai=idDotKhuyenMai;
         this.phanTramKhuyenMai=phanTramKhuyenMai;
         this.noiDungKhuyenMai=noiDungKhuyenMai;
         this.idSanPham=idSanPham;
@@ -98,5 +88,17 @@ public class ChiTietKhuyenMai {
     public ChiTietKhuyenMai getChiTietKhuyenMai()
     {
         return this;
+    }
+
+
+    @Override
+    public String toString() {
+        return "ChiTietKhuyenMai{" +
+                "idKhuyenMai='" + idKhuyenMai + '\'' +
+                ", tenKhuyenMai='" + tenKhuyenMai + '\'' +
+                ", phanTramKhuyenMai=" + phanTramKhuyenMai +
+                ", noiDungKhuyenMai='" + noiDungKhuyenMai + '\'' +
+                ", idSanPham='" + idSanPham + '\'' +
+                '}';
     }
 }

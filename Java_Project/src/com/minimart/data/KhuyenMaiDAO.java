@@ -1,104 +1,72 @@
 package com.minimart.data;
 
-import java.io.IOException;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import com.minimart.dto.KhuyenMai;
 
+import javax.swing.*;
+
 public class KhuyenMaiDAO {
-    ConnectSQL kmConnection;
+    private  ConnectSQL connectSQL;
 
-    public KhuyenMaiDAO() {
-
-    }
-
-    public ArrayList<KhuyenMai> readDB()  {
-        kmConnection = new ConnectSQL();
-        ArrayList<KhuyenMai> dssp = new ArrayList<>();
-        try {
-            String qry = "SELECT * FROM KHUYENMAI";
-            ResultSet r = kmConnection.sqlQuery(qry);
-            if (r != null) {
-                while (r.next()) {
-                    String idDotKhuyenMai = r.getString("IdDotKhuyenMai");
-                    String tenDotKhuyenMai = r.getString("TenDotKhuyenMai");
-                    LocalDate ngayBatDau = r.getDate("NgayBatDau").toLocalDate();
-                    LocalDate ngayKetThuc = r.getDate("NgayKetThuc").toLocalDate();
-                    dssp.add(new KhuyenMai(idDotKhuyenMai, tenDotKhuyenMai, ngayBatDau, ngayKetThuc));
-                }
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "-- ERROR! Lỗi đọc dữ liệu bảng khuyến mãi");
-        } finally {
-            kmConnection.closeConnect();
-        }
-        return dssp;
-    }
-
-    public ArrayList<KhuyenMai> search(String columnName, String value)  {
-        kmConnection = new ConnectSQL();
-        ArrayList<KhuyenMai> dssp = new ArrayList<>();
-
-        try {
-            String qry = "SELECT * FROM KHUYENMAI WHERE " + columnName + " LIKE '%" + value + "%'";
-            ResultSet r = kmConnection.sqlQuery(qry);
-            if (r != null) {
-                while (r.next()) {
-                    String idDotKhuyenMai = r.getString("IdDotKhuyenMai");
-                    String tenDotKhuyenMai = r.getString("TenDotKhuyenMai");
-                    LocalDate ngayBatDau = r.getDate("NgayBatDau").toLocalDate();
-                    LocalDate ngayKetThuc = r.getDate("NgayKetThuc").toLocalDate();
-                    dssp.add(new KhuyenMai(idDotKhuyenMai, tenDotKhuyenMai, ngayBatDau, ngayKetThuc));
-                }
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "-- ERROR! Lỗi tìm dữ liệu " + columnName + " = " + value + " bảng khuyến mãi");
-        } finally {
-            kmConnection.closeConnect();
-        }
-
-        return dssp;
-    }
-
-    public boolean add(KhuyenMai km)  {
-        kmConnection = new ConnectSQL();
-        boolean ok = kmConnection.sqlUpdate("INSERT INTO `khuyenmai` (`IdDotKhuyenMai`, `TenDotKhuyenMai`, `NgayBatDau`, `NgayKetThuc`) VALUES ('"
-                + km.getIdDotKhuyenMai()+ "', '"
-                + km.getTenDotKhuyenMai() + "', '"
-                + km.getNgayBatDau() + "', '"
-                + km.getNgayKetThuc() + "');");
-        kmConnection.closeConnect();
-        return ok;
-    }
-
-    public boolean delete(String idDotKhuyenMai)  {
-        kmConnection = new ConnectSQL();
-        boolean ok = kmConnection.sqlUpdate("DELETE FROM `KHUYENMAI` WHERE `KHUYENMAI`.`IdDotKhuyenMai` = '" + idDotKhuyenMai + "'");
-        kmConnection.closeConnect();
-        return ok;
-    }
-
-    public boolean update(String idDotKhuyenMai, String tenDotKhuyenMai, LocalDate ngayBatDau, LocalDate ngayKetThuc)  {
-        kmConnection = new ConnectSQL();
-        boolean ok = kmConnection.sqlUpdate("Update KKHUYENMAI Set "
-                + "TenDotKhuyenMai='" + tenDotKhuyenMai
-                + "', NgayBatDau='" + ngayBatDau
-                + "', NgayKetThuc='" + ngayKetThuc
-                + "' where IdDotKhuyenMai='" + idDotKhuyenMai + "'");
-        kmConnection.closeConnect();
-        return ok;
-    }
-    public  boolean update(KhuyenMai khuyenMai)
+    public KhuyenMaiDAO()
     {
-        return  update(khuyenMai.getIdDotKhuyenMai(), khuyenMai.getTenDotKhuyenMai(), khuyenMai.getNgayBatDau(),khuyenMai.getNgayKetThuc());
-    }
 
-    public void close() {
-        kmConnection.closeConnect();
+    }
+    public ArrayList<KhuyenMai> readData()
+    {
+        connectSQL=new ConnectSQL();
+        ArrayList<KhuyenMai> danhSachKhuyenMai=new ArrayList<>();
+
+        try {
+            String query="SELECT * FROM KHUYENMAI";
+            ResultSet rs = connectSQL.sqlQuery(query);
+            if (rs!=null)
+            {
+                while (rs.next())
+                {
+                    KhuyenMai khuyenMai=new KhuyenMai(rs.getString("IdKhuyenMai"), rs.getString("IdDotKhuyenMai"), rs.getString("MoTaKhuyenMai") );
+                    danhSachKhuyenMai.add(khuyenMai);
+                }
+            }
+        }catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "No found data !!!");
+        } finally {
+            connectSQL.closeConnect();
+        }
+        return danhSachKhuyenMai;
+    }
+    public boolean addData(KhuyenMai khuyenMai)
+    {
+        connectSQL=new ConnectSQL();
+        boolean commandSQL=connectSQL.sqlUpdate("INSERT INTO KHUYENMAI(IdKhuyenMai,IdDotKhuyenMai,MoTaKhuyenMai) VALUES ('"
+                + khuyenMai.getIdKhuyenMai()+"','"
+                + khuyenMai.getIdDotKhuyenMai()+"','"
+                + khuyenMai.getMoTaKhuyenMai()+"');");
+        return commandSQL;
+    }
+    public boolean removeData(String idKhuyenMai)
+    {
+        connectSQL=new ConnectSQL();
+        boolean commandSQL=connectSQL.sqlUpdate("DELETE FROM KHUYENMAI WHERE IdKhuyenMai='"+idKhuyenMai+"';");
+        return commandSQL;
+    }
+    public boolean removeAllData(String idDotKhuyenMai)
+    {
+        connectSQL=new ConnectSQL();
+        boolean commandSQL=connectSQL.sqlUpdate("DELETE FROM KHUYENMAI WHERE IdKhuyenMai='"
+                +idDotKhuyenMai+"';");
+        return commandSQL;
+    }
+    public boolean updateData(KhuyenMai khuyenMai)
+    {
+        connectSQL=new ConnectSQL();
+        boolean commandSQL=connectSQL.sqlUpdate("UPDATE KHUYENMAI SET " +
+                "IdKhuyenMai='"+khuyenMai.getIdKhuyenMai() +"',"
+                + "IdDotKhuyenMai='"+khuyenMai.getIdDotKhuyenMai()+"', "
+                + "MoTaKhuyenMai='"+khuyenMai.getMoTaKhuyenMai()+"' WHERE" +
+                "IdKhuyenMai='"+khuyenMai.getIdKhuyenMai()+"' ");
+        return commandSQL;
     }
 }

@@ -1,80 +1,68 @@
 package com.minimart.dto;
 
-import java.time.LocalDate;
-import java.util.Date;
-
 public class KhuyenMai {
-    private String idDotKhuyenMai;
-    private String tenDotKhuyeMai;
-    private LocalDate   ngayBatDau;
-    private LocalDate    ngayKetThuc;
+    private String idKhuyenMai;
+    private  String idDotKhuyenMai;
+    private String moTaKhuyenMai;
 
-    public KhuyenMai(){
-        this.idDotKhuyenMai=null;
-        this.tenDotKhuyeMai=null;
-        this.ngayBatDau=null;
-        this.ngayKetThuc=null;
+    public KhuyenMai()
+    {
+        idDotKhuyenMai=null;
+        idKhuyenMai=null;
+        moTaKhuyenMai=null;
     }
-    public KhuyenMai(String idDotKhuyenMai,String tenDotKhuyeMai,LocalDate ngayBatDau,LocalDate ngayKetThuc)
+    public KhuyenMai(String idDotKhuyenMai,String idKhuyenMai,String moTaKhuyenMai)
     {
         this.idDotKhuyenMai=idDotKhuyenMai;
-        this.tenDotKhuyeMai=tenDotKhuyeMai;
-        this.ngayBatDau=ngayBatDau;
-        this.ngayKetThuc=ngayKetThuc;
+        this.idKhuyenMai=idKhuyenMai;
+        this.moTaKhuyenMai=moTaKhuyenMai;
     }
 
-    public KhuyenMai(KhuyenMai khuyenMai)
+    public  KhuyenMai(KhuyenMai khuyenMai)
     {
-        this(khuyenMai.idDotKhuyenMai,khuyenMai.tenDotKhuyeMai,khuyenMai.ngayBatDau,khuyenMai.ngayKetThuc);
-    }
-
-    public String getIdDotKhuyenMai() {
-        return idDotKhuyenMai;
-    }
-
-    public String getTenDotKhuyenMai() {
-        return tenDotKhuyeMai;
-    }
-
-    public LocalDate getNgayBatDau() {
-        return ngayBatDau;
-    }
-
-    public LocalDate getNgayKetThuc() {
-        return ngayKetThuc;
+        this(khuyenMai.idDotKhuyenMai, khuyenMai.idKhuyenMai, khuyenMai.moTaKhuyenMai);
     }
 
     public void setIdDotKhuyenMai(String idDotKhuyenMai) {
         this.idDotKhuyenMai = idDotKhuyenMai;
     }
 
-    public void setTenDotKhuyeMai(String tenDotKhuyeMai) {
-        this.tenDotKhuyeMai = tenDotKhuyeMai;
+    public void setIdKhuyenMai(String idKhuyenMai) {
+        this.idKhuyenMai = idKhuyenMai;
     }
 
-    public void setNgayBatDau(LocalDate ngayBatDau) {
-        this.ngayBatDau = ngayBatDau;
+    public void setMoTaKhuyenMai(String moTaKhuyenMai) {
+        this.moTaKhuyenMai = moTaKhuyenMai;
     }
 
-    public void setNgayKetThuc(LocalDate ngayKetThuc) {
-        this.ngayKetThuc = ngayKetThuc;
+    public String getIdDotKhuyenMai() {
+        return idDotKhuyenMai;
     }
-    public void setKhuyenMai(KhuyenMai khuyenMai)
-    {
-        this.idDotKhuyenMai=khuyenMai.idDotKhuyenMai;
-        this.tenDotKhuyeMai=khuyenMai.tenDotKhuyeMai;
-        this.ngayBatDau=khuyenMai.ngayBatDau;
-        this.ngayKetThuc=khuyenMai.ngayKetThuc;
+
+    public String getIdKhuyenMai() {
+        return idKhuyenMai;
     }
-    public  void setKhuyenMai(String idDotKhuyenMai,String tenDotKhuyeMai,LocalDate ngayBatDau,LocalDate ngayKetThuc)
+
+    public String getMoTaKhuyenMai() {
+        return moTaKhuyenMai;
+    }
+    public void setKhuyenMai(String idDotKhuyenMai,String idKhuyenMai,String moTaKhuyenMai)
     {
         this.idDotKhuyenMai=idDotKhuyenMai;
-        this.tenDotKhuyeMai=tenDotKhuyeMai;
-        this.ngayBatDau=ngayBatDau;
-        this.ngayKetThuc=ngayKetThuc;
+        this.idKhuyenMai=idKhuyenMai;
+        this.moTaKhuyenMai=moTaKhuyenMai;
     }
     public KhuyenMai getKhuyenMai()
     {
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "KhuyenMai{" +
+                "idDotKhuyenMai='" + idDotKhuyenMai + '\'' +
+                ", idKhuyenMai='" + idKhuyenMai + '\'' +
+                ", moTaKhuyenMai='" + moTaKhuyenMai + '\'' +
+                '}';
     }
 }

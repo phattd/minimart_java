@@ -6,9 +6,7 @@ public enum BacTichLuy {
      */
     Normal,
     Silver,
-    Gold,
-    Diamond,
-    Premium;
+    Gold;
     // Đổi enum Bậc Tích Lũy thành String
     public String getString()
     {
@@ -25,14 +23,6 @@ public enum BacTichLuy {
             case Gold:
             {
                 return "Gold";
-            }
-            case Diamond:
-            {
-                return "Diamond";
-            }
-            case Premium:
-            {
-                return "Premium";
             }
 
         }
@@ -55,14 +45,7 @@ public enum BacTichLuy {
             {
                 return Gold;
             }
-            case "Diamond":
-            {
-                return Diamond;
-            }
-            case "Premium":
-            {
-                return Premium;
-            }
+
 
         }
         return null;
@@ -80,14 +63,11 @@ public enum BacTichLuy {
             {
                 return Gold;
             }
-            case Gold:
+            /*case Gold:
             {
-                return Diamond;
-            }
-            case Diamond:
-            {
-                return Premium;
-            }
+                return Gold;
+            }*/
+
         }
         return null;
     }
@@ -120,27 +100,9 @@ public enum BacTichLuy {
             }
             case Gold:
             {
-                if (compare.equals(Normal) || compare.equals(Silver) || compare.equals(Gold))
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-            case Diamond:
-            {
-                if (compare.equals(Premium))
-                {
-                    return true;
-                }
                 return false;
             }
-            case Premium:
-            {
-                return false;
-            }
+
 
         }
         return false;

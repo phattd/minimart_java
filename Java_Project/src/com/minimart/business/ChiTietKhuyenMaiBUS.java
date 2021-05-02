@@ -1,13 +1,11 @@
 package com.minimart.business;
 
 import com.minimart.data.ChiTietKhuyenMaiDAO;
-import com.minimart.data.ChiTietPhieuNhapDAO;
 import com.minimart.dto.ChiTietKhuyenMai;
-import com.minimart.dto.KhuyenMai;
+import com.minimart.dto.DotKhuyenMai;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class ChiTietKhuyenMaiBUS {
     private ArrayList<ChiTietKhuyenMai> danhSachChiTietKhuyenMai=new ArrayList<>();
@@ -33,12 +31,12 @@ public class ChiTietKhuyenMaiBUS {
         }
         return  false;
     }
-    public  boolean removeData(String idKhuyenMai,String idDotKhuyenMai)
+    public  boolean removeData(String idKhuyenMai,String idSanPham)
     {
-        if(chiTietKhuyenMaiDAO.removeData(idKhuyenMai,idDotKhuyenMai)) {
+        if(chiTietKhuyenMaiDAO.removeData(idKhuyenMai,idSanPham)) {
             for (int index=0;index<danhSachChiTietKhuyenMai.size();index++)
             {
-                if(danhSachChiTietKhuyenMai.get(index).getIdKhuyenMai().equals(idKhuyenMai) && danhSachChiTietKhuyenMai.get(index).getIdDotKhuyenMai().equals(idDotKhuyenMai))
+                if(danhSachChiTietKhuyenMai.get(index).getIdKhuyenMai().equals(idKhuyenMai) && danhSachChiTietKhuyenMai.get(index).getIdSanPham().equals(idSanPham))
                 {
                     danhSachChiTietKhuyenMai.remove(index);
                     return true;
@@ -55,7 +53,7 @@ public class ChiTietKhuyenMaiBUS {
             for(int index=0;index<danhSachChiTietKhuyenMai.size();index++)
             {
                 if(danhSachChiTietKhuyenMai.get(index).getIdKhuyenMai().equals(chiTietKhuyenMai.getIdKhuyenMai()) &&
-                danhSachChiTietKhuyenMai.get(index).getIdDotKhuyenMai().equals(chiTietKhuyenMai.getIdDotKhuyenMai()))
+                danhSachChiTietKhuyenMai.get(index).getIdSanPham().equals(chiTietKhuyenMai.getIdSanPham()))
                 {
                     danhSachChiTietKhuyenMai.set(index, chiTietKhuyenMai);
                     return true;
@@ -65,59 +63,7 @@ public class ChiTietKhuyenMaiBUS {
         return false;
     }
 
-    public ArrayList<ChiTietKhuyenMai> getByIdDotKhuyenMai (String idDotKhuyenMai)
-    {
-        ArrayList<ChiTietKhuyenMai> tempList=new ArrayList<>();
-        for(int index=0;index<danhSachChiTietKhuyenMai.size();index++)
-        {
-            if(danhSachChiTietKhuyenMai.get(index).getIdDotKhuyenMai().equals(idDotKhuyenMai))
-            {
-                tempList.add(danhSachChiTietKhuyenMai.get(index));
-            }
-        }
-        return tempList;
-    }
 
-    public ArrayList<ChiTietKhuyenMai> searchByIdDotKhuyenMai (String idDotKhuyenMai)
-    {
-        ArrayList<ChiTietKhuyenMai> result=new ArrayList<>();
-        for(int index=0;index<danhSachChiTietKhuyenMai.size();index++)
-        {
-            ChiTietKhuyenMai temp=danhSachChiTietKhuyenMai.get(index);
-            if (temp.getIdDotKhuyenMai().toLowerCase().contains(idDotKhuyenMai.toLowerCase()))
-            {
-                result.add(temp);
-            }
-        }
-        return result;
-    }
-    public ArrayList<ChiTietKhuyenMai> searchByIdDotKhuyenMai (String idDotKhuyenMai,ArrayList<ChiTietKhuyenMai> input)
-    {
-        ArrayList<ChiTietKhuyenMai> result=new ArrayList<>();
-        for(int index=0;index<input.size();index++)
-        {
-            ChiTietKhuyenMai temp=input.get(index);
-            if (temp.getIdDotKhuyenMai().toLowerCase().contains(idDotKhuyenMai.toLowerCase()))
-            {
-                result.add(temp);
-            }
-        }
-        return result;
-    }
-    public KhuyenMai getDotKhuyenMai(String idDotKhuyenMai)
-    {
-        KhuyenMaiBUS khuyenMaiBUS=new KhuyenMaiBUS();
-        for (int index=0;index<danhSachChiTietKhuyenMai.size();index++)
-        {
-            if(danhSachChiTietKhuyenMai.get(index).getIdDotKhuyenMai().equals(idDotKhuyenMai))
-            {
-                return khuyenMaiBUS.getByIdDotKhuyenMai(danhSachChiTietKhuyenMai.get(index).getIdDotKhuyenMai());
-
-            }
-        }
-        return null;
-
-    }
     public ArrayList<ChiTietKhuyenMai> searchByIdKhuyenMai (String idKhuyenMai)
     {
         ArrayList<ChiTietKhuyenMai> result=new ArrayList<>();
@@ -220,20 +166,5 @@ public class ChiTietKhuyenMaiBUS {
         return result;
     }
 
-        public ArrayList<ChiTietKhuyenMai> getChiTietKhuyenMaiByIdSanPham(String idSanPham)
-    {
-        LocalDate localDate=LocalDate.now();
-        ArrayList<ChiTietKhuyenMai> result=new ArrayList<>();
-        for (int index=0;index<danhSachChiTietKhuyenMai.size();index++)
-        {
-            LocalDate tempStartDate=this.getDotKhuyenMai(danhSachChiTietKhuyenMai.get(index).getIdDotKhuyenMai()).getNgayBatDau();
-            LocalDate tempEndDate=this.getDotKhuyenMai(danhSachChiTietKhuyenMai.get(index).getIdDotKhuyenMai()).getNgayKetThuc();
-            if(danhSachChiTietKhuyenMai.get(index).getIdSanPham().equals(idSanPham) &&  localDate.isAfter(tempStartDate) && localDate.isBefore(tempEndDate))
-            {
-                result.add(danhSachChiTietKhuyenMai.get(index));
-            }
-        }
 
-        return  result;
-    }
 }
