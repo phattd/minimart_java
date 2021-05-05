@@ -113,4 +113,8 @@ public class SanPham {
     {
         return this;
     }
+    public Object[] toArray()
+    {
+        return new Object[] {idLoaiSanPham,tenSanPham,idLoaiSanPham,donGia,donViTinh,soLuong,hinhAnh};
+    }
 }

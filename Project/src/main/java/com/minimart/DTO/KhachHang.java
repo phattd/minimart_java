@@ -91,4 +91,9 @@ public class KhachHang {
     {
         return this;
     }
+
+    public Object[] toArray()
+    {
+        return new Object[] {idKhachHang,hoKhachHang,tenKhachHang,bacTichLuy,diemTichLuy};
+    }
 }

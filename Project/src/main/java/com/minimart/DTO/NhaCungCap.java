@@ -72,4 +72,8 @@ public class NhaCungCap {
     {
         return this;
     }
+    public Object[] toArray()
+    {
+        return new Object[] {idNhaCungCap,tenNhaCungCap,soDienThoaiNCC,diaChiNCC};
+    }
 }

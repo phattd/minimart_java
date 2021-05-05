@@ -46,4 +46,8 @@ public class LoaiSanPham {
     {
         return  this;
     }
+    public Object[] toArray()
+    {
+        return new Object[] {idLoaiSanPham,tenSanPham};
+    }
 }

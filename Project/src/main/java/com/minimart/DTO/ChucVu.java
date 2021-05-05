@@ -47,4 +47,9 @@ public class ChucVu {
     {
         return this;
     }
+
+    public Object[] toArray()
+    {
+        return new Object[] {idChucVu,tenChucVu};
+    }
 }

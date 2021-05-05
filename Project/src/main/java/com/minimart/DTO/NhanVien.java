@@ -149,4 +149,8 @@ public class NhanVien {
     {
         return this;
     }
+    public  Object[] toArray()
+    {
+        return new Object[] {idNhanVien,ho,ten,diaChi,ngaySinh,soDienThoai,password,luong,idChucVu,hinhAnh};
+    }
 }
