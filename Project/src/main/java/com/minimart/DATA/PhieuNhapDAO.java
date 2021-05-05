@@ -2,7 +2,7 @@ package com.minimart.DATA;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import com.minimart.DTO.PhieuNhap;
@@ -28,7 +28,7 @@ public class PhieuNhapDAO {
                     pn.setIdPhieuNhap(rs.getString(1));
                     pn.setIdNhaCungCap(rs.getString(2));
                     pn.setIdNhanVien(rs.getString(3));
-                    pn.setNgayNhap(rs.getDate(4).toLocalDate());
+                    pn.setNgayNhap(rs.getDate(4));
                     pn.setTongTien(rs.getInt(5));
                     dspn.add(pn);
                 }
@@ -83,7 +83,7 @@ public class PhieuNhapDAO {
         return ok;
     }
 
-    public boolean update(String idPhieuNhap, String idNhaCungCap, String idNhanVien, LocalDate ngayNhap, int tongTien)  {
+    public boolean update(String idPhieuNhap, String idNhaCungCap, String idNhanVien, Date ngayNhap, int tongTien)  {
         PhieuNhap pn = new PhieuNhap();
         pn.setIdPhieuNhap(idPhieuNhap);
         pn.setIdNhaCungCap(idNhaCungCap);

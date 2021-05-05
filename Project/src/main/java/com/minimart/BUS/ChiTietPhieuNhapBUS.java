@@ -20,6 +20,18 @@ public class ChiTietPhieuNhapBUS {
     {
         return this.danhSachChiTietNhap;
     }
+    public ArrayList<String[]> getKeyList()
+    {
+        ArrayList<String[]> result = new ArrayList<>();
+        for (ChiTietPhieuNhap index : danhSachChiTietNhap)
+        {
+            String[] temp=new String[2];
+            temp[0]=index.getIdPhieuNhap();
+            temp[1]=index.getIdSanPham();
+            result.add(temp);
+        }
+        return result;
+    }
     public boolean addData(ChiTietPhieuNhap chiTietPhieuNhap)
     {
         if(chiTietPhieuNhapDAO.addData(chiTietPhieuNhap))

@@ -17,6 +17,15 @@ public class ChucVuBUS {
     {
         danhSachChucVu=chucVuDAO.readData();
     }
+    public ArrayList<String> getKeyList()
+    {
+        ArrayList<String> result=new ArrayList<>();
+        for (ChucVu index: danhSachChucVu)
+        {
+            result.add(index.getIdChucVu());
+        }
+        return result;
+    }
     public  boolean addData(ChucVu chucVu)
     {
         if(chucVuDAO.addData(chucVu))

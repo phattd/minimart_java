@@ -21,6 +21,19 @@ public class DanhMucQuyenBUS {
     {
         return  this.danhSachDanhMucQuyen;
     }
+    //0: IdChucVu/1: IdQuyen
+    public ArrayList<String[]> getKeyList()
+    {
+        ArrayList<String[]> result=new ArrayList<>();
+        for (DanhMucQuyen index : danhSachDanhMucQuyen)
+        {
+            String[] temp=new String[2];
+            temp[0]=index.getIdChucVu();
+            temp[1]=index.getIdQuyen();
+            result.add(temp);
+        }
+        return result;
+    }
     public boolean addData(DanhMucQuyen danhMucQuyen)
     {
         if (danhMucQuyenDAO.addData(danhMucQuyen))

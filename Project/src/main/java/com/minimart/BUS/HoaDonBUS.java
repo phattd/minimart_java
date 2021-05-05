@@ -5,7 +5,7 @@ import com.minimart.DTO.HoaDon;
 
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.ArrayList;
 
 public class HoaDonBUS {
@@ -20,7 +20,16 @@ public class HoaDonBUS {
             e.printStackTrace();
         }
     }
+    public ArrayList<String> getKeyList()
+    {
+        ArrayList<String> result=new ArrayList<>();
 
+        for (HoaDon index : danhSachHoaDon)
+        {
+            result.add(index.getIdHoaDon());
+        }
+        return result;
+    }
     public void readData()
     {
         try {
@@ -212,30 +221,30 @@ public class HoaDonBUS {
         return result;
     }
 
-    public ArrayList<HoaDon> searchByNgayLapHoaDon(LocalDate startValue, LocalDate endValue)
+    public ArrayList<HoaDon> searchByNgayLapHoaDon(Date startValue, Date endValue)
     {
         ArrayList<HoaDon> result=new ArrayList<>();
         for(int index=0;index<danhSachHoaDon.size();index++)
         {
             HoaDon temp=danhSachHoaDon.get(index);
-            LocalDate timeTemp=temp.getNgayLapHoaDon();
-            if ( (timeTemp.isEqual(startValue) || timeTemp.isAfter(startValue)) &&
-                    (timeTemp.isEqual(endValue) || timeTemp.isBefore(endValue)) )
+            Date timeTemp=temp.getNgayLapHoaDon();
+            if ( (timeTemp.equals(startValue) || timeTemp.after(startValue)) &&
+                    (timeTemp.equals(endValue) || timeTemp.before(endValue)) )
             {
                 result.add(temp);
             }
         }
         return result;
     }
-    public ArrayList<HoaDon> searchByTongTien(LocalDate startValue, LocalDate endValue,ArrayList<HoaDon> input)
+    public ArrayList<HoaDon> searchByTongTien(Date startValue, Date endValue,ArrayList<HoaDon> input)
     {
         ArrayList<HoaDon> result=new ArrayList<>();
         for(int index=0;index<input.size();index++)
         {
             HoaDon temp=input.get(index);
-            LocalDate timeTemp=temp.getNgayLapHoaDon();
-            if ((timeTemp.isEqual(startValue) || timeTemp.isAfter(startValue)) &&
-                    (timeTemp.isEqual(endValue) || timeTemp.isBefore(endValue)))
+            Date timeTemp=temp.getNgayLapHoaDon();
+            if ((timeTemp.equals(startValue) || timeTemp.after(startValue)) &&
+                    (timeTemp.equals(endValue) || timeTemp.before(endValue)))
             {
                 result.add(temp);
             }

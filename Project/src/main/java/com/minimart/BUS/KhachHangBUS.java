@@ -14,6 +14,15 @@ public class KhachHangBUS {
     {
         danhSachKhachHang= khachHangDAO.readDB();
     }
+    public  ArrayList<String> getKeyList()
+    {
+        ArrayList<String> result=new ArrayList<>();
+        for (KhachHang index : danhSachKhachHang)
+        {
+            result.add(index.getIdKhachHang());
+        }
+        return result;
+    }
     public void readData()
     {
         danhSachKhachHang=khachHangDAO.readDB();

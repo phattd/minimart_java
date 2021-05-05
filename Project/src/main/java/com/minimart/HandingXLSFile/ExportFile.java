@@ -163,4 +163,13 @@ public class ExportFile {
         }
     }
 
+    public void exportHoaDon(String[] header, ArrayList<Object[]> data)
+    {
+
+    }
+    public void exportPhieuNhap(String[] header, ArrayList<Object[]> data)
+    {
+
+    }
+
 }

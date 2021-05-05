@@ -22,6 +22,16 @@ public class KhuyenMaiBUS {
         return danhSachKhuyenMai;
     }
 
+    public ArrayList<String> getKeyList()
+    {
+        ArrayList<String> result=new ArrayList<>();
+        for (KhuyenMai index : danhSachKhuyenMai)
+        {
+            result.add(index.getIdKhuyenMai());
+        }
+        return  result;
+    }
+
     public boolean addData(KhuyenMai khuyenMai)
     {
         if(khuyenMaiDAO.addData(khuyenMai))

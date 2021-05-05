@@ -20,6 +20,20 @@ public class ChiTietHoaDonBUS {
     public ArrayList<ChiTietHoaDon> getDanhSachChiTietHoaDon() {
         return this.danhSachChiTietHoaDon;
     }
+    //Phần tử 0: Id Hóa Đơn/ Phần tử 1: Id Sản Phẩm
+    public ArrayList<String[]> getKeyList()
+    {
+        ArrayList<String[]> result=new ArrayList<>();
+
+        for (ChiTietHoaDon index : danhSachChiTietHoaDon)
+        {
+            String[] temp=new String[2];
+            temp[0]=index.getIdHoaDon();
+            temp[1]=index.getIdSanPham();
+            result.add(temp);
+        }
+        return result;
+    }
 
     public boolean addData(ChiTietHoaDon chiTietHoaDon)
     {

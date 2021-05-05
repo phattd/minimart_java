@@ -21,6 +21,16 @@ public class LoaiSanPhamBUS {
     {
         return this.danhSachLoaiSanPham;
     }
+
+    public ArrayList<String> getKeyList()
+    {
+        ArrayList<String> result=new ArrayList<>();
+        for (LoaiSanPham index : danhSachLoaiSanPham)
+        {
+            result.add(index.getIdLoaiSanPham());
+        }
+        return result;
+    }
     public boolean addData(LoaiSanPham loaiSanPham)
     {
         if (loaiSanPhamDAO.add(loaiSanPham))

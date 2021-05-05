@@ -1,10 +1,10 @@
 package com.minimart.DTO;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class HoaDon {
     private String idHoaDon;
-    private LocalDate ngayLapHoaDon;
+    private Date ngayLapHoaDon;
     private String idNhanVien;
     private int tongTien;
     private int tienKhachDua;
@@ -25,7 +25,7 @@ public class HoaDon {
         this.idKhachHang=null;
     }
 
-    public HoaDon(String idHoaDon, LocalDate ngayLapHoaDon, String idNhanVien, int tongTien, int tienKhachDua, int tongTienKhuyenMai, int tienConLai, int tienThua, String idKhachHang)
+    public HoaDon(String idHoaDon, Date ngayLapHoaDon, String idNhanVien, int tongTien, int tienKhachDua, int tongTienKhuyenMai, int tienConLai, int tienThua, String idKhachHang)
     {
         this.idHoaDon=idHoaDon;
         this.ngayLapHoaDon=ngayLapHoaDon;
@@ -41,7 +41,7 @@ public class HoaDon {
         return idHoaDon;
     }
 
-    public LocalDate getNgayLapHoaDon() {
+    public Date getNgayLapHoaDon() {
         return ngayLapHoaDon;
     }
 
@@ -102,14 +102,14 @@ public class HoaDon {
         this.idNhanVien = idNhanVien;
     }
 
-    public void setNgayLapHoaDon(LocalDate ngayLapHoaDon) {
+    public void setNgayLapHoaDon(Date ngayLapHoaDon) {
         this.ngayLapHoaDon = ngayLapHoaDon;
     }
 
     public void setTongTien(int tongTien) {
         this.tongTien = tongTien;
     }
-    public void setHoaDon(String idHoaDon, LocalDate ngayLapHoaDon, String idNhanVien, int tongTien, int tienKhachDua, int tongTienKhuyenMai, int tienConLai, int tienThua, String idKhachHang)
+    public void setHoaDon(String idHoaDon, Date ngayLapHoaDon, String idNhanVien, int tongTien, int tienKhachDua, int tongTienKhuyenMai, int tienConLai, int tienThua, String idKhachHang)
     {
         this.idHoaDon=idHoaDon;
         this.ngayLapHoaDon=ngayLapHoaDon;

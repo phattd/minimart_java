@@ -3,18 +3,27 @@ package com.minimart.BUS;
 import com.minimart.DATA.DotKhuyenMaiDAO;
 import com.minimart.DTO.DotKhuyenMai;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.ArrayList;
 
 public class DotKhuyenMaiBUS {
     private ArrayList<DotKhuyenMai> danhSachDotKhuyenMai =new ArrayList<>();
     private DotKhuyenMaiDAO dotKhuyenMaiDAO =new DotKhuyenMaiDAO();
-
     public DotKhuyenMaiBUS()
     {
 
             danhSachDotKhuyenMai = dotKhuyenMaiDAO.readDB();
 
+    }
+    // idDotKhuyenMai
+    public ArrayList<String> getKeyList()
+    {
+        ArrayList<String> result=new ArrayList<>();
+        for (DotKhuyenMai index : danhSachDotKhuyenMai)
+        {
+            result.add(index.getIdDotKhuyenMai());
+        }
+        return result;
     }
     public void readData()
     {
@@ -135,8 +144,8 @@ public class DotKhuyenMaiBUS {
         for (int index = 0; index< danhSachDotKhuyenMai.size(); index++)
         {
             DotKhuyenMai temp= danhSachDotKhuyenMai.get(index);
-            LocalDate current=LocalDate.now();
-            if (temp.getNgayKetThuc().isAfter(current))
+            Date current=new Date();
+            if (temp.getNgayKetThuc().after(current))
             {
                 result.add(temp);
             }

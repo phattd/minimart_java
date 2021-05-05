@@ -3,7 +3,7 @@ package com.minimart.DATA;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import com.minimart.DTO.HoaDon;
@@ -27,7 +27,7 @@ public class HoaDonDAO {
                     hd.setIdHoaDon(rs.getString("IdHoaDon"));
                     hd.setIdNhanVien(rs.getString("IdNhanVien"));
                     hd.setIdKhachHang(rs.getString("IdKhachHang"));
-                    hd.setNgayLapHoaDon(rs.getDate("NgayLapHoaDon").toLocalDate());
+                    hd.setNgayLapHoaDon(rs.getDate("NgayLapHoaDon"));
                     hd.setTongTienKhuyenMai(rs.getInt("TongTienKhuyenMai"));
                     hd.setTongTien(rs.getInt("TongTien"));
                     hd.setTienKhachDua(rs.getInt("TienKhachDua"));
@@ -91,7 +91,7 @@ public class HoaDonDAO {
         return success;
     }
 
-    public boolean updateData(String IdHoaDon, String IdNhanVien, String IdKhachHang, LocalDate NgayLapHoaDon, int TongTienKhuyenMai, int TongTien, int TienKhachDua, int TienConLai) throws IOException {
+    public boolean updateData(String IdHoaDon, String IdNhanVien, String IdKhachHang, Date NgayLapHoaDon, int TongTienKhuyenMai, int TongTien, int TienKhachDua, int TienConLai) throws IOException {
         HoaDon hd = new HoaDon();
         hd.setIdHoaDon(IdHoaDon);
         hd.setIdNhanVien(IdNhanVien);

@@ -2,7 +2,7 @@ package com.minimart.DATA;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import com.minimart.DTO.DotKhuyenMai;
@@ -24,8 +24,8 @@ public class DotKhuyenMaiDAO {
                 while (r.next()) {
                     String idDotKhuyenMai = r.getString("IdDotKhuyenMai");
                     String tenDotKhuyenMai = r.getString("TenDotKhuyenMai");
-                    LocalDate ngayBatDau = r.getDate("NgayBatDau").toLocalDate();
-                    LocalDate ngayKetThuc = r.getDate("NgayKetThuc").toLocalDate();
+                    Date ngayBatDau = r.getDate("NgayBatDau");
+                    Date ngayKetThuc = r.getDate("NgayKetThuc");
                     dssp.add(new DotKhuyenMai(idDotKhuyenMai, tenDotKhuyenMai, ngayBatDau, ngayKetThuc));
                 }
             }
@@ -49,8 +49,8 @@ public class DotKhuyenMaiDAO {
                 while (r.next()) {
                     String idDotKhuyenMai = r.getString("IdDotKhuyenMai");
                     String tenDotKhuyenMai = r.getString("TenDotKhuyenMai");
-                    LocalDate ngayBatDau = r.getDate("NgayBatDau").toLocalDate();
-                    LocalDate ngayKetThuc = r.getDate("NgayKetThuc").toLocalDate();
+                    Date ngayBatDau = r.getDate("NgayBatDau");
+                    Date ngayKetThuc = r.getDate("NgayKetThuc");
                     dssp.add(new DotKhuyenMai(idDotKhuyenMai, tenDotKhuyenMai, ngayBatDau, ngayKetThuc));
                 }
             }
@@ -82,7 +82,7 @@ public class DotKhuyenMaiDAO {
         return ok;
     }
 
-    public boolean update(String idDotKhuyenMai, String tenDotKhuyenMai, LocalDate ngayBatDau, LocalDate ngayKetThuc)  {
+    public boolean update(String idDotKhuyenMai, String tenDotKhuyenMai, Date ngayBatDau, Date ngayKetThuc)  {
         kmConnection = new ConnectSQL();
         boolean ok = kmConnection.sqlUpdate("Update KKHUYENMAI Set "
                 + "TenDotKhuyenMai='" + tenDotKhuyenMai

@@ -20,6 +20,18 @@ public class ChiTietKhuyenMaiBUS {
     {
         return  this.danhSachChiTietKhuyenMai;
     }
+    public ArrayList<String[]> getKeyList()
+    {
+        ArrayList<String[]> result=new ArrayList<>();
+        for (ChiTietKhuyenMai index : danhSachChiTietKhuyenMai)
+        {
+            String[] temp=new String[2];
+            temp[0]=index.getIdKhuyenMai();
+            temp[1]=index.getIdSanPham();
+            result.add(temp);
+        }
+        return result;
+    }
     public boolean addData(ChiTietKhuyenMai chiTietKhuyenMai)
     {
         if(chiTietKhuyenMaiDAO.addData(chiTietKhuyenMai))
