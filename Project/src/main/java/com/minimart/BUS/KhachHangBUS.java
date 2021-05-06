@@ -3,6 +3,7 @@ package com.minimart.BUS;
 import com.minimart.DATA.KhachHangDAO;
 import com.minimart.DTO.BacTichLuy;
 import com.minimart.DTO.KhachHang;
+import com.minimart.Handing.HandingBUS;
 
 import java.util.ArrayList;
 
@@ -33,10 +34,12 @@ public class KhachHangBUS {
     }
     public boolean addData(KhachHang khachHang)
     {
-        if (khachHangDAO.add(khachHang))
-        {
-            danhSachKhachHang.add(khachHang);
-            return true;
+        HandingBUS handingBUS=new HandingBUS();
+        if (handingBUS.checkRepeat(khachHang.getIdKhachHang(), this.getKeyList()) == false) {
+            if (khachHangDAO.add(khachHang)) {
+                danhSachKhachHang.add(khachHang);
+                return true;
+            }
         }
         return false;
     }

@@ -2,6 +2,7 @@ package com.minimart.BUS;
 
 import com.minimart.DATA.LoaiSanPhamDAO;
 import com.minimart.DTO.LoaiSanPham;
+import com.minimart.Handing.HandingBUS;
 
 import java.util.ArrayList;
 
@@ -33,10 +34,12 @@ public class LoaiSanPhamBUS {
     }
     public boolean addData(LoaiSanPham loaiSanPham)
     {
-        if (loaiSanPhamDAO.add(loaiSanPham))
-        {
-            danhSachLoaiSanPham.add(loaiSanPham);
-            return true;
+        HandingBUS handingBUS=new HandingBUS();
+        if (handingBUS.checkRepeat(loaiSanPham.getIdLoaiSanPham(), this.getKeyList())==false) {
+            if (loaiSanPhamDAO.add(loaiSanPham)) {
+                danhSachLoaiSanPham.add(loaiSanPham);
+                return true;
+            }
         }
         return false;
     }

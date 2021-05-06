@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class HandingBUS {
+    // kiểm tra nếu str có trong sourceList trả về true, nếu không trùng trả về false.
     public boolean checkRepeat(String str, ArrayList<String> sourceList)
     {
         for (String index : sourceList)

@@ -2,6 +2,7 @@ package com.minimart.BUS;
 
 import com.minimart.DATA.ChiTietKhuyenMaiDAO;
 import com.minimart.DTO.ChiTietKhuyenMai;
+import com.minimart.Handing.HandingBUS;
 
 import java.util.ArrayList;
 
@@ -34,11 +35,13 @@ public class ChiTietKhuyenMaiBUS {
     }
     public boolean addData(ChiTietKhuyenMai chiTietKhuyenMai)
     {
-        if(chiTietKhuyenMaiDAO.addData(chiTietKhuyenMai))
-        {
-            danhSachChiTietKhuyenMai.add(chiTietKhuyenMai);
-            return true;
-        }
+        HandingBUS handingBUS=new HandingBUS();
+        if(handingBUS.checkRepeat(chiTietKhuyenMai.getIdKhuyenMai(), chiTietKhuyenMai.getIdSanPham(), this.getKeyList()) == false)
+            if(chiTietKhuyenMaiDAO.addData(chiTietKhuyenMai))
+            {
+                danhSachChiTietKhuyenMai.add(chiTietKhuyenMai);
+                return true;
+            }
         return  false;
     }
     public  boolean removeData(String idKhuyenMai,String idSanPham)

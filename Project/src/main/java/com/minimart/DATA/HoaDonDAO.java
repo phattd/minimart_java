@@ -43,7 +43,7 @@ public class HoaDonDAO {
         return dshd;
     }
 
-    public boolean addData(HoaDon hd) throws IOException {
+    public boolean addData(HoaDon hd)  {
         connection = new ConnectSQL();
         boolean success = connection.sqlUpdate("INSERT INTO HOADOON('IdHoaDon','IdNhanVien','IdKhachHang','NgayLapHoaDon','TongTienKhuyenMai','TongTien','TienKhachDua','TienConLai') VALUES ('"
                 + hd.getIdHoaDon() + "','"

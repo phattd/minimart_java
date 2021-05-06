@@ -2,6 +2,7 @@ package com.minimart.BUS;
 
 import com.minimart.DATA.HoaDonDAO;
 import com.minimart.DTO.HoaDon;
+import com.minimart.Handing.HandingBUS;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -58,14 +59,12 @@ public class HoaDonBUS {
     }
     public boolean addData(HoaDon hoaDon)
     {
-        try {
-            if(hoaDonDAO.addData(hoaDon))
-            {
+        HandingBUS handingBUS=new HandingBUS();
+        if (handingBUS.checkRepeat(hoaDon.getIdHoaDon(), this.getKeyList()) == false) {
+            if (hoaDonDAO.addData(hoaDon)) {
                 danhSachHoaDon.add(hoaDon);
                 return true;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
         return false;
     }

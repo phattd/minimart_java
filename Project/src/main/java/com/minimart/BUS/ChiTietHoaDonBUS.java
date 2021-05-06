@@ -2,6 +2,7 @@ package com.minimart.BUS;
 
 import com.minimart.DATA.ChiTietHoaDonDAO;
 import com.minimart.DTO.ChiTietHoaDon;
+import com.minimart.Handing.HandingBUS;
 
 import java.util.ArrayList;
 
@@ -37,15 +38,15 @@ public class ChiTietHoaDonBUS {
 
     public boolean addData(ChiTietHoaDon chiTietHoaDon)
     {
-        if(chiTietHoaDonDAO.addData(chiTietHoaDon))
+        HandingBUS handingBUS=new HandingBUS();
+        if(handingBUS.checkRepeat(chiTietHoaDon.getIdHoaDon(), chiTietHoaDon.getIdSanPham(), this.getKeyList()) == false)
         {
-            danhSachChiTietHoaDon.add(chiTietHoaDon);
-            return  true;
+            if (chiTietHoaDonDAO.addData(chiTietHoaDon)) {
+                danhSachChiTietHoaDon.add(chiTietHoaDon);
+                return true;
+            }
         }
-        else
-        {
-            return  false;
-        }
+        return  false;
     }
     public  boolean removeData(String idHoaDon,String idSanPham) {
         if (chiTietHoaDonDAO.removeData(idHoaDon, idSanPham))

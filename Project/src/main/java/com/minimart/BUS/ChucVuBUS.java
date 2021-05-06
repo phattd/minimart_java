@@ -2,6 +2,7 @@ package com.minimart.BUS;
 
 import com.minimart.DATA.ChucVuDAO;
 import com.minimart.DTO.ChucVu;
+import com.minimart.Handing.HandingBUS;
 
 import java.util.ArrayList;
 
@@ -28,10 +29,12 @@ public class ChucVuBUS {
     }
     public  boolean addData(ChucVu chucVu)
     {
-        if(chucVuDAO.addData(chucVu))
-        {
-            danhSachChucVu.add(chucVu);
-            return  true;
+        HandingBUS handingBUS=new HandingBUS();
+        if (handingBUS.checkRepeat(chucVu.getIdChucVu(), this.getKeyList()) == false) {
+            if (chucVuDAO.addData(chucVu)) {
+                danhSachChucVu.add(chucVu);
+                return true;
+            }
         }
         return  false;
     }

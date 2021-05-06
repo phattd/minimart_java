@@ -2,6 +2,7 @@ package com.minimart.BUS;
 
 import com.minimart.DATA.KhuyenMaiDAO;
 import com.minimart.DTO.KhuyenMai;
+import com.minimart.Handing.HandingBUS;
 
 import java.util.ArrayList;
 
@@ -34,10 +35,12 @@ public class KhuyenMaiBUS {
 
     public boolean addData(KhuyenMai khuyenMai)
     {
-        if(khuyenMaiDAO.addData(khuyenMai))
-        {
-            danhSachKhuyenMai.add(khuyenMai);
-            return true;
+        HandingBUS handingBUS=new HandingBUS();
+        if (handingBUS.checkRepeat(khuyenMai.getIdKhuyenMai(),this.getKeyList())==false) {
+            if (khuyenMaiDAO.addData(khuyenMai)) {
+                danhSachKhuyenMai.add(khuyenMai);
+                return true;
+            }
         }
         return false;
     }
