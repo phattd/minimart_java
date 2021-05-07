@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import com.minimart.DTO.NhanVien;
 
@@ -27,7 +28,7 @@ public class NhanVienDAO {
                     String ho = r.getString("Ho");
                     String ten = r.getString("Ten");
                     String diaChi = r.getString("DiaChi");
-                    LocalDate ngaySinh = r.getDate("NgaySinh").toLocalDate();
+                    Date ngaySinh = r.getDate("NgaySinh");
                     String sdt = r.getString("SDT");
                     String password = r.getString("Password");
                     int luong = r.getInt("Luong");
@@ -58,7 +59,7 @@ public class NhanVienDAO {
                     String ho = r.getString("Ho");
                     String ten = r.getString("Ten");
                     String diaChi = r.getString("DiaChi");
-                    LocalDate ngaySinh = r.getDate("NgaySinh").toLocalDate();
+                    Date ngaySinh = r.getDate("NgaySinh");
                     String sdt = r.getString("SDT");
                     String password = r.getString("Password");
                     int luong = r.getInt("Luong");
@@ -99,7 +100,7 @@ public class NhanVienDAO {
         return ok;
     }
 
-    public boolean update(String idNhanVien, String ho, String ten, String diaChi, LocalDate ngaySinh, String SDT, int luong, String idChucVu, String hinhAnh)  {
+    public boolean update(String idNhanVien, String ho, String ten, String diaChi, Date ngaySinh, String SDT, int luong, String idChucVu, String hinhAnh)  {
         qlnvConnection = new ConnectSQL();
         boolean ok = qlnvConnection.sqlUpdate("Update NHANVIEN Set "
                 + "Ho='" + ho

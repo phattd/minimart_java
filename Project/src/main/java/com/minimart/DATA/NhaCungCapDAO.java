@@ -82,7 +82,7 @@ public class NhaCungCapDAO {
         return ok;
     }
 
-    public boolean update(String idNhaCungCap, String tenNhaCungCap, String soDienThoaiNCC, String diaChiNCC, String fax)  {
+    public boolean update(String idNhaCungCap, String tenNhaCungCap, String soDienThoaiNCC, String diaChiNCC)  {
         qlnccConnection = new ConnectSQL();
         boolean ok = qlnccConnection.sqlUpdate("Update NHACUNGCAP Set " +
                 "IdNhaCungCapNCC='" + idNhaCungCap 

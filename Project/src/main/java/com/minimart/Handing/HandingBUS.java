@@ -1,6 +1,7 @@
 package com.minimart.Handing;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -32,5 +33,11 @@ public class HandingBUS {
     {
         Timestamp timestamp=new Timestamp(System.currentTimeMillis());
         return ""+timestamp.getTime();
+    }
+
+    public String standardDate(Date date)
+    {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        return formatter.format(date);
     }
 }

@@ -1,13 +1,14 @@
 package com.minimart.DTO;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class NhanVien {
     private String idNhanVien;
     private String ho;
     private String  ten;
     private String diaChi;
-    private LocalDate ngaySinh;
+    private Date ngaySinh;
     private String soDienThoai;
     private String password;
     private int luong;
@@ -27,7 +28,7 @@ public class NhanVien {
         this.idChucVu=null;
         this.hinhAnh=null;
     }
-    public NhanVien(String idNhanVien, String ho, String ten, String diaChi, LocalDate ngaySinh, String soDienThoai, String password, int luong, String idChucVu,String hinhAnh)
+    public NhanVien(String idNhanVien, String ho, String ten, String diaChi, Date ngaySinh, String soDienThoai, String password, int luong, String idChucVu,String hinhAnh)
     {
         this.idNhanVien=idNhanVien;
         this.ho=ho;
@@ -80,7 +81,7 @@ public class NhanVien {
         return idChucVu;
     }
 
-    public LocalDate getNgaySinh() {
+    public Date getNgaySinh() {
         return ngaySinh;
     }
 
@@ -112,14 +113,14 @@ public class NhanVien {
         this.luong = luong;
     }
 
-    public void setNgaySinh(LocalDate ngaySinh) {
+    public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
     public void setIdChucVu(String idChucVu) {
         this.idChucVu = idChucVu;
     }
-    public  void setNhanVien(String idNhanVien,String ho,String ten,String diaChi, LocalDate ngaySinh, String soDienThoai,String password,int luong,String idChucVu,String hinhAnh)
+    public  void setNhanVien(String idNhanVien, String ho, String ten, String diaChi, Date ngaySinh, String soDienThoai, String password, int luong, String idChucVu, String hinhAnh)
     {
         this.idNhanVien=idNhanVien;
         this.ho=ho;
