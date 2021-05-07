@@ -90,7 +90,7 @@ public class NhaCungCapBUS {
                 result.add(temp);
             }
         }
-        return result
+        return result;
     }
 
     public ArrayList<NhaCungCap> searchByIdNhaCungCap(String idNhaCungCap, ArrayList<NhaCungCap> input)
@@ -105,7 +105,7 @@ public class NhaCungCapBUS {
                 result.add(temp);
             }
         }
-        return result
+        return result;
     }
     public ArrayList<NhaCungCap> searchByTenNhaCung(String tenNhaCungCap)
     {
@@ -113,7 +113,7 @@ public class NhaCungCapBUS {
         for (int index=0;index<danhSachNhaCungCap.size();index++)
         {
             NhaCungCap temp= danhSachNhaCungCap.get(index);
-            if (temp.getTenNhaCungCap().toLowerCase().contains(tenNhaCungCap.toLowerCase())
+            if (temp.getTenNhaCungCap().toLowerCase().contains(tenNhaCungCap.toLowerCase()))
             {
                 result.add(temp);
             }
@@ -127,7 +127,7 @@ public class NhaCungCapBUS {
         for (int index=0;index<input.size();index++)
         {
             NhaCungCap temp= input.get(index);
-            if (temp.getTenNhaCungCap().toLowerCase().contains(tenNhaCungCap.toLowerCase())
+            if (temp.getTenNhaCungCap().toLowerCase().contains(tenNhaCungCap.toLowerCase()))
             {
                 result.add(temp);
             }
