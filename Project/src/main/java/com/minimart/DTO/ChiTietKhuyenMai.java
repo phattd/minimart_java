@@ -101,4 +101,13 @@ public class ChiTietKhuyenMai {
                 ", idSanPham='" + idSanPham + '\'' +
                 '}';
     }
+
+    public Object[] toArray()
+    {
+        return new Object[] {idKhuyenMai,tenKhuyenMai,phanTramKhuyenMai,noiDungKhuyenMai,idSanPham};
+    }
+    public static String[] getHeader()
+    {
+        return new String[] {"Id Khuyến Mãi","Tên Khuyến Mãi","Phần Trăm Khuyến Mãi","Nội Dung Khuyến Mãi","Id Sản Phẩm"};
+    }
 }

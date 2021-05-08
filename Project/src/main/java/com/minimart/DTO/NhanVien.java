@@ -154,4 +154,8 @@ public class NhanVien {
     {
         return new Object[] {idNhanVien,ho,ten,diaChi,ngaySinh,soDienThoai,password,luong,idChucVu,hinhAnh};
     }
+    public static String[] getHeader()
+    {
+        return new String[] {"Id Nhân Viên","Họ","Tên","Địa Chỉ","Ngày Sinh","Số Điện Thoại","Password","Lương","Id Chức Vụ","Hình Ảnh"};
+    }
 }

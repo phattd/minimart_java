@@ -65,4 +65,13 @@ public class KhuyenMai {
                 ", moTaKhuyenMai='" + moTaKhuyenMai + '\'' +
                 '}';
     }
+
+    public Object[] toArray()
+    {
+        return new Object[] {idDotKhuyenMai,idKhuyenMai,moTaKhuyenMai};
+    }
+    public static String[] getHeader()
+    {
+        return new String[] {"Id Đơtk Khuyến Mãi","Id Khuyến Mãi", "Mô Tả Khuyến Mãi"};
+    }
 }

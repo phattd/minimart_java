@@ -115,6 +115,10 @@ public class SanPham {
     }
     public Object[] toArray()
     {
-        return new Object[] {idLoaiSanPham,tenSanPham,idLoaiSanPham,donGia,donViTinh,soLuong,hinhAnh};
+        return new Object[] {idSanPham,tenSanPham,idLoaiSanPham,donGia,donViTinh,soLuong,hinhAnh};
+    }
+    public static String[] getHeader()
+    {
+        return new String[] {"ID Sản Phẩm","Tên Sản Phẩm", "Id Loại Sản Phẩm","Đơn Giá","Đơn Vị Tính","Số Lượng","Hình Ảnh"};
     }
 }

@@ -76,4 +76,12 @@ public class DotKhuyenMai {
     {
         return this;
     }
+    public Object[] toArray()
+    {
+        return new Object[] {idDotKhuyenMai,tenDotKhuyeMai,ngayBatDau,ngayKetThuc};
+    }
+    public static  String[] getHeader()
+    {
+        return new String[] {"Id Đợt Khuyến Mãi","Tên Đợt Khuyến Mãi","Ngày Bắt Đầu","Ngày Kết Thúc"};
+    }
 }

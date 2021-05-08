@@ -82,4 +82,13 @@ public class ChiTietPhieuNhap {
     {
         return this;
     }
+
+    public Object[] toArray()
+    {
+        return new Object[] {idPhieuNhap,idSanPham,soLuong,donGia,thanhTien};
+    }
+    public static String[] getHeader()
+    {
+        return new String[] {"Id Phiếu Nhập", "Id Sản Phẩm","Số Lượng","Đơn Giá","Thành Tiền"};
+    }
 }

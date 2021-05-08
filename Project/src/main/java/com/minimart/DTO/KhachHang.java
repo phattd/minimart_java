@@ -96,4 +96,8 @@ public class KhachHang {
     {
         return new Object[] {idKhachHang,hoKhachHang,tenKhachHang,bacTichLuy,diemTichLuy};
     }
+    public static String[] getHeader()
+    {
+        return new String[] {"Id Khách Hàng", "Họ Khách Hàng","Tên Khách Hàng","Bậc Tích Lũy","Điểm Tích Lũy"};
+    }
 }

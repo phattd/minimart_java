@@ -52,4 +52,8 @@ public class ChucVu {
     {
         return new Object[] {idChucVu,tenChucVu};
     }
+    public static  String[] getHeader()
+    {
+        return new String[] {"Id Chức Vụ","Tên Chức Vụ"};
+    }
 }

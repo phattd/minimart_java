@@ -113,4 +113,13 @@ public class ChiTietHoaDon {
     {
         return  this;
     }
+
+    public Object[] toArray()
+    {
+        return new Object[] {idHoaDon,idSanPham,soLuong,donGia,idKhuyenMai,thanhTien,tienKhuyenMai};
+    }
+    public static String[] getHeader()
+    {
+        return new String[] {"Id Hóa Đơn","Id Sản Phẩm","Số Lượng","Đơn Giá","Id Khuyến Mãi","Thành Tiền","Tiền Khuyến Mãi"};
+    }
 }

@@ -76,4 +76,8 @@ public class NhaCungCap {
     {
         return new Object[] {idNhaCungCap,tenNhaCungCap,soDienThoaiNCC,diaChiNCC};
     }
+    public static String[] getHeader()
+    {
+        return new String[] {"Id Nhà Cung Cấp","Tên Nhà Cung Cấp","Số Điện Thoại", "Địa Chỉ"};
+    }
 }

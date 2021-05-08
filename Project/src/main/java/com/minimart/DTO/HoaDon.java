@@ -137,4 +137,13 @@ public class HoaDon {
     {
         return this;
     }
+
+    public Object[] toArray()
+    {
+        return new Object[] {idHoaDon,ngayLapHoaDon,idNhanVien,tongTien,tienKhachDua,tongTienKhuyenMai,tienConLai,tienThua,idKhachHang};
+    }
+    public static String[] getHeader()
+    {
+        return new String[] {"Id Hóa Đơn","Ngày Lập Hóa Đơn","Id Nhân Viên","Tổng Tiền","Tiền Khách Đưa","Tổng Tiền Khuyến Mãi","Tiền Còn Lại","Tiền Thừa","ID Khách Hàng"};
+    }
 }

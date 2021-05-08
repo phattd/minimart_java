@@ -88,4 +88,13 @@ public class PhieuNhap {
     {
         return this;
     }
+
+    public Object[] toArray()
+    {
+        return new Object[] {idPhieuNhap,idNhaCungCap,ngayNhap,idNhanVien,tongTien};
+    }
+    public static String[] getHeader()
+    {
+        return new String[] {"Id Phiếu Nhập","Id Nhà Cung Cấp","Ngày Nhập","Id Nhân Viên","Tổng Tiền"};
+    }
 }

@@ -18,13 +18,13 @@ import java.util.ArrayList;
 
 public class ExportFile {
     public ExportFile(){}
-    public void writeFile(ArrayList<Object[]> data, String fileName) throws IOException {
+    public void writeFile(ArrayList<Object[]> data, String fileName,String sheetName) throws IOException {
         String fullName=fileName+".xls";
         String path="./exports/"+fullName;
         File file=new File(path);
         FileOutputStream outputStream=new FileOutputStream(file);
         Workbook workbook=new HSSFWorkbook();
-        Sheet sheet= workbook.createSheet();
+        Sheet sheet= workbook.createSheet(sheetName);
         int numRow=0;
 
         for (Object[] index : data)
@@ -69,7 +69,7 @@ public class ExportFile {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String nameFile="SPEF"+timestamp;
         try {
-            writeFile(result,nameFile);
+            writeFile(result,nameFile,"San Pham");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,7 +87,7 @@ public class ExportFile {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String nameFile="NVEF"+timestamp;
         try {
-            writeFile(result,nameFile);
+            writeFile(result,nameFile,"Nhan Vien");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -104,7 +104,7 @@ public class ExportFile {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String nameFile="KHEF"+timestamp;
         try {
-            writeFile(result,nameFile);
+            writeFile(result,nameFile, "Khach Hang");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -122,7 +122,7 @@ public class ExportFile {
         long time=timestamp.getTime();
         String nameFile="CVEF"+time;
         try {
-            writeFile(result,nameFile);
+            writeFile(result,nameFile, "Chuc Vu");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -139,7 +139,7 @@ public class ExportFile {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String nameFile="LSPEF"+timestamp;
         try {
-            writeFile(result,nameFile);
+            writeFile(result,nameFile, "Loai San Pham");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -157,17 +157,22 @@ public class ExportFile {
         long time= timestamp.getTime();
         String nameFile="NCCEF"+time;
         try {
-            writeFile(result,nameFile);
+            writeFile(result,nameFile, "Nha Cung Cap");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void exportHoaDon(String[] header, ArrayList<Object[]> data)
+    public void exportHoaDon(String[] header, ArrayList<HoaDon> dataSheet1)
     {
+
 
     }
     public void exportPhieuNhap(String[] header, ArrayList<Object[]> data)
+    {
+
+    }
+    public void exportKhuyenMai(String[] header, ArrayList<Object> data)
     {
 
     }
