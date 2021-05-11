@@ -17,4 +17,8 @@ public class PhieuNhapBUS {
     {
 
     }
+
+    public boolean addData(PhieuNhap phieuNhap) {
+    return true;
+    }
 }

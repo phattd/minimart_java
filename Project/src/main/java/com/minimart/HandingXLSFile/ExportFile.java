@@ -163,18 +163,130 @@ public class ExportFile {
         }
     }
 
-    public void exportHoaDon(String[] header, ArrayList<HoaDon> dataSheet1)
+    public void exportHoaDon(String[] header,String[] headerCTHD, ArrayList<HoaDon> dataSheetHD, ArrayList<ChiTietHoaDon> dataSheetCTHD)
     {
+        ArrayList<Object[]> result=new ArrayList<>();
+        result.add(header);
+
+        for (int index=0;index<dataSheetHD.size();index++)
+        {
+            result.add(dataSheetHD.get(index).toArray());
+        }
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        long time= timestamp.getTime();
+        String nameFile="HD"+time;
+        try {
+            writeFile(result,nameFile, "Hoa Don");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        exportChiTietHoaDon(headerCTHD,dataSheetCTHD,nameFile);
+
+    }
+    private void exportChiTietHoaDon(String[] header, ArrayList<ChiTietHoaDon> data, String nameFile)
+    {
+        ArrayList<Object[]> result=new ArrayList<>();
+        result.add(header);
+
+        for (int index=0;index<data.size();index++)
+        {
+            result.add(data.get(index).toArray());
+        }
+        try {
+            writeFile(result,nameFile, "Chi Tiet Hoa Don");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void exportPhieuNhap(String[] header, String[] headerCT ,ArrayList<PhieuNhap> data,ArrayList<ChiTietPhieuNhap> dataCT)
+    {
+        ArrayList<Object[]> result=new ArrayList<>();
+        result.add(header);
+
+        for (int index=0;index<data.size();index++)
+        {
+            result.add(data.get(index).toArray());
+        }
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        long time= timestamp.getTime();
+        String nameFile="PN"+time;
+        try {
+            writeFile(result,nameFile, "Phieu Nhap");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        exportChiTietPhieuNhap(headerCT,dataCT,nameFile);
+    }
+    private void exportChiTietPhieuNhap(String[] header, ArrayList<ChiTietPhieuNhap> data, String nameFile)
+    {
+        ArrayList<Object[]> result=new ArrayList<>();
+        result.add(header);
+
+        for (int index=0;index<data.size();index++)
+        {
+            result.add(data.get(index).toArray());
+        }
+        try {
+            writeFile(result,nameFile, "Chi Tiet Phieu Nhap");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void exportDotKhuyenMai(String[] header,String[] headerKM,String[] headerCT,ArrayList<DotKhuyenMai> data,ArrayList<KhuyenMai> dataKM,ArrayList<ChiTietKhuyenMai> dataCT)
+    {
+        ArrayList<Object[]> result=new ArrayList<>();
+        result.add(header);
+
+        for (int index=0;index<data.size();index++)
+        {
+            result.add(data.get(index).toArray());
+        }
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        long time= timestamp.getTime();
+        String nameFile="PN"+time;
+        try {
+            writeFile(result,nameFile, "Phieu Nhap");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        exportKhuyenMai(headerKM,dataKM,nameFile);
+        exportChiTietKhuyenMai(headerCT,dataCT,nameFile);
+    }
+
+    private void exportKhuyenMai(String[] header,ArrayList<KhuyenMai> data, String nameFile)
+    {
+        ArrayList<Object[]> result=new ArrayList<>();
+        result.add(header);
+
+        for (int index=0;index<data.size();index++)
+        {
+            result.add(data.get(index).toArray());
+        }
+        try {
+            writeFile(result,nameFile, "Khuyen Mai");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
-    public void exportPhieuNhap(String[] header, ArrayList<Object[]> data)
+
+    private void exportChiTietKhuyenMai(String[] header, ArrayList<ChiTietKhuyenMai> data, String nameFile)
     {
+        ArrayList<Object[]> result=new ArrayList<>();
+        result.add(header);
+
+        for (int index=0;index<data.size();index++)
+        {
+            result.add(data.get(index).toArray());
+        }
+        try {
+            writeFile(result,nameFile, "Chi Tiet Khuyen Mai");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
-    public void exportKhuyenMai(String[] header, ArrayList<Object> data)
-    {
-
-    }
-
 }

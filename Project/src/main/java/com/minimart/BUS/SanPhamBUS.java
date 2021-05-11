@@ -19,5 +19,7 @@ public class SanPhamBUS {
     }
 
 
-
+    public boolean addData(SanPham sanPham) {
+        return true;
+    }
 }
