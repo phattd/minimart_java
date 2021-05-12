@@ -40,7 +40,7 @@ public class PrintPDF {
         headerTable.setHorizontalAlignment(Element.ALIGN_LEFT);
         headerTable.setWidths(new int[] {50,50});
         headerTable.getDefaultCell().setBorder(Rectangle.NO_BORDER);
-        Image image=Image.getInstance("C:\\Users\\Admin\\Pictures\\Dekiemtra2018-2019monLTDT\\test.jpg");
+        Image image=Image.getInstance("./picture/picture.jpg");
         headerTable.addCell(image);
         String address="Address: 273, An Dương Vương, Quận 5, Thành Phố Hồ Chí Minh.";
         Paragraph header =new Paragraph(address,new Font(font,12));
