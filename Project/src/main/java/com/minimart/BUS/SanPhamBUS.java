@@ -22,4 +22,14 @@ public class SanPhamBUS {
     public boolean addData(SanPham sanPham) {
         return true;
     }
+
+    public String getTenSanPhamByIdSanPham(String idSanPham)
+    {
+        for (SanPham index : danhSachSanPham)
+        {
+            if (index.getIdSanPham().equals(idSanPham))
+                return index.getTenSanPham();
+        }
+        return null;
+    }
 }
