@@ -67,7 +67,7 @@ public class ExportFile {
             result.add(data.get(index).toArray());
         }
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String nameFile="SPEF"+timestamp;
+        String nameFile="SPEF"+timestamp.getTime();
         try {
             writeFile(result,nameFile,"San Pham");
         } catch (IOException e) {
@@ -85,7 +85,7 @@ public class ExportFile {
             result.add(data.get(index).toArray());
         }
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String nameFile="NVEF"+timestamp;
+        String nameFile="NVEF"+timestamp.getTime();
         try {
             writeFile(result,nameFile,"Nhan Vien");
         } catch (IOException e) {
@@ -102,7 +102,7 @@ public class ExportFile {
             result.add(data.get(index).toArray());
         }
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String nameFile="KHEF"+timestamp;
+        String nameFile="KHEF"+timestamp.getTime();
         try {
             writeFile(result,nameFile, "Khach Hang");
         } catch (IOException e) {
@@ -137,7 +137,7 @@ public class ExportFile {
             result.add(data.get(index).toArray());
         }
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String nameFile="LSPEF"+timestamp;
+        String nameFile="LSPEF"+timestamp.getTime();
         try {
             writeFile(result,nameFile, "Loai San Pham");
         } catch (IOException e) {
