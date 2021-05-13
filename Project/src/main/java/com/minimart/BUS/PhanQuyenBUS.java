@@ -6,6 +6,8 @@ import com.minimart.DATA.PhanQuyenDAO;
 import com.minimart.DTO.ChiTietHoaDon;
 import com.minimart.DTO.PhanQuyen;
 import com.minimart.DTO.PhanQuyen;
+import com.minimart.DTO.SanPham;
+import com.minimart.Handing.HandingBUS;
 
 import java.util.ArrayList;
 
@@ -25,17 +27,28 @@ public class PhanQuyenBUS {
     public ArrayList<PhanQuyen> getdsq() {
         return dsq;
     }
-    public boolean addData(PhanQuyen PhanQuyen)
+
+    public ArrayList<String> getKeyList()
     {
-        if(PhanQuyenDAO.addData(PhanQuyen))
+        ArrayList<String> result=new ArrayList<>();
+
+        for (PhanQuyen index : dsq)
         {
-            dsq.add(PhanQuyen);
-            return  true;
+            result.add(index.getIdQuyen());
         }
-        else
-        {
-            return  false;
+        return result;
+    }
+    public boolean addData(PhanQuyen PhanQuyen) {
+        HandingBUS handingBUS = new HandingBUS();
+        if (handingBUS.checkRepeat(PhanQuyen.getIdQuyen(), this.getKeyList())) {
+            if (PhanQuyenDAO.addData(PhanQuyen)) {
+                dsq.add(PhanQuyen);
+                return true;
+            }
         }
+        return false;
+
+
     }
     public  boolean removeData(String idQuyen) {
         if (PhanQuyenDAO.removeData( idQuyen))

@@ -4,6 +4,7 @@ import com.minimart.DATA.PhieuNhapDAO;
 import com.minimart.DATA.PhieuNhapDAO;
 import com.minimart.DTO.PhieuNhap;
 import com.minimart.DTO.PhieuNhap;
+import com.minimart.Handing.HandingBUS;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,17 +25,29 @@ public class PhieuNhapBUS {
         return dspn;
     }
 
+
+    public ArrayList<String> getKeyList()
+    {
+        ArrayList<String> result=new ArrayList<>();
+
+        for (PhieuNhap index : dspn)
+        {
+            result.add(index.getIdPhieuNhap());
+        }
+        return result;
+    }
     public boolean addData(PhieuNhap PhieuNhap)
     {
-        if(PhieuNhapDAO.addData(PhieuNhap))
-        {
-            dspn.add(PhieuNhap);
-            return  true;
+        HandingBUS handingBUS=new HandingBUS();
+        if(handingBUS.checkRepeat(PhieuNhap.getIdPhieuNhap(), this.getKeyList()) == false) {
+            if (PhieuNhapDAO.addData(PhieuNhap)) {
+                dspn.add(PhieuNhap);
+                return true;
+
+            }
         }
-        else
-        {
-            return  false;
-        }
+        return  false;
+
     }
     public  boolean removeData(String idPhieuNhap) {
         if (PhieuNhapDAO.removeData( idPhieuNhap))

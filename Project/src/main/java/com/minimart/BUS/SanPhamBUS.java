@@ -4,6 +4,7 @@ import com.minimart.DATA.SanPhamDAO;
 import com.minimart.DATA.SanPhamDAO;
 import com.minimart.DTO.SanPham;
 import com.minimart.DTO.SanPham;
+import com.minimart.Handing.HandingBUS;
 
 import java.util.ArrayList;
 
@@ -23,17 +24,29 @@ public class SanPhamBUS {
         return dssp;
     }
 
+    public ArrayList<String> getKeyList()
+    {
+        ArrayList<String> result=new ArrayList<>();
+
+        for (SanPham index : dssp)
+        {
+            result.add(index.getIdSanPham());
+        }
+        return result;
+    }
+
     public boolean addData(SanPham SanPham)
     {
-        if(SanPhamDAO.addData(SanPham))
+        HandingBUS handingBUS=new HandingBUS();
+        if(handingBUS.checkRepeat(SanPham.getIdSanPham(), this.getKeyList()) == false)
         {
-            dssp.add(SanPham);
-            return  true;
+           if (SanPhamDAO.addData(SanPham))
+           {
+               dssp.add(SanPham);
+               return true;
+           }
         }
-        else
-        {
-            return  false;
-        }
+        return  false;
     }
     public  boolean removeData(String idSanPham) {
         if (SanPhamDAO.removeData( idSanPham))

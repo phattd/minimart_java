@@ -50,6 +50,6 @@ public class HandingBUS {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return date;
+        return date;    
     }
 }
