@@ -2,45 +2,45 @@ package com.minimart.DTO;
 
 public class LoaiSanPham {
     private String idLoaiSanPham;
-    private String tenSanPham;
+    private String tenLoaiSanPham;
     public LoaiSanPham(){
         idLoaiSanPham=null;
-        tenSanPham=null;
+        tenLoaiSanPham=null;
     }
     public LoaiSanPham(String idLoaiSanPham,String tenSanPham)
     {
         this.idLoaiSanPham=idLoaiSanPham;
-        this.tenSanPham=tenSanPham;
+        this.tenLoaiSanPham=tenSanPham;
     }
     public  LoaiSanPham(LoaiSanPham loaiSanPham)
     {
-        this(loaiSanPham.idLoaiSanPham, loaiSanPham.tenSanPham);
+        this(loaiSanPham.idLoaiSanPham, loaiSanPham.tenLoaiSanPham);
     }
 
     public String getIdLoaiSanPham() {
         return idLoaiSanPham;
     }
 
-    public String getTenSanPham() {
-        return tenSanPham;
+    public String getTenLoaiSanPham() {
+        return tenLoaiSanPham;
     }
 
     public void setIdLoaiSanPham(String idLoaiSanPham) {
         this.idLoaiSanPham = idLoaiSanPham;
     }
 
-    public void setTenSanPham(String tenSanPham) {
-        this.tenSanPham = tenSanPham;
+    public void setTenLoaiSanPham(String tenLoaiSanPham) {
+        this.tenLoaiSanPham = tenLoaiSanPham;
     }
     public void setLoaiSanPham(String idLoaiSanPham,String tenSanPham)
     {
         this.idLoaiSanPham=idLoaiSanPham;
-        this.tenSanPham=tenSanPham;
+        this.tenLoaiSanPham=tenSanPham;
     }
     public void setLoaiSanPham(LoaiSanPham loaiSanPham)
     {
         this.idLoaiSanPham=loaiSanPham.idLoaiSanPham;
-        this.tenSanPham=loaiSanPham.tenSanPham;
+        this.tenLoaiSanPham=loaiSanPham.tenLoaiSanPham;
     }
     public LoaiSanPham getLoaiSanPham()
     {
@@ -48,6 +48,6 @@ public class LoaiSanPham {
     }
     public Object[] toArray()
     {
-        return new Object[] {idLoaiSanPham,tenSanPham};
+        return new Object[] {idLoaiSanPham,tenLoaiSanPham};
     }
 }

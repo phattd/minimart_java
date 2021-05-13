@@ -13,7 +13,7 @@ public class NhaCungCapDAO {
     //    public QuanLyNhaCungCapDAO(){
 //        nhaCungCapDB.logIn("root","");
 //    }
-    public ArrayList<NhaCungCap> readDB()  {
+    public ArrayList<NhaCungCap> readData()  {
         ArrayList<NhaCungCap> dsncc = new ArrayList<>();
         qlnccConnection = new ConnectSQL();
         try {
@@ -63,33 +63,31 @@ public class NhaCungCapDAO {
         return dsncc;
     }
 
-    public boolean add(NhaCungCap ncc)  {
+    public boolean addData(NhaCungCap ncc)  {
         qlnccConnection = new ConnectSQL();
-        boolean ok = qlnccConnection.sqlUpdate("INSERT INTO `NHACUNGCAP` (`IdNhaCungCapNCC`, `TenNhaCungCapNCC`, `SoDienThoaiNCC`,`DiaChiNCC`,`Fax`) VALUES ('"
+        boolean ok = qlnccConnection.sqlUpdate("INSERT INTO NHACUNGCAP (`IdNhaCungCapNCC`, `TenNhaCungCapNCC`, `SoDienThoaiNCC`,`DiaChiNCC`) VALUES ('"
                 + ncc.getIdNhaCungCap() + "', '"
                 + ncc.getTenNhaCungCap() + "', '"
                 + ncc.getSoDienThoaiNCC() + "','"
                 + ncc.getDiaChiNCC() + "');");
-
         qlnccConnection.closeConnect();
         return ok;
     }
 
-    public boolean delete(String idNhaCungCapncc)  {
+    public boolean removeData(String idNhaCungCapncc)  {
         qlnccConnection = new ConnectSQL();
-        boolean ok = qlnccConnection.sqlUpdate("DELETE FROM `NHACUNGCAP` WHERE `NHACUNGCAP`.`IdNhaCungCapNCC` = '" + idNhaCungCapncc + "'");
+        boolean ok = qlnccConnection.sqlUpdate("DELETE FROM NHACUNGCAP WHERE IdNhaCungCapNCC = '" + idNhaCungCapncc + "'");
         qlnccConnection.closeConnect();
         return ok;
     }
 
-    public boolean update(String idNhaCungCap, String tenNhaCungCap, String soDienThoaiNCC, String diaChiNCC)  {
+    public boolean updateData(NhaCungCap ncc)  {
         qlnccConnection = new ConnectSQL();
-        boolean ok = qlnccConnection.sqlUpdate("Update NHACUNGCAP Set " +
-                "IdNhaCungCapNCC='" + idNhaCungCap 
-                + "',TenNhaCungCapNCC='" + tenNhaCungCap 
-                + "',SoDienThoaiNCC='" + soDienThoaiNCC 
-                + "',DiaChiNCC='" + diaChiNCC 
-                + "' where IdNhaCungCapNCC='" + idNhaCungCap + "'");
+        boolean ok = qlnccConnection.sqlUpdate("UPDATE NHACUNGCAP SET "
+                + "TenNhaCungCapNCC='" + ncc.getTenNhaCungCap()
+                + "',SoDienThoaiNCC='" + ncc.getSoDienThoaiNCC()
+                + "',DiaChiNCC='" + ncc.getDiaChiNCC()
+                + "' WHERE IdNhaCungCapNCC='" + ncc.getIdNhaCungCap() + "'");
         qlnccConnection.closeConnect();
         return ok;
     }

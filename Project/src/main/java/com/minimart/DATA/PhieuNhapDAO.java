@@ -2,7 +2,7 @@ package com.minimart.DATA;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import com.minimart.DTO.PhieuNhap;
@@ -14,7 +14,7 @@ public class PhieuNhapDAO {
     public PhieuNhapDAO() {
     }
 
-    public ArrayList readDB()  {
+    public ArrayList readData()  {
         connection = new ConnectSQL();
         ArrayList<PhieuNhap> dspn = new ArrayList<>();
         try {
@@ -41,9 +41,9 @@ public class PhieuNhapDAO {
         return dspn;
     }
 
-    public boolean add(PhieuNhap pn)  {
+    public boolean addData(PhieuNhap pn)  {
         connection = new ConnectSQL();
-        boolean ok = connection.sqlUpdate("INSERT INTO PHIEUNHAP(IdPhieuNhap,IdNhaCungCap,IdNhanVien,NgayNhap,TongTien) VALUES ('"
+        boolean ok = connection.sqlUpdate("INSERT INTO PHIEUNHAP (`IdPhieuNhap`, `IdNhaCungCap`, `IdNhanVien`, `NgayNhap`, `TongTien`) VALUES ('"
                 + pn.getIdPhieuNhap() + "','"
                 + pn.getIdNhaCungCap() + "','"
                 + pn.getIdNhanVien() + "','"
@@ -53,7 +53,7 @@ public class PhieuNhapDAO {
         return ok;
     }
 
-    public boolean delete(String idPhieuNhap)  {
+    public boolean removeData(String idPhieuNhap)  {
         connection = new ConnectSQL();
         if (!connection.sqlUpdate("DELETE FROM PHIEUNHAP WHERE IdPhieuNhap='" + idPhieuNhap + "';")) {
             JOptionPane.showMessageDialog(null, "Vui long xoa het chi tiet cua phiếu nhập truoc !!!");
@@ -64,7 +64,7 @@ public class PhieuNhapDAO {
         return false;
     }
 
-    public boolean update(PhieuNhap pn)  {
+    public boolean updateData(PhieuNhap pn)  {
         connection = new ConnectSQL();
         boolean ok = connection.sqlUpdate("UPDATE PHIEUNHAP SET "
                 + "IdNhaCungCap='" + pn.getIdNhaCungCap()
@@ -81,15 +81,5 @@ public class PhieuNhapDAO {
         boolean ok = connection.sqlUpdate("UPDATE PHIEUNHAP SET TongTien='" + _tongTien + "' WHERE IdPhieuNhap='" + _idPhieuNhap + "';");
         connection.closeConnect();
         return ok;
-    }
-
-    public boolean update(String idPhieuNhap, String idNhaCungCap, String idNhanVien, Date ngayNhap, int tongTien)  {
-        PhieuNhap pn = new PhieuNhap();
-        pn.setIdPhieuNhap(idPhieuNhap);
-        pn.setIdNhaCungCap(idNhaCungCap);
-        pn.setIdNhanVien(idNhanVien);
-        pn.setNgayNhap(ngayNhap);
-        pn.setTongTien(tongTien);
-        return update(pn);
     }
 }

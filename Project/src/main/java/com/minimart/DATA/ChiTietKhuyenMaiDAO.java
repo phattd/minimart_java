@@ -12,7 +12,7 @@ public class ChiTietKhuyenMaiDAO {
     public ArrayList<ChiTietKhuyenMai> readData()
     {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
         ArrayList<ChiTietKhuyenMai> danhSachChiTietKhuyenMai=new ArrayList<>();
         try
@@ -25,7 +25,7 @@ public class ChiTietKhuyenMaiDAO {
                 {
                     ChiTietKhuyenMai chiTietKhuyenMai=new ChiTietKhuyenMai(
                             rs.getString("IdKhuyenMai"),
-                           rs.getString("TenKhuyenMai"),
+                            rs.getString("TenKhuyenMai"),
                             rs.getByte("PhanTramKhuyenMai"),
                             rs.getString("NoiDungKhuyenMai"),
                             rs.getString("IdSanPham"));
@@ -43,12 +43,14 @@ public class ChiTietKhuyenMaiDAO {
     public boolean addData(ChiTietKhuyenMai chiTietKhuyenMai)
     {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
-        String query="INSERT INTO CHITIETKHUYENMAI(IdKhuyenMai,TenKhuyenMai,PhanTramKhuyenMai,NoiDungKhuyenMai,IdSanPham) " +
+        String query="INSERT INTO CHITIETKHUYENMAI('IdKhuyenMai','TenKhuyenMai','PhanTramKhuyenMai','NoiDungKhuyenMai','IdSanPham') " +
                 "VALUES ('"+chiTietKhuyenMai.getIdKhuyenMai()+
-                "','" + chiTietKhuyenMai.getTenKhuyenMai()+"'," +
-                chiTietKhuyenMai.getPhanTramKhuyenMai()+",'"+chiTietKhuyenMai.getNoiDungKhuyenMai()+"','"+chiTietKhuyenMai.getIdSanPham()+"');";
+                "','" + chiTietKhuyenMai.getTenKhuyenMai() +
+                "'," + chiTietKhuyenMai.getPhanTramKhuyenMai() +
+                ",'" + chiTietKhuyenMai.getNoiDungKhuyenMai() +
+                "','" + chiTietKhuyenMai.getIdSanPham() + "');";
         boolean executeCommandSQL = connectSQL.sqlUpdate(query);
         connectSQL.closeConnect();
         return executeCommandSQL;
@@ -56,28 +58,24 @@ public class ChiTietKhuyenMaiDAO {
     }
     public boolean removeData(String idKhuyenMai,String idSanPham){
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
-        boolean executeCommandSQL=connectSQL.sqlUpdate("DELETE FROM CHITIETKHUYENMAI WHERE IdKhuyenMai='"+idKhuyenMai+"', IdSanPham='"+idSanPham+"';");
+        boolean executeCommandSQL=connectSQL.sqlUpdate("DELETE FROM CHITIETKHUYENMAI WHERE IdKhuyenMai='"+idKhuyenMai+"' AND IdSanPham='"+idSanPham+"';");
         connectSQL.closeConnect();
         return  executeCommandSQL;
     }
     public boolean updateData(ChiTietKhuyenMai chiTietKhuyenMai)
     {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
-        boolean executeCommandSQL=connectSQL.sqlUpdate("UPDATE CHITIETKHUYENMAI SET IdKhuyenMai='"+chiTietKhuyenMai.getIdKhuyenMai()+"',TenKhuyenMai='"
-                +chiTietKhuyenMai.getTenKhuyenMai()+"',PhanTramKhuyenMai="
-                        +chiTietKhuyenMai.getPhanTramKhuyenMai()+",NoiDungKhuyenMai='"+chiTietKhuyenMai.getNoiDungKhuyenMai()+"',IdSanPham='"
-                        +chiTietKhuyenMai.getIdSanPham()+"' " +
-                "WHERE IdKhuyenMai='"+chiTietKhuyenMai.getIdKhuyenMai()+"' AND IdSanPham='"+chiTietKhuyenMai.getIdSanPham()+"';");
+        boolean executeCommandSQL=connectSQL.sqlUpdate("UPDATE CHITIETKHUYENMAI SET " +
+                " TenKhuyenMai='" + chiTietKhuyenMai.getTenKhuyenMai() +
+                "',PhanTramKhuyenMai=" + chiTietKhuyenMai.getPhanTramKhuyenMai() +
+                ",NoiDungKhuyenMai='" + chiTietKhuyenMai.getNoiDungKhuyenMai() + "' " +
+                "WHERE IdKhuyenMai='" + chiTietKhuyenMai.getIdKhuyenMai() +
+                "' AND IdSanPham='" + chiTietKhuyenMai.getIdSanPham() + "';");
         connectSQL.closeConnect();
         return executeCommandSQL;
-    }
-    public boolean updateData(String idKhuyenMai,String tenKhuyenMai,byte phanTramKhuyenMai,String noiDungKhuyenMai,String idSanPham)
-    {
-        ChiTietKhuyenMai chiTietKhuyenMai=new ChiTietKhuyenMai(idKhuyenMai, tenKhuyenMai, phanTramKhuyenMai, noiDungKhuyenMai, idSanPham);
-        return updateData(chiTietKhuyenMai);
     }
 }

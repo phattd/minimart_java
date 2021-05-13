@@ -13,7 +13,7 @@ public class KhachHangBUS {
 
     public  KhachHangBUS()
     {
-        danhSachKhachHang= khachHangDAO.readDB();
+        danhSachKhachHang= khachHangDAO.readData();
     }
     public  ArrayList<String> getKeyList()
     {
@@ -26,7 +26,7 @@ public class KhachHangBUS {
     }
     public void readData()
     {
-        danhSachKhachHang=khachHangDAO.readDB();
+        danhSachKhachHang=khachHangDAO.readData();
     }
     public  ArrayList<KhachHang> getDanhSachKhachHang()
     {
@@ -36,7 +36,7 @@ public class KhachHangBUS {
     {
         HandingBUS handingBUS=new HandingBUS();
         if (handingBUS.checkRepeat(khachHang.getIdKhachHang(), this.getKeyList()) == false) {
-            if (khachHangDAO.add(khachHang)) {
+            if (khachHangDAO.addData(khachHang)) {
                 danhSachKhachHang.add(khachHang);
                 return true;
             }
@@ -45,7 +45,7 @@ public class KhachHangBUS {
     }
     public boolean removeData (String idKhachHang)
     {
-        if (khachHangDAO.delete(idKhachHang))
+        if (khachHangDAO.removeData(idKhachHang))
         {
             for (int index=0;index<danhSachKhachHang.size();index++)
             {
@@ -60,7 +60,7 @@ public class KhachHangBUS {
     }
     public  boolean updateData(KhachHang khachHang)
     {
-        if (khachHangDAO.update(khachHang))
+        if (khachHangDAO.updateData(khachHang))
         {
             for (int index=0;index<danhSachKhachHang.size();index++)
             {

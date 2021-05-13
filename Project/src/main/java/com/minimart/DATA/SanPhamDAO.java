@@ -15,7 +15,7 @@ public class SanPhamDAO {
 
     }
 
-    public ArrayList<SanPham> readDB() {
+    public ArrayList<SanPham> readData() {
         sanPhamConnection = new ConnectSQL();
         ArrayList<SanPham> dssp = new ArrayList<>();
         try {
@@ -27,9 +27,10 @@ public class SanPhamDAO {
                     String idLoaiSanPham = r.getString("IdLoaiSanPham");
                     String tenSanPham = r.getString("TenSanPham");
                     int donGia = r.getInt("DonGia");
+                    String donViTinh = r.getString("DonViTinh");
                     int soLuong = r.getInt("SoLuong");
                     String hinhAnh = r.getString("HinhAnh");
-                    dssp.add(new SanPham(idSanPham, idLoaiSanPham, tenSanPham, donGia, soLuong, hinhAnh));
+                    dssp.add(new SanPham(idSanPham, idLoaiSanPham, tenSanPham, donGia, donViTinh, soLuong, hinhAnh));
                 }
             }
 
@@ -69,42 +70,44 @@ public class SanPhamDAO {
         return dssp;
     }
 
-    public boolean add(SanPham sp)  {
+    public boolean addData(SanPham sp)  {
         sanPhamConnection = new ConnectSQL();
-        boolean ok = sanPhamConnection.sqlUpdate("INSERT INTO `SANPHAM` (`IdSanPham`, `IdLoaiSanPham`, `TenSanPham`, `DonGia`, `SoLuong`, `HinhAnh`) VALUES ('"
+        boolean ok = sanPhamConnection.sqlUpdate("INSERT INTO SANPHAM (`IdSanPham`, `IdLoaiSanPham`, `TenSanPham`, `DonGia`, `DonViTinh`, `SoLuong`, `HinhAnh`) VALUES ('"
                 + sp.getIdSanPham() + "', '"
                 + sp.getIdLoaiSanPham() + "', '"
                 + sp.getTenSanPham() + "', '"
                 + sp.getDonGia() + "', '"
+                + sp.getDonViTinh() + "', '"
                 + sp.getSoLuong() + "', '"
                 + sp.getHinhAnh() + "');");
         sanPhamConnection.closeConnect();
         return ok;
     }
 
-    public boolean delete(String idSanPham)  {
+    public boolean removeData(String idSanPham)  {
         sanPhamConnection = new ConnectSQL();
-        boolean ok = sanPhamConnection.sqlUpdate("DELETE FROM `SANPHAM` WHERE `SANPHAM`.`IdSanPham` = '" + idSanPham + "'");
+        boolean ok = sanPhamConnection.sqlUpdate("DELETE FROM SANPHAM WHERE IdSanPham = '" + idSanPham + "'");
         sanPhamConnection.closeConnect();
         return ok;
     }
 
-    public boolean update(String idSanPham, String idLoaiSanPham, String tenSanPham, float donGia, int soLuong, String hinhAnh)  {
+    public boolean updateData(SanPham sp)  {
         sanPhamConnection = new ConnectSQL();
-        boolean ok = sanPhamConnection.sqlUpdate("Update SanPham Set "
-                + "IdLoaiSanPham='" + idLoaiSanPham
-                + "',TenSanPham='" + tenSanPham
-                + "',DonGia='" + donGia
-                + "',SoLuong='" + soLuong
-                + "',HinhAnh='" + hinhAnh
-                + "' where IdSanPham='" + idSanPham + "'");
+        boolean ok = sanPhamConnection.sqlUpdate("UPDATE SAPHAM SET "
+                + "IdLoaiSanPham='" + sp.getIdLoaiSanPham()
+                + "',TenSanPham='" + sp.getTenSanPham()
+                + "',DonGia='" + sp.getDonGia()
+                + "',DonViTinh='" + sp.getDonViTinh()
+                + "',SoLuong='" + sp.getSoLuong()
+                + "',HinhAnh='" + sp.getHinhAnh()
+                + "' where IdSanPham='" + sp.getIdSanPham() + "'");
         sanPhamConnection.closeConnect();
         return ok;
     }
 
     public boolean updatesoLuong(String idSanPham, int soLuong)  {
         sanPhamConnection = new ConnectSQL();
-        boolean ok = sanPhamConnection.sqlUpdate("Update SANPHAM Set "
+        boolean ok = sanPhamConnection.sqlUpdate("UPDATE SANPHAM SET "
                 + "SoLuong='" + soLuong
                 + "' where IdSanPham='" + idSanPham + "'");
         sanPhamConnection.closeConnect();

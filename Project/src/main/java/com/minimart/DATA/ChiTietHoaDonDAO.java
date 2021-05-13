@@ -19,7 +19,7 @@ public class ChiTietHoaDonDAO {
 
     public ArrayList<ChiTietHoaDon> readData() {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
         ArrayList<ChiTietHoaDon> danhSachChiTietHoaDon = new ArrayList<>();
         try {
@@ -27,9 +27,13 @@ public class ChiTietHoaDonDAO {
             ResultSet rs = connectSQL.sqlQuery(query);
             if (rs != null) {
                 while (rs.next()) {
-                    ChiTietHoaDon hoaDon = new ChiTietHoaDon(rs.getString("IdHoaDon"), rs.getString("IdSanPham"),
-                            rs.getInt("SoLuong"), rs.getInt("DonGia"), rs.getString("IdKhuyenMai"),
-                            rs.getInt("ThanhTien"),rs.getInt("TienKhuyenMai"));
+                    ChiTietHoaDon hoaDon = new ChiTietHoaDon(rs.getString("IdHoaDon"),
+                            rs.getString("IdSanPham"),
+                            rs.getInt("SoLuong"),
+                            rs.getInt("DonGia"),
+                            rs.getString("IdKhuyenMai"),
+                            rs.getInt("ThanhTien"),
+                            rs.getInt("TienKhuyenMai"));
                     danhSachChiTietHoaDon.add(hoaDon);
                 }
             }
@@ -43,9 +47,9 @@ public class ChiTietHoaDonDAO {
 
     public boolean addData(ChiTietHoaDon hoaDon) {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
-        boolean query = connectSQL.sqlUpdate("INSERT INTO CHITIETHOADON(IdHoaDon,IdSanPham,SoLuong,DonGia,IdKhuyenMai,ThanhTien,TienKhuyenMai) VALUES ('"
+        boolean query = connectSQL.sqlUpdate("INSERT INTO CHITIETHOADON('IdHoaDon','IdSanPham','SoLuong','DonGia','IdKhuyenMai','ThanhTien','TienKhuyenMai') VALUES ('"
                 + hoaDon.getIdHoaDon() + "','"
                 + hoaDon.getIdSanPham() + "',"
                 + hoaDon.getSoLuong() + ","
@@ -59,7 +63,7 @@ public class ChiTietHoaDonDAO {
 
     public boolean removeData(String idHoaDon, String idSanPham) {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
         boolean query = connectSQL.sqlUpdate("DELETE FROM CHITIETHOADON WHERE "
                 + "IdHoaDon='" + idHoaDon
@@ -70,7 +74,7 @@ public class ChiTietHoaDonDAO {
 
     public boolean removeAllData(String idHoaDon) {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
         boolean query = connectSQL.sqlUpdate("DELETE FROM CHITIETHOADON WHERE IdHoaDon='" + idHoaDon + "';");
         connectSQL.closeConnect();
@@ -79,19 +83,17 @@ public class ChiTietHoaDonDAO {
 
     public boolean updateData(ChiTietHoaDon chiTietHoaDon) {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
         boolean query = connectSQL.sqlUpdate("UPDATE CHITIETHOADON SET "
                 + "SoLuong='" + chiTietHoaDon.getSoLuong()
                 + "', DonGia='" + chiTietHoaDon.getDonGia()
+                + "', IdKhuyenMai='" + chiTietHoaDon.getIdKhuyenMai()
+                + "', ThanhTien='" + chiTietHoaDon.getThanhTien()
+                + "', TienKhuyenMai='" + chiTietHoaDon.getTienKhuyenMai()
                 + "' WHERE IdHoaDon='" + chiTietHoaDon.getIdHoaDon() + "' AND IdSanPham='" + chiTietHoaDon.getIdSanPham() + "';");
         connectSQL.closeConnect();
         return query;
-    }
-
-    public boolean updateData(String idHoaDon,String idSanPham,int soLuong,int donGia,String idKhuyenMai,int thanhTien,int tienKhuyenMai) {
-        ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon(idHoaDon,idSanPham,soLuong,donGia,idKhuyenMai,thanhTien,tienKhuyenMai);
-        return updateData(chiTietHoaDon);
     }
 
 }

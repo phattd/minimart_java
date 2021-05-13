@@ -25,7 +25,9 @@ public class KhuyenMaiDAO {
             {
                 while (rs.next())
                 {
-                    KhuyenMai khuyenMai=new KhuyenMai(rs.getString("IdKhuyenMai"), rs.getString("IdDotKhuyenMai"), rs.getString("MoTaKhuyenMai") );
+                    KhuyenMai khuyenMai=new KhuyenMai(rs.getString("IdKhuyenMai"),
+                            rs.getString("IdDotKhuyenMai"),
+                            rs.getString("MoTaKhuyenMai") );
                     danhSachKhuyenMai.add(khuyenMai);
                 }
             }
@@ -40,7 +42,7 @@ public class KhuyenMaiDAO {
     public boolean addData(KhuyenMai khuyenMai)
     {
         connectSQL=new ConnectSQL();
-        boolean commandSQL=connectSQL.sqlUpdate("INSERT INTO KHUYENMAI(IdKhuyenMai,IdDotKhuyenMai,MoTaKhuyenMai) VALUES ('"
+        boolean commandSQL=connectSQL.sqlUpdate("INSERT INTO KHUYENMAI ( `IdKhuyenMai`, `IdDotKhuyenMai`, `MoTaKhuyenMai`) VALUES ('"
                 + khuyenMai.getIdKhuyenMai()+"','"
                 + khuyenMai.getIdDotKhuyenMai()+"','"
                 + khuyenMai.getMoTaKhuyenMai()+"');");
@@ -62,11 +64,10 @@ public class KhuyenMaiDAO {
     public boolean updateData(KhuyenMai khuyenMai)
     {
         connectSQL=new ConnectSQL();
-        boolean commandSQL=connectSQL.sqlUpdate("UPDATE KHUYENMAI SET " +
-                "IdKhuyenMai='"+khuyenMai.getIdKhuyenMai() +"',"
-                + "IdDotKhuyenMai='"+khuyenMai.getIdDotKhuyenMai()+"', "
-                + "MoTaKhuyenMai='"+khuyenMai.getMoTaKhuyenMai()+"' WHERE" +
-                "IdKhuyenMai='"+khuyenMai.getIdKhuyenMai()+"' ");
+        boolean commandSQL=connectSQL.sqlUpdate("UPDATE KHUYENMAI SET "
+                + " IdDotKhuyenMai='" + khuyenMai.getIdDotKhuyenMai()+ "', "
+                + " MoTaKhuyenMai='" + khuyenMai.getMoTaKhuyenMai() +
+                "' WHERE IdKhuyenMai='" + khuyenMai.getIdKhuyenMai()+ "' ");
         return commandSQL;
     }
 }

@@ -15,11 +15,7 @@ public class HoaDonBUS {
 
     public HoaDonBUS()
     {
-        try {
-            danhSachHoaDon= hoaDonDAO.readData();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        danhSachHoaDon= hoaDonDAO.readData();
     }
     public ArrayList<String> getKeyList()
     {
@@ -33,11 +29,7 @@ public class HoaDonBUS {
     }
     public void readData()
     {
-        try {
             danhSachHoaDon= hoaDonDAO.readData();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
     public ArrayList<HoaDon> getDanhSachHoaDon()
     {
@@ -70,7 +62,6 @@ public class HoaDonBUS {
     }
     public  boolean removeData(String idHoaDon)
     {
-        try {
             if(hoaDonDAO.removeData(idHoaDon))
             {
                 for(int index=0;index<danhSachHoaDon.size();index++)
@@ -83,14 +74,11 @@ public class HoaDonBUS {
                 }
 
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         return false;
     }
     public boolean updateData(HoaDon hoaDon)
     {
-        try {
             if(hoaDonDAO.updateData(hoaDon))
             {
                 for(int index=0;index<danhSachHoaDon.size();index++)
@@ -101,11 +89,8 @@ public class HoaDonBUS {
                         return true;
                     }
                 }
-
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
         return false;
     }
 

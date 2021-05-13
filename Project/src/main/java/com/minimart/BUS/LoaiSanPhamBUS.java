@@ -11,12 +11,12 @@ public class LoaiSanPhamBUS {
     private LoaiSanPhamDAO loaiSanPhamDAO = new LoaiSanPhamDAO();
 
     public LoaiSanPhamBUS() {
-        danhSachLoaiSanPham = loaiSanPhamDAO.readDB();
+        danhSachLoaiSanPham = loaiSanPhamDAO.readData();
     }
 
     public void readData()
     {
-        danhSachLoaiSanPham=loaiSanPhamDAO.readDB();
+        danhSachLoaiSanPham=loaiSanPhamDAO.readData();
     }
     public ArrayList<LoaiSanPham> getDanhSachLoaiSanPham()
     {
@@ -36,7 +36,7 @@ public class LoaiSanPhamBUS {
     {
         HandingBUS handingBUS=new HandingBUS();
         if (handingBUS.checkRepeat(loaiSanPham.getIdLoaiSanPham(), this.getKeyList())==false) {
-            if (loaiSanPhamDAO.add(loaiSanPham)) {
+            if (loaiSanPhamDAO.addData(loaiSanPham)) {
                 danhSachLoaiSanPham.add(loaiSanPham);
                 return true;
             }
@@ -45,7 +45,7 @@ public class LoaiSanPhamBUS {
     }
     public boolean removeData(String idLoaiSanPham)
     {
-        if(loaiSanPhamDAO.delete(idLoaiSanPham))
+        if(loaiSanPhamDAO.removeData(idLoaiSanPham))
         {
             for (int index=0; index<danhSachLoaiSanPham.size();index++)
             {
@@ -61,7 +61,7 @@ public class LoaiSanPhamBUS {
     }
     public boolean updateData(LoaiSanPham loaiSanPham)
     {
-        if (loaiSanPhamDAO.update(loaiSanPham))
+        if (loaiSanPhamDAO.updateData(loaiSanPham))
         {
             for (int index=0;index<danhSachLoaiSanPham.size();index++)
             {

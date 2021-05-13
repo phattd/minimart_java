@@ -12,11 +12,11 @@ public class NhanVienBUS {
 
     public NhanVienBUS()
     {
-        danhSachNhanVien=nhanVienDAO.readDB();
+        danhSachNhanVien=nhanVienDAO.readData();
     }
     public void readData()
     {
-        danhSachNhanVien=nhanVienDAO.readDB();
+        danhSachNhanVien=nhanVienDAO.readData();
     }
     public ArrayList<NhanVien> getDanhSachNhanVien()
     {
@@ -37,7 +37,7 @@ public class NhanVienBUS {
         HandingBUS handingBUS=new HandingBUS();
         if (handingBUS.checkRepeat(nhanVien.getIdChucVu(),this.getKeyList())== false)
         {
-            if (nhanVienDAO.add(nhanVien))
+            if (nhanVienDAO.addData(nhanVien))
             {
                 danhSachNhanVien.add(nhanVien);
                 return true;
@@ -47,7 +47,7 @@ public class NhanVienBUS {
     }
     public boolean removeData(String idNhanVien)
     {
-        if (nhanVienDAO.delete(idNhanVien)) {
+        if (nhanVienDAO.removeData(idNhanVien)) {
             for (int index=0;index<danhSachNhanVien.size();index++)
             {
                 if (danhSachNhanVien.get(index).getIdNhanVien().equals(idNhanVien))
@@ -61,7 +61,7 @@ public class NhanVienBUS {
     }
     public boolean updateData(NhanVien nhanVien)
     {
-        if (nhanVienDAO.update(nhanVien.getIdNhanVien(),nhanVien.getHo(),nhanVien.getTen(),nhanVien.getDiaChi(),nhanVien.getNgaySinh(),nhanVien.getSoDienThoai(),nhanVien.getLuong(),nhanVien.getIdChucVu(),nhanVien.getHinhAnh()))
+        if (nhanVienDAO.updateData(nhanVien))
         {
             for (int index=0;index<danhSachNhanVien.size();index++)
             {

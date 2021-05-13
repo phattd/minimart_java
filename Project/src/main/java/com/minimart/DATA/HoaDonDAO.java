@@ -3,7 +3,7 @@ package com.minimart.DATA;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import com.minimart.DTO.HoaDon;
@@ -15,7 +15,7 @@ public class HoaDonDAO {
     public HoaDonDAO() {
     }
 
-    public ArrayList readData() throws IOException {
+    public ArrayList readData() {
         connection = new ConnectSQL();
         ArrayList<HoaDon> dshd = new ArrayList<>();
         try {
@@ -58,7 +58,7 @@ public class HoaDonDAO {
         return success;
     }
 
-    public boolean removeData(String IdHoaDon) throws IOException {
+    public boolean removeData(String IdHoaDon)  {
         connection = new ConnectSQL();
         if (!connection.sqlUpdate("DELETE FROM HOADON WHERE IdHoaDon='" + IdHoaDon + "';")) {
             JOptionPane.showMessageDialog(null, "Vui long xoa het chi tiet cua hoa don truoc !!!");
@@ -69,7 +69,7 @@ public class HoaDonDAO {
         return true;
     }
 
-    public boolean updateData(HoaDon hd) throws IOException {
+    public boolean updateData(HoaDon hd)  {
         connection = new ConnectSQL();
         boolean success = connection.sqlUpdate("UPDATE HOADON SET "
                 + "IdNhanVien='" + hd.getIdNhanVien()
@@ -82,25 +82,5 @@ public class HoaDonDAO {
                 + "' WHERE IdHoaDon='" + hd.getIdHoaDon() + "';");
         connection.closeConnect();
         return success;
-    }
-
-    public boolean updateTongTien(String _IdHoaDon,int _tongTien) throws IOException {
-        connection = new ConnectSQL();
-        boolean success = connection.sqlUpdate("UPDATE HOADON SET TongTien='" + _tongTien + "' WHERE IdHoaDon='" +_IdHoaDon + "';");
-        connection.closeConnect();
-        return success;
-    }
-
-    public boolean updateData(String IdHoaDon, String IdNhanVien, String IdKhachHang, Date NgayLapHoaDon, int TongTienKhuyenMai, int TongTien, int TienKhachDua, int TienConLai) throws IOException {
-        HoaDon hd = new HoaDon();
-        hd.setIdHoaDon(IdHoaDon);
-        hd.setIdNhanVien(IdNhanVien);
-        hd.setIdKhachHang(IdKhachHang);
-        hd.setNgayLapHoaDon(NgayLapHoaDon);
-        hd.setTongTienKhuyenMai(TongTienKhuyenMai);
-        hd.setTongTien(TongTien);
-        hd.setTienKhachDua(TienKhachDua);
-        hd.setTienConLai(TienConLai);
-        return updateData(hd);
     }
 }

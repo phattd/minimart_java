@@ -13,7 +13,7 @@ public class DotKhuyenMaiBUS {
     public DotKhuyenMaiBUS()
     {
 
-            danhSachDotKhuyenMai = dotKhuyenMaiDAO.readDB();
+            danhSachDotKhuyenMai = dotKhuyenMaiDAO.readData();
 
     }
     // idDotKhuyenMai
@@ -28,14 +28,14 @@ public class DotKhuyenMaiBUS {
     }
     public void readData()
     {
-            danhSachDotKhuyenMai = dotKhuyenMaiDAO.readDB();
+            danhSachDotKhuyenMai = dotKhuyenMaiDAO.readData();
     }
 
     public boolean addData(DotKhuyenMai dotKhuyenMai)
     {
         HandingBUS handingBUS=new HandingBUS();
         if (handingBUS.checkRepeat(dotKhuyenMai.getIdDotKhuyenMai(), this.getKeyList()) == false) {
-            if (dotKhuyenMaiDAO.add(dotKhuyenMai)) {
+            if (dotKhuyenMaiDAO.addData(dotKhuyenMai)) {
                 danhSachDotKhuyenMai.add(dotKhuyenMai);
                 return true;
             }
@@ -44,7 +44,7 @@ public class DotKhuyenMaiBUS {
     }
     public  boolean removeData (String idDotKhuyenMai)
     {
-            if (dotKhuyenMaiDAO.delete(idDotKhuyenMai))
+            if (dotKhuyenMaiDAO.removeData(idDotKhuyenMai))
             {
                 for(int index = 0; index< danhSachDotKhuyenMai.size(); index++)
                 {
@@ -59,7 +59,7 @@ public class DotKhuyenMaiBUS {
     }
     public boolean updateData(DotKhuyenMai dotKhuyenMai)
     {
-        if(dotKhuyenMaiDAO.update(dotKhuyenMai))
+        if(dotKhuyenMaiDAO.updateData(dotKhuyenMai))
         {
             for (int index = 0; index< danhSachDotKhuyenMai.size(); index++)
             {

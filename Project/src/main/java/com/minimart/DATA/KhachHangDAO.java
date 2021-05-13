@@ -14,7 +14,7 @@ public class KhachHangDAO {
 
     }
 
-    public ArrayList<KhachHang> readDB()  {
+    public ArrayList<KhachHang> readData()  {
         qlkhConnection = new ConnectSQL();
         ArrayList<KhachHang> dskh = new ArrayList<>();
         try {
@@ -66,9 +66,9 @@ public class KhachHangDAO {
         return dskh;
     }
 
-    public boolean add(KhachHang kh)  {
+    public boolean addData(KhachHang kh)  {
         qlkhConnection = new ConnectSQL();
-        boolean ok = qlkhConnection.sqlUpdate("INSERT INTO `KHACHHANG` (`IdKhachHang`, `TenKhachHang`, `HoKhachHang`, `BacTichLuy`, `DiemTichLuy`) VALUES ('"
+        boolean ok = qlkhConnection.sqlUpdate("INSERT INTO KHACHHANG (`IdKhachHang`, `TenKhachHang`, `HoKhachHang`, `BacTichLuy`, `DiemTichLuy`) VALUES ('"
                 + kh.getIdKhachHang() + "', '"
                 + kh.getTenKhachHang() + "', '"
                 + kh.getHoKhachHang() + "','"
@@ -78,41 +78,38 @@ public class KhachHangDAO {
         return ok;
     }
 
-    public boolean delete(String idKhachHang)  {
+    public boolean removeData(String idKhachHang)  {
         qlkhConnection = new ConnectSQL();
-        boolean ok = qlkhConnection.sqlUpdate("DELETE FROM `KHACHHANG` WHERE `KHACHHANG`.`IdKhachHang` = '" + idKhachHang + "'");
+        boolean ok = qlkhConnection.sqlUpdate("DELETE FROM KHACHHANG WHERE IdKhachHang = '" + idKhachHang + "'");
         qlkhConnection.closeConnect();
         return ok;
     }
 
-    public boolean update(String idKhachHang, String tenKhachHang, String hoKhachHang, String bacTichLuy, int diemTichLuy)  {
+    public boolean updateData(KhachHang kh)  {
         qlkhConnection = new ConnectSQL();
-        boolean ok = qlkhConnection.sqlUpdate("Update KHACHHANG Set "
-                + "TenKhachHang='" + tenKhachHang
-                + "', HoKhachHang='" + hoKhachHang
-                + "', BacTichLuy='" + bacTichLuy
-                + "', DiemTichLuy='" + diemTichLuy
-                + "' where IdKhachHang='" + idKhachHang + "'");
+        boolean ok = qlkhConnection.sqlUpdate("UPDATE KHACHHANG SET "
+                + "TenKhachHang='" + kh.getTenKhachHang()
+                + "', HoKhachHang='" + kh.getHoKhachHang()
+                + "', BacTichLuy='" + kh.getBacTichLuyByString()
+                + "', DiemTichLuy='" + kh.getDiemTichLuy()
+                + "' WHERE IdKhachHang='" + kh.getIdKhachHang() + "'");
         qlkhConnection.closeConnect();
         return ok;
-    }
-    public boolean update(KhachHang khachHang)  {
-        return update(khachHang.getIdKhachHang(), khachHang.getTenKhachHang(), khachHang.getHoKhachHang(), khachHang.getBacTichLuyByString(), khachHang.getDiemTichLuy());
     }
 
     public boolean updateDiemTichLuy(String idKhachHang, int diemTichLuy)  {
         qlkhConnection = new ConnectSQL();
-        boolean ok = qlkhConnection.sqlUpdate("Update KHACHHANG Set "
+        boolean ok = qlkhConnection.sqlUpdate("UPDATE KHACHHANG SET "
                 + "DiemTichLuy='" + diemTichLuy
-                + "' where IdKhachHang='" + idKhachHang + "'");
+                + "' WHERE IdKhachHang='" + idKhachHang + "'");
         qlkhConnection.closeConnect();
         return ok;
     }
     public boolean updateBacTichLuy(String idKhachHang, String bacTichLuy)  {
         qlkhConnection = new ConnectSQL();
-        boolean ok = qlkhConnection.sqlUpdate("Update KHACHHANG Set "
+        boolean ok = qlkhConnection.sqlUpdate("UPDATE KHACHHANG SET "
                 + "BacTichLuy='" + bacTichLuy
-                + "' where IdKhachHang='" + idKhachHang + "'");
+                + "' WHERE IdKhachHang='" + idKhachHang + "'");
         qlkhConnection.closeConnect();
         return ok;
     }

@@ -13,7 +13,7 @@ public class ChiTietPhieuNhapDAO {
     public ArrayList<ChiTietPhieuNhap> readData()
     {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
         ArrayList<ChiTietPhieuNhap> danhSachChiTietPhieuNhap=new ArrayList<>();
 
@@ -26,7 +26,9 @@ public class ChiTietPhieuNhapDAO {
                 while (rs.next())
                 {
                     ChiTietPhieuNhap chiTietPhieuNhap=new ChiTietPhieuNhap(rs.getString("IdPhieuNhap"),
-                            rs.getString("IdSanPham"),rs.getInt("SoLuong"),rs.getInt("DonGia"),
+                            rs.getString("IdSanPham"),
+                            rs.getInt("SoLuong"),
+                            rs.getInt("DonGia"),
                             rs.getInt("ThanhTien"));
                     danhSachChiTietPhieuNhap.add(chiTietPhieuNhap);
 
@@ -44,21 +46,21 @@ public class ChiTietPhieuNhapDAO {
     public boolean addData(ChiTietPhieuNhap chiTietPhieuNhap)
     {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
-        boolean executeSQL = connectSQL.sqlUpdate("INSERT INTO CHITIETPHIEUNHAP(IdPhieuNhap,IdSanPham,SoLuong,DonGia,ThanhTien)" +
+        boolean executeSQL = connectSQL.sqlUpdate("INSERT INTO CHITIETPHIEUNHAP('IdPhieuNhap','IdSanPham','SoLuong','DonGia','ThanhTien')" +
                 " VALUES ('"+chiTietPhieuNhap.getIdPhieuNhap()+"','"
-                +chiTietPhieuNhap.getIdSanPham()+"',"+
-                chiTietPhieuNhap.getSoLuong()+","+
-                chiTietPhieuNhap.getDonGia()+","
-                +chiTietPhieuNhap.getThanhTien()+",);");
+                + chiTietPhieuNhap.getIdSanPham() + "',"
+                + chiTietPhieuNhap.getSoLuong() + ","
+                + chiTietPhieuNhap.getDonGia() + ","
+                + chiTietPhieuNhap.getThanhTien() + ",);");
         connectSQL.closeConnect();
         return executeSQL;
     }
     public boolean removeData(String idPhieuNhap,String idSanPham)
     {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
         boolean executeCommandSQL=connectSQL.sqlUpdate("DELETE FROM CHITIETPHIEUNHAP WHERE IdPhieuNhap='"
                 +idPhieuNhap+"' AND IdSanPham='"+idSanPham+"';");
@@ -69,7 +71,7 @@ public class ChiTietPhieuNhapDAO {
     public boolean removeAllData(String idPhieuNhap)
     {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
         boolean executeSQLCommad=connectSQL.sqlUpdate("DELETE FROM CHITIETPHIEUNHAP WHERE IdPhieuNhap='"+idPhieuNhap+"';");
         connectSQL.closeConnect();
@@ -78,21 +80,15 @@ public class ChiTietPhieuNhapDAO {
     public boolean updateData(ChiTietPhieuNhap chiTietPhieuNhap)
     {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
-        boolean executeSQLCommand=connectSQL.sqlUpdate("UPDATE ChiTietHoaDon SET IdPhieuNhap='"
-                +chiTietPhieuNhap.getIdPhieuNhap()+"', IdSanPham='"
-                +chiTietPhieuNhap.getIdSanPham()+"', SoLuong="
-                +chiTietPhieuNhap.getSoLuong()+", DonGia="
-                +chiTietPhieuNhap.getDonGia()+", ThanhTien="
-                +chiTietPhieuNhap.getThanhTien()+" WHERE IdPhieuNhap='"
-                +chiTietPhieuNhap.getIdPhieuNhap()+"' AND IdSanPham='"+chiTietPhieuNhap.getIdSanPham()+"';");
+        boolean executeSQLCommand=connectSQL.sqlUpdate("UPDATE ChiTietHoaDon SET " +
+                " SoLuong='" + chiTietPhieuNhap.getSoLuong() +
+                "', DonGia='" + chiTietPhieuNhap.getDonGia() +
+                "', ThanhTien='" + chiTietPhieuNhap.getThanhTien() + "'" +
+                " WHERE IdPhieuNhap='" + chiTietPhieuNhap.getIdPhieuNhap() +
+                "' AND IdSanPham='"+ chiTietPhieuNhap.getIdSanPham() + "';");
         connectSQL.closeConnect();
         return executeSQLCommand;
-    }
-    public boolean updateData(String idPhieuNhap,String idSanPham,int soLuong,int donGia,int thanhTien)
-    {
-        ChiTietPhieuNhap chiTietPhieuNhap=new ChiTietPhieuNhap(idPhieuNhap, idSanPham, soLuong, donGia, thanhTien);
-        return updateData(chiTietPhieuNhap);
     }
 }

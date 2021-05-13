@@ -2,7 +2,7 @@ package com.minimart.DATA;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
+import java.sql.Date;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import com.minimart.DTO.DotKhuyenMai;
@@ -14,7 +14,7 @@ public class DotKhuyenMaiDAO {
 
     }
 
-    public ArrayList<DotKhuyenMai> readDB()  {
+    public ArrayList<DotKhuyenMai> readData()  {
         kmConnection = new ConnectSQL();
         ArrayList<DotKhuyenMai> dssp = new ArrayList<>();
         try {
@@ -64,9 +64,9 @@ public class DotKhuyenMaiDAO {
         return dssp;
     }
 
-    public boolean add(DotKhuyenMai km)  {
+    public boolean addData(DotKhuyenMai km)  {
         kmConnection = new ConnectSQL();
-        boolean ok = kmConnection.sqlUpdate("INSERT INTO `khuyenmai` (`IdDotKhuyenMai`, `TenDotKhuyenMai`, `NgayBatDau`, `NgayKetThuc`) VALUES ('"
+        boolean ok = kmConnection.sqlUpdate("INSERT INTO KHUYENMAI (`IdDotKhuyenMai`, `TenDotKhuyenMai`, `NgayBatDau`, `NgayKetThuc`) VALUES ('"
                 + km.getIdDotKhuyenMai()+ "', '"
                 + km.getTenDotKhuyenMai() + "', '"
                 + km.getNgayBatDau() + "', '"
@@ -75,26 +75,22 @@ public class DotKhuyenMaiDAO {
         return ok;
     }
 
-    public boolean delete(String idDotKhuyenMai)  {
+    public boolean removeData(String idDotKhuyenMai)  {
         kmConnection = new ConnectSQL();
-        boolean ok = kmConnection.sqlUpdate("DELETE FROM `KHUYENMAI` WHERE `KHUYENMAI`.`IdDotKhuyenMai` = '" + idDotKhuyenMai + "'");
+        boolean ok = kmConnection.sqlUpdate("DELETE FROM KHUYENMAI WHERE IdDotKhuyenMai = '" + idDotKhuyenMai + "'");
         kmConnection.closeConnect();
         return ok;
     }
 
-    public boolean update(String idDotKhuyenMai, String tenDotKhuyenMai, Date ngayBatDau, Date ngayKetThuc)  {
+    public boolean updateData(DotKhuyenMai dotkm)  {
         kmConnection = new ConnectSQL();
-        boolean ok = kmConnection.sqlUpdate("Update KKHUYENMAI Set "
-                + "TenDotKhuyenMai='" + tenDotKhuyenMai
-                + "', NgayBatDau='" + ngayBatDau
-                + "', NgayKetThuc='" + ngayKetThuc
-                + "' where IdDotKhuyenMai='" + idDotKhuyenMai + "'");
+        boolean ok = kmConnection.sqlUpdate("UPDATE KKHUYENMAI SET "
+                + "TenDotKhuyenMai='" + dotkm.getTenDotKhuyenMai()
+                + "', NgayBatDau='" + dotkm.getNgayBatDau()
+                + "', NgayKetThuc='" + dotkm.getNgayKetThuc()
+                + "' WHERE IdDotKhuyenMai='" + dotkm.getIdDotKhuyenMai() + "'");
         kmConnection.closeConnect();
         return ok;
-    }
-    public  boolean update(DotKhuyenMai dotKhuyenMai)
-    {
-        return  update(dotKhuyenMai.getIdDotKhuyenMai(), dotKhuyenMai.getTenDotKhuyenMai(), dotKhuyenMai.getNgayBatDau(), dotKhuyenMai.getNgayKetThuc());
     }
 
     public void close() {

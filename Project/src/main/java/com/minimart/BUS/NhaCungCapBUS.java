@@ -14,11 +14,11 @@ public class NhaCungCapBUS {
 
     public NhaCungCapBUS()
     {
-        danhSachNhaCungCap= nhaCungCapDAO.readDB();
+        danhSachNhaCungCap= nhaCungCapDAO.readData();
     }
     public void readData()
     {
-        danhSachNhaCungCap=nhaCungCapDAO.readDB();
+        danhSachNhaCungCap=nhaCungCapDAO.readData();
     }
     public ArrayList<NhaCungCap> getDanhSachNhaCungCap()
     {
@@ -38,7 +38,7 @@ public class NhaCungCapBUS {
         HandingBUS handingBUS=new HandingBUS();
         if (handingBUS.checkRepeat(nhaCungCap.getIdNhaCungCap() , this.getKeyList()) == false)
         {
-            if (nhaCungCapDAO.add(nhaCungCap))
+            if (nhaCungCapDAO.addData(nhaCungCap))
             {
                 danhSachNhaCungCap.add(nhaCungCap);
                 return true;
@@ -48,7 +48,7 @@ public class NhaCungCapBUS {
     }
     public boolean removeData(String idNhaCungCap)
     {
-        if (nhaCungCapDAO.delete(idNhaCungCap))
+        if (nhaCungCapDAO.removeData(idNhaCungCap))
         {
             for (int index=0;index<danhSachNhaCungCap.size();index++)
             {
@@ -64,7 +64,7 @@ public class NhaCungCapBUS {
 
     public boolean updateData(NhaCungCap nhaCungCap)
     {
-        if (nhaCungCapDAO.update(nhaCungCap.getIdNhaCungCap(),nhaCungCap.getTenNhaCungCap(), nhaCungCap.getSoDienThoaiNCC(), nhaCungCap.getDiaChiNCC()))
+        if (nhaCungCapDAO.updateData(nhaCungCap))
         {
             for (int index=0;index<danhSachNhaCungCap.size();index++)
             {

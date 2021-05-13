@@ -1,11 +1,13 @@
 package com.minimart.DATA;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.JOptionPane;
+
+import com.minimart.DTO.NhaCungCap;
 import com.minimart.DTO.NhanVien;
 
 public class NhanVienDAO {
@@ -16,7 +18,7 @@ public class NhanVienDAO {
 
     }
 
-    public ArrayList<NhanVien> readDB()  {
+    public ArrayList<NhanVien> readData()  {
         ArrayList<NhanVien> dsnv = new ArrayList<>();
         qlnvConnection = new ConnectSQL();
         try {
@@ -29,12 +31,12 @@ public class NhanVienDAO {
                     String ten = r.getString("Ten");
                     String diaChi = r.getString("DiaChi");
                     Date ngaySinh = r.getDate("NgaySinh");
-                    String sdt = r.getString("SDT");
+                    String SoDienThoai = r.getString("SoDienThoai");
                     String password = r.getString("Password");
                     int luong = r.getInt("Luong");
                     String idChucVu = r.getString("IdchucVu");
                     String hinhAnh = r.getString("HinhAnh");
-                    dsnv.add(new NhanVien(idNhanVien, ho, ten, diaChi, ngaySinh, sdt, password, luong, idChucVu, hinhAnh));
+                    dsnv.add(new NhanVien(idNhanVien, ho, ten, diaChi, ngaySinh, SoDienThoai, password, luong, idChucVu, hinhAnh));
                 }
             }
 
@@ -60,12 +62,12 @@ public class NhanVienDAO {
                     String ten = r.getString("Ten");
                     String diaChi = r.getString("DiaChi");
                     Date ngaySinh = r.getDate("NgaySinh");
-                    String sdt = r.getString("SDT");
+                    String SoDienThoai = r.getString("SoDienThoai");
                     String password = r.getString("Password");
                     int luong = r.getInt("Luong");
                     String idChucVu = r.getString("IdchucVu");
                     String hinhAnh = r.getString("HinhAnh");
-                    dsnv.add(new NhanVien(idNhanVien, ho, ten, diaChi, ngaySinh, sdt, password, luong, idChucVu, hinhAnh));
+                    dsnv.add(new NhanVien(idNhanVien, ho, ten, diaChi, ngaySinh, SoDienThoai, password, luong, idChucVu, hinhAnh));
                 }
             }
 
@@ -78,9 +80,9 @@ public class NhanVienDAO {
         return dsnv;
     }
 
-    public boolean add(NhanVien nv)  {
+    public boolean addData(NhanVien nv)  {
         qlnvConnection = new ConnectSQL();
-        boolean ok = qlnvConnection.sqlUpdate("INSERT INTO `NHANVIEN` (`IdNhanVien`, 'Ho', `Ten`, 'DiaChi', `NgaySinh`, `SDT`, `Luong`, 'IdChucVu', 'HinhAnh') VALUES ('"
+        boolean ok = qlnvConnection.sqlUpdate("INSERT INTO NHANVIEN (`IdNhanVien`, 'Ho', `Ten`, 'DiaChi', `NgaySinh`, `SoDienThoai`, `Luong`, 'IdChucVu', 'HinhAnh') VALUES ('"
                 + nv.getIdNhanVien() + "', '"
                 + nv.getHo() + "', '"
                 + nv.getTen() + "', '"
@@ -93,30 +95,28 @@ public class NhanVienDAO {
         qlnvConnection.closeConnect();
         return ok;
     }
-    public boolean delete(String idNhanVien)  {
+    public boolean removeData(String idNhanVien)  {
         qlnvConnection = new ConnectSQL();
-        boolean ok = qlnvConnection.sqlUpdate("DELETE FROM `NHANVIEN` WHERE `NHANVIEN`.`IdNhanVien` = '" + idNhanVien + "'");
+        boolean ok = qlnvConnection.sqlUpdate("DELETE FROM NHANVIEN WHERE IdNhanVien = '" + idNhanVien + "'");
         qlnvConnection.closeConnect();
         return ok;
     }
 
-    public boolean update(String idNhanVien, String ho, String ten, String diaChi, Date ngaySinh, String SDT, int luong, String idChucVu, String hinhAnh)  {
+    public boolean updateData(NhanVien nv)  {
         qlnvConnection = new ConnectSQL();
-        boolean ok = qlnvConnection.sqlUpdate("Update NHANVIEN Set "
-                + "Ho='" + ho
-                + "Ten='" + ten
-                + "',DiaChi='" + diaChi
-                + "',NgaySinh='" + ngaySinh
-                + "',SDT='" + SDT
-                + "',Luong='" + luong
-                + "',IdChucVu='" + idChucVu
-                + "',HinhAnh='" + hinhAnh
-                + "' where IdNhanVien='" + idNhanVien + "'");
+        boolean ok = qlnvConnection.sqlUpdate("UPDATE NHANVIEN SET "
+                + "Ho='" + nv.getHo()
+                + "Ten='" + nv.getTen()
+                + "',DiaChi='" + nv.getDiaChi()
+                + "',NgaySinh='" + nv.getNgaySinh()
+                + "',SoDienThoai='" + nv.getSoDienThoai()
+                + "',Luong='" + nv.getLuong()
+                + "',IdChucVu='" + nv.getIdChucVu()
+                + "',HinhAnh='" + nv.getHinhAnh()
+                + "' where IdNhanVien='" + nv.getIdNhanVien() + "'");
         qlnvConnection.closeConnect();
         return ok;
     }
-    
-
     public void close() {
         qlnvConnection.closeConnect();
     }

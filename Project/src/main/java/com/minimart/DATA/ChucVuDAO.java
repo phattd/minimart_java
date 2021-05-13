@@ -14,7 +14,7 @@ public class ChucVuDAO {
 
     public ArrayList<ChucVu> readData()
     {
-         connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
         ArrayList<ChucVu> danhSachChucVu=new ArrayList<>();
         try {
             String query = "SELECT * FROM CHUCVU";
@@ -24,7 +24,8 @@ public class ChucVuDAO {
             {
                 while (rs.next())
                 {
-                    ChucVu chucVu=new ChucVu(rs.getString("IdChucVu"),rs.getString("TenChucVu"));
+                    ChucVu chucVu=new ChucVu(rs.getString("IdChucVu"),
+                            rs.getString("TenChucVu"));
                     danhSachChucVu.add(chucVu);
                 }
             }
@@ -39,15 +40,16 @@ public class ChucVuDAO {
 
     public boolean addData(ChucVu chucVu)
     {
-         connectSQL = new ConnectSQL();
-        boolean executeSqlCommand=connectSQL.sqlUpdate("INSERT INTO CHUCVU(IdChucVu,TenChucVu) VALUES ('"+chucVu.getIdChucVu()
-                +"','"+chucVu.getTenChucVu()+"')");
+        connectSQL = new ConnectSQL();
+        boolean executeSqlCommand=connectSQL.sqlUpdate("INSERT INTO CHUCVU('IdChucVu','TenChucVu') " +
+                "VALUES ('"+chucVu.getIdChucVu() +
+                "','" + chucVu.getTenChucVu()+"')");
         connectSQL.closeConnect();
         return executeSqlCommand;
     }
     public boolean removeData(String idChucVu)
     {
-         connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
         boolean executeSqlCommand = connectSQL.sqlUpdate("DELETE FROM CHUCVU WHERE IdChucVU='"+idChucVu+"' ");
         connectSQL.closeConnect();
         return executeSqlCommand;
@@ -56,17 +58,13 @@ public class ChucVuDAO {
     public boolean updateData(ChucVu chucVu)
     {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
-        boolean executeSqlCommand = connectSQL.sqlUpdate("UPDATE CHUCVU SET IdChucVu='"+chucVu.getIdChucVu()+"', " +
-                "TenChucVu='"+chucVu.getTenChucVu()+"' WHERE IdChucVU='"+chucVu.getIdChucVu()+"';");
+        boolean executeSqlCommand = connectSQL.sqlUpdate("UPDATE CHUCVU SET" +
+                "TenChucVu='" + chucVu.getTenChucVu() +
+                "' WHERE IdChucVU='"+chucVu.getIdChucVu()+"';");
         connectSQL.closeConnect();
 
         return executeSqlCommand;
-    }
-    public boolean updateData(String idChucVu,String tenChucVu)
-    {
-        ChucVu chucVu=new ChucVu(idChucVu,tenChucVu);
-        return updateData(chucVu);
     }
 }

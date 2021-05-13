@@ -1,5 +1,6 @@
 package com.minimart.DATA;
 
+import com.minimart.DTO.ChucVu;
 import com.minimart.DTO.DanhMucQuyen;
 
 import javax.swing.*;
@@ -15,7 +16,7 @@ public class DanhMucQuyenDAO {
 
     public ArrayList<DanhMucQuyen> readData() {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
         ArrayList<DanhMucQuyen> danhSachDanhMucQuyen = new ArrayList<>();
 
@@ -40,9 +41,9 @@ public class DanhMucQuyenDAO {
 
     public boolean addData(DanhMucQuyen danhMucQuyen) {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
-        String query = "INSERT INTO DANHMUCQUYEN(IdChucVu,IdQuyen) " +
+        String query = "INSERT INTO DANHMUCQUYEN('IdChucVu','IdQuyen') " +
                 "VALUES ('" + danhMucQuyen.getIdChucVu() + "','" + danhMucQuyen.getIdQuyen() + "');";
         boolean executeCommandSQL = connectSQL.sqlUpdate(query);
         connectSQL.closeConnect();
@@ -51,13 +52,22 @@ public class DanhMucQuyenDAO {
     public boolean removeData(DanhMucQuyen danhMucQuyen)
     {
 
-            connectSQL = new ConnectSQL();
+        connectSQL = new ConnectSQL();
 
         boolean executeCommandSQL=connectSQL.sqlUpdate("DELETE FROM DANHMUCQUYEN WHERE IdChucVu='"+danhMucQuyen.getIdChucVu()+"' AND IdQuyen='"+danhMucQuyen.getIdQuyen()+"';");
         connectSQL.closeConnect();
         return  executeCommandSQL;
+    }
+    public boolean updateData(DanhMucQuyen dmq)
+    {
 
+        connectSQL = new ConnectSQL();
+
+        boolean executeSqlCommand = connectSQL.sqlUpdate("UPDATE DANHMUCQUYEN SET IdQuyen='"+dmq.getIdQuyen() +"'" +
+                "WHERE IdChucVU='"+dmq.getIdChucVu()+"';");
+        connectSQL.closeConnect();
+
+        return executeSqlCommand;
     }
 
 }
-

@@ -14,7 +14,7 @@ public class PhanQuyenDAO {
 
     }
 
-    public ArrayList<PhanQuyen> readDB()  {
+    public ArrayList<PhanQuyen> readData()  {
         pqConnection = new ConnectSQL();
         ArrayList<PhanQuyen> dsq = new ArrayList<>();
         try {
@@ -62,27 +62,27 @@ public class PhanQuyenDAO {
         return dsq;
     }
 
-    public boolean add(PhanQuyen q)  {
+    public boolean addData(PhanQuyen q)  {
         pqConnection = new ConnectSQL();
-        boolean ok = pqConnection.sqlUpdate("INSERT INTO `PHANQUYEN` (`IdQuyen`, `TenQuyenuyen`) VALUES ('"
+        boolean ok = pqConnection.sqlUpdate("INSERT INTO PHANQUYEN (`IdQuyen`, `TenQuyenuyen`) VALUES ('"
                 + q.getIdQuyen()+ "', '"
                 + q.getTenQuyen()+ "');");
         pqConnection.closeConnect();
         return ok;
     }
 
-    public boolean delete(String idQuyen)  {
+    public boolean removeData(String idQuyen)  {
         pqConnection = new ConnectSQL();
-        boolean ok = pqConnection.sqlUpdate("DELETE FROM `PHANQUYEN` WHERE `PHANQUYEN`.`IdQuyen` = '" + idQuyen + "'");
+        boolean ok = pqConnection.sqlUpdate("DELETE FROM PHANQUYEN WHERE IdQuyen = '" + idQuyen + "'");
         pqConnection.closeConnect();
         return ok;
     }
 
-    public boolean update(String idQuyen, String tenQuyenuyen, String chitietquyen)  {
+    public boolean updateData(PhanQuyen pq)  {
         pqConnection = new ConnectSQL();
-        boolean ok = pqConnection.sqlUpdate("Update PHANQUYEN Set "
-                + "TenQuyenuyen='" + tenQuyenuyen
-                + "' where IdQuyen='" + idQuyen + "';");
+        boolean ok = pqConnection.sqlUpdate("UPDATE PHANQUYEN SET "
+                + "TenQuyenuyen='" + pq.getTenQuyen()
+                + "' WHERE IdQuyen='" + pq.getIdQuyen() + "';");
         pqConnection.closeConnect();
         return ok;
     }

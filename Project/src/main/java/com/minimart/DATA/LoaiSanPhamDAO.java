@@ -13,7 +13,7 @@ public class LoaiSanPhamDAO {
 
     }
 
-    public ArrayList<LoaiSanPham> readDB()  {
+    public ArrayList<LoaiSanPham> readData()  {
         qllspConnection = new ConnectSQL();
         ArrayList<LoaiSanPham> dslsp = new ArrayList<>();
         try {
@@ -21,10 +21,10 @@ public class LoaiSanPhamDAO {
             ResultSet r = qllspConnection.sqlQuery(qry);
             if (r != null) {
                 while (r.next()) {
-                    String idSanPham = r.getString(1);
-                    String tenSanPham = r.getString(2);
+                    String idLoaiSanPham = r.getString(1);
+                    String tenLoaiSanPham = r.getString(2);
 
-                    dslsp.add(new LoaiSanPham(idSanPham, tenSanPham));
+                    dslsp.add(new LoaiSanPham(idLoaiSanPham, tenLoaiSanPham));
                 }
             }
 
@@ -45,10 +45,10 @@ public class LoaiSanPhamDAO {
             ResultSet r = qllspConnection.sqlQuery(qry);
             if (r != null) {
                 while (r.next()) {
-                    String idSanPham = r.getString(1);
-                    String tenSanPham = r.getString(2);
+                    String idLoaiSanPham = r.getString(1);
+                    String tenLoaiSanPham = r.getString(2);
 
-                    dslsp.add(new LoaiSanPham(idSanPham, tenSanPham));
+                    dslsp.add(new LoaiSanPham(idLoaiSanPham, tenLoaiSanPham));
                 }
             }
 
@@ -61,30 +61,28 @@ public class LoaiSanPhamDAO {
         return dslsp;
     }
 
-    public boolean add(LoaiSanPham lsp)  {
+    public boolean addData(LoaiSanPham lsp)  {
         qllspConnection = new ConnectSQL();
-        boolean ok = qllspConnection.sqlUpdate("INSERT INTO `LOAISANPHAM` (`IdSanPham`, `TenSanPham`) VALUES ('"
-                + lsp.getIdLoaiSanPham() + "', '" + lsp.getTenSanPham() + "', '" + "');");
+        boolean ok = qllspConnection.sqlUpdate("INSERT INTO LOAISANPHAM (`IdLoaiSanPham`, `TenLoaiSanPham`) VALUES ('"
+                + lsp.getIdLoaiSanPham() + "', '" + lsp.getTenLoaiSanPham() + "', '" + "');");
         qllspConnection.closeConnect();
         return ok;
     }
 
-    public boolean delete(String idSanPham)  {
+    public boolean removeData(String idLoaiSanPham)  {
         qllspConnection = new ConnectSQL();
-        boolean ok = qllspConnection.sqlUpdate("DELETE FROM `LOAISANPHAM` WHERE `LOAISANPHAM`.`IdSanPham` = '" + idSanPham + "'");
+        boolean ok = qllspConnection.sqlUpdate("DELETE FROM LOAISANPHAM WHERE IdLoaiSanPham = '" + idLoaiSanPham + "'");
         qllspConnection.closeConnect();
         return ok;
     }
 
-    public boolean update(String idSanPham, String tenSanPham)  {
+    public boolean updateData(LoaiSanPham lsp)  {
         qllspConnection = new ConnectSQL();
-        boolean ok = qllspConnection.sqlUpdate("Update LOAISANPHAM Set TenSanPham='" + tenSanPham + "' where IdSanPham='" + idSanPham + "'");
+        boolean ok = qllspConnection.sqlUpdate("UPDATE LOAISANPHAM SET" +
+                " TenLoaiSanPham='" + lsp.getTenLoaiSanPham() +
+                "' WHERE IdLoaiSanPham='" + lsp.getIdLoaiSanPham() + "'");
         qllspConnection.closeConnect();
         return ok;
-    }
-    public boolean update(LoaiSanPham loaiSanPham)
-    {
-        return update(loaiSanPham.getIdLoaiSanPham(), loaiSanPham.getTenSanPham());
     }
 
     public void close() {
