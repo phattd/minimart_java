@@ -59,6 +59,21 @@ public class ChiTietKhuyenMaiBUS {
         }
         return false;
     }
+    public boolean removeAll(String idKhuyenMai)
+    {
+        if(chiTietKhuyenMaiDAO.removeAllData(idKhuyenMai))
+        {
+            for (int index=0;index<danhSachChiTietKhuyenMai.size();index++)
+            {
+                if (danhSachChiTietKhuyenMai.get(index).getIdKhuyenMai().equals(idKhuyenMai))
+                {
+                    danhSachChiTietKhuyenMai.remove(index);
+                }
+            }
+            return true;
+        }
+        return  false;
+    }
     public  boolean updateData(ChiTietKhuyenMai chiTietKhuyenMai)
     {
         if(chiTietKhuyenMaiDAO.updateData(chiTietKhuyenMai))
@@ -97,32 +112,6 @@ public class ChiTietKhuyenMaiBUS {
         {
             ChiTietKhuyenMai temp=input.get(index);
             if (temp.getIdKhuyenMai().toLowerCase().contains(idKhuyenMai.toLowerCase()))
-            {
-                result.add(temp);
-            }
-        }
-        return result;
-    }
-    public ArrayList<ChiTietKhuyenMai> searchByTenKhuyenMai (String tenKhuyenMai)
-    {
-        ArrayList<ChiTietKhuyenMai> result=new ArrayList<>();
-        for(int index=0;index<danhSachChiTietKhuyenMai.size();index++)
-        {
-            ChiTietKhuyenMai temp=danhSachChiTietKhuyenMai.get(index);
-            if (temp.getTenKhuyenMai().toLowerCase().contains(tenKhuyenMai.toLowerCase()))
-            {
-                result.add(temp);
-            }
-        }
-        return result;
-    }
-    public ArrayList<ChiTietKhuyenMai> searchByTenKhuyenMai (String tenKhuyenMai,ArrayList<ChiTietKhuyenMai> input)
-    {
-        ArrayList<ChiTietKhuyenMai> result=new ArrayList<>();
-        for(int index=0;index<input.size();index++)
-        {
-            ChiTietKhuyenMai temp=input.get(index);
-            if (temp.getTenKhuyenMai().toLowerCase().contains(tenKhuyenMai.toLowerCase()))
             {
                 result.add(temp);
             }

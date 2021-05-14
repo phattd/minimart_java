@@ -7,10 +7,10 @@ public class LoaiSanPham {
         idLoaiSanPham=null;
         tenLoaiSanPham=null;
     }
-    public LoaiSanPham(String idLoaiSanPham,String tenSanPham)
+    public LoaiSanPham(String idLoaiSanPham,String tenLoaiSanPham)
     {
         this.idLoaiSanPham=idLoaiSanPham;
-        this.tenLoaiSanPham=tenSanPham;
+        this.tenLoaiSanPham=tenLoaiSanPham;
     }
     public  LoaiSanPham(LoaiSanPham loaiSanPham)
     {
@@ -32,10 +32,10 @@ public class LoaiSanPham {
     public void setTenLoaiSanPham(String tenLoaiSanPham) {
         this.tenLoaiSanPham = tenLoaiSanPham;
     }
-    public void setLoaiSanPham(String idLoaiSanPham,String tenSanPham)
+    public void setLoaiSanPham(String idLoaiSanPham,String tenLoaiSanPham)
     {
         this.idLoaiSanPham=idLoaiSanPham;
-        this.tenLoaiSanPham=tenSanPham;
+        this.tenLoaiSanPham=tenLoaiSanPham;
     }
     public void setLoaiSanPham(LoaiSanPham loaiSanPham)
     {

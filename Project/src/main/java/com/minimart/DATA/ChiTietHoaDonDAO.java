@@ -9,9 +9,6 @@ import java.util.ArrayList;
 
 public class ChiTietHoaDonDAO {
     private ConnectSQL connectSQL;
-
-
-
     public ChiTietHoaDonDAO()
     {
 
@@ -49,7 +46,7 @@ public class ChiTietHoaDonDAO {
 
         connectSQL = new ConnectSQL();
 
-        boolean query = connectSQL.sqlUpdate("INSERT INTO CHITIETHOADON('IdHoaDon','IdSanPham','SoLuong','DonGia','IdKhuyenMai','ThanhTien','TienKhuyenMai') VALUES ('"
+        boolean query = connectSQL.sqlUpdate("INSERT INTO CHITIETHOADON(`IdHoaDon`,`IdSanPham`,`SoLuong`,`DonGia`,`IdKhuyenMai`,`ThanhTien`,`TienKhuyenMai`) VALUES ('"
                 + hoaDon.getIdHoaDon() + "','"
                 + hoaDon.getIdSanPham() + "',"
                 + hoaDon.getSoLuong() + ","

@@ -4,8 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import com.minimart.DTO.PhieuNhap;
+import com.minimart.Handing.HandingBUS;
 
 public class PhieuNhapDAO {
 
@@ -24,12 +26,11 @@ public class PhieuNhapDAO {
 
                 while (rs.next()) {
                     PhieuNhap pn = new PhieuNhap();
-
-                    pn.setIdPhieuNhap(rs.getString(1));
-                    pn.setIdNhaCungCap(rs.getString(2));
-                    pn.setIdNhanVien(rs.getString(3));
-                    pn.setNgayNhap(rs.getDate(4));
-                    pn.setTongTien(rs.getInt(5));
+                    pn.setIdPhieuNhap(rs.getString("IdPhieuNhap"));
+                    pn.setIdNhaCungCap(rs.getString("IdNhaCungCap"));
+                    pn.setIdNhanVien(rs.getString("IdNhanVien"));
+                    pn.setNgayNhap(rs.getTimestamp("NgayNhap"));
+                    pn.setTongTien(rs.getInt("TongTien"));
                     dspn.add(pn);
                 }
             }
@@ -43,11 +44,12 @@ public class PhieuNhapDAO {
 
     public boolean addData(PhieuNhap pn)  {
         connection = new ConnectSQL();
+        HandingBUS handingBUS = new HandingBUS();
         boolean ok = connection.sqlUpdate("INSERT INTO PHIEUNHAP (`IdPhieuNhap`, `IdNhaCungCap`, `IdNhanVien`, `NgayNhap`, `TongTien`) VALUES ('"
                 + pn.getIdPhieuNhap() + "','"
                 + pn.getIdNhaCungCap() + "','"
                 + pn.getIdNhanVien() + "','"
-                + pn.getNgayNhap() + "','"
+                + handingBUS.standardDate(new Date(pn.getNgayNhap().getTime())) + "','"
                 + pn.getTongTien() + "');");
         connection.closeConnect();
         return ok;
@@ -66,10 +68,11 @@ public class PhieuNhapDAO {
 
     public boolean updateData(PhieuNhap pn)  {
         connection = new ConnectSQL();
+        HandingBUS handingBUS = new HandingBUS();
         boolean ok = connection.sqlUpdate("UPDATE PHIEUNHAP SET "
                 + "IdNhaCungCap='" + pn.getIdNhaCungCap()
                 + "', IdNhanVien='" + pn.getIdNhanVien()
-                + "', NgayNhap='" + pn.getNgayNhap()
+                + "', NgayNhap='" + handingBUS.standardDate(new Date(pn.getNgayNhap().getTime()))
                 + "', TongTien='" + pn.getTongTien()
                 + "' WHERE IdPhieuNhap='" + pn.getIdPhieuNhap() + "';");
         connection.closeConnect();

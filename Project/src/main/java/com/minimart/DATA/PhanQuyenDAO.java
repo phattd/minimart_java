@@ -19,13 +19,13 @@ public class PhanQuyenDAO {
         ArrayList<PhanQuyen> dsq = new ArrayList<>();
         try {
             String qry = "SELECT * FROM PHANQUYEN";
-            ResultSet r = pqConnection.sqlQuery(qry);
-            if (r != null) {
-                while (r.next()) {
-                    String idQuyen = r.getString("IdQuyen");
-                    String tenQuyen = r.getString("TenQuyen");
-
-                    dsq.add(new PhanQuyen(idQuyen, tenQuyen));
+            ResultSet rs = pqConnection.sqlQuery(qry);
+            if(rs != null){
+                while(rs.next()){
+                    PhanQuyen pq = new PhanQuyen();
+                    pq.setIdQuyen(rs.getString("IdQuyen"));
+                    pq.setTenQuyen(rs.getString("TenQuyen"));
+                    dsq.add(pq);
                 }
             }
 
@@ -43,13 +43,13 @@ public class PhanQuyenDAO {
 
         try {
             String qry = "SELECT * FROM PHANQUYEN WHERE " + columnName + " LIKE '%" + value + "%'";
-            ResultSet r = pqConnection.sqlQuery(qry);
-            if (r != null) {
-                while (r.next()) {
-                    String idQuyen = r.getString("IdQuyen");
-                    String tenQuyen = r.getString("TenQuyenuyen");
-
-                    dsq.add(new PhanQuyen(idQuyen, tenQuyen));
+            ResultSet rs = pqConnection.sqlQuery(qry);
+            if(rs != null){
+                while(rs.next()){
+                    PhanQuyen pq = new PhanQuyen();
+                    pq.setIdQuyen(rs.getString("IdQuyen"));
+                    pq.setTenQuyen(rs.getString("TenQuyen"));
+                    dsq.add(pq);
                 }
             }
 
@@ -63,8 +63,9 @@ public class PhanQuyenDAO {
     }
 
     public boolean addData(PhanQuyen q)  {
+        System.out.println("FAdsfadfafasfasfasfas");
         pqConnection = new ConnectSQL();
-        boolean ok = pqConnection.sqlUpdate("INSERT INTO PHANQUYEN (`IdQuyen`, `TenQuyenuyen`) VALUES ('"
+        boolean ok = pqConnection.sqlUpdate("INSERT INTO PHANQUYEN (`IdQuyen`,`TenQuyen`) VALUES ('"
                 + q.getIdQuyen()+ "', '"
                 + q.getTenQuyen()+ "');");
         pqConnection.closeConnect();
@@ -81,7 +82,7 @@ public class PhanQuyenDAO {
     public boolean updateData(PhanQuyen pq)  {
         pqConnection = new ConnectSQL();
         boolean ok = pqConnection.sqlUpdate("UPDATE PHANQUYEN SET "
-                + "TenQuyenuyen='" + pq.getTenQuyen()
+                + "TenQuyen='" + pq.getTenQuyen()
                 + "' WHERE IdQuyen='" + pq.getIdQuyen() + "';");
         pqConnection.closeConnect();
         return ok;

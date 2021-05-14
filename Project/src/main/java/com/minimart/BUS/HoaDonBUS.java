@@ -99,6 +99,7 @@ public class HoaDonBUS {
         ArrayList<HoaDon> result=new ArrayList<>();
         for (int index=0;index<danhSachHoaDon.size();index++)
         {
+            HandingBUS handingBUS = new HandingBUS();
             HoaDon temp =danhSachHoaDon.get(index);
             if (temp.getIdHoaDon().toLowerCase().contains(idHoaDon.toLowerCase()))
             {
@@ -205,13 +206,13 @@ public class HoaDonBUS {
         return result;
     }
 
-    public ArrayList<HoaDon> searchByNgayLapHoaDon(Date startValue, Date endValue)
+    public ArrayList<HoaDon> searchByNgayLapHoaDon(Timestamp startValue, Timestamp endValue)
     {
         ArrayList<HoaDon> result=new ArrayList<>();
         for(int index=0;index<danhSachHoaDon.size();index++)
         {
             HoaDon temp=danhSachHoaDon.get(index);
-            Date timeTemp=temp.getNgayLapHoaDon();
+            Timestamp timeTemp=temp.getNgayLapHoaDon();
             if ( (timeTemp.equals(startValue) || timeTemp.after(startValue)) &&
                     (timeTemp.equals(endValue) || timeTemp.before(endValue)) )
             {
@@ -220,13 +221,13 @@ public class HoaDonBUS {
         }
         return result;
     }
-    public ArrayList<HoaDon> searchByTongTien(Date startValue, Date endValue,ArrayList<HoaDon> input)
+    public ArrayList<HoaDon> searchByTongTien(Timestamp startValue, Timestamp endValue,ArrayList<HoaDon> input)
     {
         ArrayList<HoaDon> result=new ArrayList<>();
         for(int index=0;index<input.size();index++)
         {
             HoaDon temp=input.get(index);
-            Date timeTemp=temp.getNgayLapHoaDon();
+            Timestamp timeTemp=temp.getNgayLapHoaDon();
             if ((timeTemp.equals(startValue) || timeTemp.after(startValue)) &&
                     (timeTemp.equals(endValue) || timeTemp.before(endValue)))
             {
@@ -235,8 +236,6 @@ public class HoaDonBUS {
         }
         return result;
     }
-
-
 
 
 }

@@ -1,10 +1,10 @@
 package com.minimart.DTO;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class HoaDon {
     private String idHoaDon;
-    private Date ngayLapHoaDon;
+    private Timestamp ngayLapHoaDon;
     private String idNhanVien;
     private int tongTien;
     private int tienKhachDua;
@@ -25,7 +25,7 @@ public class HoaDon {
         this.idKhachHang=null;
     }
 
-    public HoaDon(String idHoaDon, Date ngayLapHoaDon, String idNhanVien, int tongTien, int tienKhachDua, int tongTienKhuyenMai, int tienConLai, int tienThua, String idKhachHang)
+    public HoaDon(String idHoaDon, Timestamp ngayLapHoaDon, String idNhanVien, int tongTien, int tienKhachDua, int tongTienKhuyenMai, int tienConLai, int tienThua, String idKhachHang)
     {
         this.idHoaDon=idHoaDon;
         this.ngayLapHoaDon=ngayLapHoaDon;
@@ -41,7 +41,7 @@ public class HoaDon {
         return idHoaDon;
     }
 
-    public Date getNgayLapHoaDon() {
+    public Timestamp getNgayLapHoaDon() {
         return ngayLapHoaDon;
     }
 
@@ -102,14 +102,14 @@ public class HoaDon {
         this.idNhanVien = idNhanVien;
     }
 
-    public void setNgayLapHoaDon(Date ngayLapHoaDon) {
+    public void setNgayLapHoaDon(Timestamp ngayLapHoaDon) {
         this.ngayLapHoaDon = ngayLapHoaDon;
     }
 
     public void setTongTien(int tongTien) {
         this.tongTien = tongTien;
     }
-    public void setHoaDon(String idHoaDon, Date ngayLapHoaDon, String idNhanVien, int tongTien, int tienKhachDua, int tongTienKhuyenMai, int tienConLai, int tienThua, String idKhachHang)
+    public void setHoaDon(String idHoaDon, Timestamp ngayLapHoaDon, String idNhanVien, int tongTien, int tienKhachDua, int tongTienKhuyenMai, int tienConLai, int tienThua, String idKhachHang)
     {
         this.idHoaDon=idHoaDon;
         this.ngayLapHoaDon=ngayLapHoaDon;
@@ -146,4 +146,5 @@ public class HoaDon {
     {
         return new String[] {"Id Hóa Đơn","Ngày Lập Hóa Đơn","Id Nhân Viên","Tổng Tiền","Tiền Khách Đưa","Tổng Tiền Khuyến Mãi","Tiền Còn Lại","Tiền Thừa","ID Khách Hàng"};
     }
+
 }

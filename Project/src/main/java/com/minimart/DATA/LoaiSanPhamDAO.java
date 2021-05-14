@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
+import com.minimart.DTO.ChiTietKhuyenMai;
 import com.minimart.DTO.LoaiSanPham;
 public class LoaiSanPhamDAO {
 
@@ -18,13 +20,13 @@ public class LoaiSanPhamDAO {
         ArrayList<LoaiSanPham> dslsp = new ArrayList<>();
         try {
             String qry = "SELECT * FROM LOAISANPHAM";
-            ResultSet r = qllspConnection.sqlQuery(qry);
-            if (r != null) {
-                while (r.next()) {
-                    String idLoaiSanPham = r.getString(1);
-                    String tenLoaiSanPham = r.getString(2);
-
-                    dslsp.add(new LoaiSanPham(idLoaiSanPham, tenLoaiSanPham));
+            ResultSet rs = qllspConnection.sqlQuery(qry);
+            if (rs != null) {
+                while (rs.next()) {
+                    LoaiSanPham loaiSanPham = new LoaiSanPham(
+                            rs.getString("IdLoaiSanPham"),
+                            rs.getString("TenLoaiSanPham"));
+                    dslsp.add(loaiSanPham);
                 }
             }
 
@@ -42,13 +44,13 @@ public class LoaiSanPhamDAO {
 
         try {
             String qry = "SELECT * FROM LOAISANPHAM WHERE " + columnName + " LIKE '%" + value + "%'";
-            ResultSet r = qllspConnection.sqlQuery(qry);
-            if (r != null) {
-                while (r.next()) {
-                    String idLoaiSanPham = r.getString(1);
-                    String tenLoaiSanPham = r.getString(2);
-
-                    dslsp.add(new LoaiSanPham(idLoaiSanPham, tenLoaiSanPham));
+            ResultSet rs = qllspConnection.sqlQuery(qry);
+            if (rs != null) {
+                while (rs.next()) {
+                    LoaiSanPham loaiSanPham = new LoaiSanPham(
+                            rs.getString("IdLoaiSanPham"),
+                            rs.getString("TenLoaiSanPham"));
+                    dslsp.add(loaiSanPham);
                 }
             }
 
@@ -64,7 +66,7 @@ public class LoaiSanPhamDAO {
     public boolean addData(LoaiSanPham lsp)  {
         qllspConnection = new ConnectSQL();
         boolean ok = qllspConnection.sqlUpdate("INSERT INTO LOAISANPHAM (`IdLoaiSanPham`, `TenLoaiSanPham`) VALUES ('"
-                + lsp.getIdLoaiSanPham() + "', '" + lsp.getTenLoaiSanPham() + "', '" + "');");
+                + lsp.getIdLoaiSanPham() + "','" + lsp.getTenLoaiSanPham() + "');");
         qllspConnection.closeConnect();
         return ok;
     }

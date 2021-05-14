@@ -41,7 +41,7 @@ public class ChucVuDAO {
     public boolean addData(ChucVu chucVu)
     {
         connectSQL = new ConnectSQL();
-        boolean executeSqlCommand=connectSQL.sqlUpdate("INSERT INTO CHUCVU('IdChucVu','TenChucVu') " +
+        boolean executeSqlCommand=connectSQL.sqlUpdate("INSERT INTO CHUCVU(`IdChucVu`,`TenChucVu`) " +
                 "VALUES ('"+chucVu.getIdChucVu() +
                 "','" + chucVu.getTenChucVu()+"')");
         connectSQL.closeConnect();
@@ -50,7 +50,7 @@ public class ChucVuDAO {
     public boolean removeData(String idChucVu)
     {
         connectSQL = new ConnectSQL();
-        boolean executeSqlCommand = connectSQL.sqlUpdate("DELETE FROM CHUCVU WHERE IdChucVU='"+idChucVu+"' ");
+        boolean executeSqlCommand = connectSQL.sqlUpdate("DELETE FROM CHUCVU WHERE IdChucVu='"+idChucVu+"';");
         connectSQL.closeConnect();
         return executeSqlCommand;
     }
@@ -60,9 +60,9 @@ public class ChucVuDAO {
 
         connectSQL = new ConnectSQL();
 
-        boolean executeSqlCommand = connectSQL.sqlUpdate("UPDATE CHUCVU SET" +
-                "TenChucVu='" + chucVu.getTenChucVu() +
-                "' WHERE IdChucVU='"+chucVu.getIdChucVu()+"';");
+        boolean executeSqlCommand = connectSQL.sqlUpdate("UPDATE CHUCVU SET " +
+                "TenChucVu='" + chucVu.getTenChucVu() + "' " +
+                "WHERE IdChucVu='"+ chucVu.getIdChucVu() + "';");
         connectSQL.closeConnect();
 
         return executeSqlCommand;

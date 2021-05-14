@@ -77,7 +77,7 @@ public class ChiTietHoaDonBUS {
         }
         return  false;
     }
-    public boolean updateDada(ChiTietHoaDon chiTietHoaDon)
+    public boolean updateData(ChiTietHoaDon chiTietHoaDon)
     {
         if(chiTietHoaDonDAO.updateData(chiTietHoaDon))
         {

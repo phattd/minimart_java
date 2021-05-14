@@ -4,6 +4,7 @@ import com.minimart.DATA.DotKhuyenMaiDAO;
 import com.minimart.DTO.DotKhuyenMai;
 import com.minimart.Handing.HandingBUS;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -147,7 +148,7 @@ public class DotKhuyenMaiBUS {
         for (int index = 0; index< danhSachDotKhuyenMai.size(); index++)
         {
             DotKhuyenMai temp= danhSachDotKhuyenMai.get(index);
-            Date current=new Date();
+            Timestamp current=new Timestamp(new Date().getTime());
             if (temp.getNgayKetThuc().after(current))
             {
                 result.add(temp);

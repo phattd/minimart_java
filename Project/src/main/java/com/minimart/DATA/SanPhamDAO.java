@@ -55,9 +55,10 @@ public class SanPhamDAO {
                     String idLoaiSanPham = r.getString("IdLoaiSanPham");
                     String tenSanPham = r.getString("TenSanPham");
                     int donGia = r.getInt("DonGia");
+                    String donViTinh = r.getString("DonViTinh");
                     int soLuong = r.getInt("SoLuong");
                     String hinhAnh  = r.getString("HinhAnh");
-                    dssp.add(new SanPham(idSanPham, idLoaiSanPham, tenSanPham, donGia, soLuong, hinhAnh));
+                    dssp.add(new SanPham(idSanPham, idLoaiSanPham, tenSanPham, donGia, donViTinh, soLuong, hinhAnh));
                 }
             }
 
@@ -93,14 +94,14 @@ public class SanPhamDAO {
 
     public boolean updateData(SanPham sp)  {
         sanPhamConnection = new ConnectSQL();
-        boolean ok = sanPhamConnection.sqlUpdate("UPDATE SAPHAM SET "
+        boolean ok = sanPhamConnection.sqlUpdate("UPDATE SAnPHAM SET "
                 + "IdLoaiSanPham='" + sp.getIdLoaiSanPham()
                 + "',TenSanPham='" + sp.getTenSanPham()
                 + "',DonGia='" + sp.getDonGia()
                 + "',DonViTinh='" + sp.getDonViTinh()
                 + "',SoLuong='" + sp.getSoLuong()
                 + "',HinhAnh='" + sp.getHinhAnh()
-                + "' where IdSanPham='" + sp.getIdSanPham() + "'");
+                + "' WHERE IdSanPham='" + sp.getIdSanPham() + "'");
         sanPhamConnection.closeConnect();
         return ok;
     }

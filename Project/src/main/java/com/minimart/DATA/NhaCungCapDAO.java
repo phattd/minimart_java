@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+
+import com.minimart.DTO.ChiTietKhuyenMai;
 import com.minimart.DTO.NhaCungCap;
 
 public class NhaCungCapDAO {
@@ -18,15 +20,17 @@ public class NhaCungCapDAO {
         qlnccConnection = new ConnectSQL();
         try {
             String qry = "SELECT * FROM NHACUNGCAP";
-            ResultSet r = qlnccConnection.sqlQuery(qry);
-            if (r != null) {
-                while (r.next()) {
-                    String idNhaCungCap = r.getString(1);
-                    String tenNhaCungCap = r.getString(2);
-                    String soDienThoaiNCC = r.getString(3);
-                    String diaChiNCC = r.getString(4);
-
-                    dsncc.add(new NhaCungCap(idNhaCungCap, tenNhaCungCap, soDienThoaiNCC, diaChiNCC));
+            ResultSet rs=qlnccConnection.sqlQuery(qry);
+            if(rs!=null)
+            {
+                while (rs.next())
+                {
+                    NhaCungCap nhaCungCap=new NhaCungCap(
+                            rs.getString("IdNhaCungCap"),
+                            rs.getString("TenNhaCungCap"),
+                            rs.getString("SoDienThoaiNCC"),
+                            rs.getString("DiaChiNCC"));
+                    dsncc.add(nhaCungCap);
                 }
             }
         } catch (SQLException ex) {
@@ -43,14 +47,17 @@ public class NhaCungCapDAO {
 
         try {
             String qry = "SELECT * FROM SANPHAM WHERE " + columnName + " LIKE '%" + value + "%'";
-            ResultSet r = qlnccConnection.sqlQuery(qry);
-            if (r != null) {
-                while (r.next()) {
-                    String idNhaCungCapncc = r.getString(1);
-                    String tenNhaCungCapncc = r.getString(2);
-                    String soDienThoaiNCC = r.getString(3);
-                    String diaChiNCC = r.getString(4);
-                    dsncc.add(new NhaCungCap(idNhaCungCapncc, tenNhaCungCapncc, soDienThoaiNCC, diaChiNCC));
+            ResultSet rs=qlnccConnection.sqlQuery(qry);
+            if(rs!=null)
+            {
+                while (rs.next())
+                {
+                    NhaCungCap nhaCungCap=new NhaCungCap(
+                            rs.getString("IdNhaCungCap"),
+                            rs.getString("TenNhaCungCap"),
+                            rs.getString("SoDienThoaiNCC"),
+                            rs.getString("DiaChiNCC"));
+                    dsncc.add(nhaCungCap);
                 }
             }
 
@@ -65,7 +72,7 @@ public class NhaCungCapDAO {
 
     public boolean addData(NhaCungCap ncc)  {
         qlnccConnection = new ConnectSQL();
-        boolean ok = qlnccConnection.sqlUpdate("INSERT INTO NHACUNGCAP (`IdNhaCungCapNCC`, `TenNhaCungCapNCC`, `SoDienThoaiNCC`,`DiaChiNCC`) VALUES ('"
+        boolean ok = qlnccConnection.sqlUpdate("INSERT INTO NHACUNGCAP (`IdNhaCungCap`, `TenNhaCungCap`, `SoDienThoaiNCC`,`DiaChiNCC`) VALUES ('"
                 + ncc.getIdNhaCungCap() + "', '"
                 + ncc.getTenNhaCungCap() + "', '"
                 + ncc.getSoDienThoaiNCC() + "','"
@@ -74,9 +81,9 @@ public class NhaCungCapDAO {
         return ok;
     }
 
-    public boolean removeData(String idNhaCungCapncc)  {
+    public boolean removeData(String idNhaCungCap)  {
         qlnccConnection = new ConnectSQL();
-        boolean ok = qlnccConnection.sqlUpdate("DELETE FROM NHACUNGCAP WHERE IdNhaCungCapNCC = '" + idNhaCungCapncc + "'");
+        boolean ok = qlnccConnection.sqlUpdate("DELETE FROM NHACUNGCAP WHERE IdNhaCungCap = '" + idNhaCungCap + "'");
         qlnccConnection.closeConnect();
         return ok;
     }
@@ -84,10 +91,10 @@ public class NhaCungCapDAO {
     public boolean updateData(NhaCungCap ncc)  {
         qlnccConnection = new ConnectSQL();
         boolean ok = qlnccConnection.sqlUpdate("UPDATE NHACUNGCAP SET "
-                + "TenNhaCungCapNCC='" + ncc.getTenNhaCungCap()
+                + "TenNhaCungCap='" + ncc.getTenNhaCungCap()
                 + "',SoDienThoaiNCC='" + ncc.getSoDienThoaiNCC()
                 + "',DiaChiNCC='" + ncc.getDiaChiNCC()
-                + "' WHERE IdNhaCungCapNCC='" + ncc.getIdNhaCungCap() + "'");
+                + "' WHERE IdNhaCungCap='" + ncc.getIdNhaCungCap() + "'");
         qlnccConnection.closeConnect();
         return ok;
     }

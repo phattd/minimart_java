@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import com.minimart.DTO.NhaCungCap;
 import com.minimart.DTO.NhanVien;
+import com.minimart.Handing.HandingBUS;
 
 public class NhanVienDAO {
 
@@ -26,17 +27,18 @@ public class NhanVienDAO {
             ResultSet r = qlnvConnection.sqlQuery(qry);
             if (r != null) {
                 while (r.next()) {
-                    String idNhanVien = r.getString("IdNhanVien");
-                    String ho = r.getString("Ho");
-                    String ten = r.getString("Ten");
-                    String diaChi = r.getString("DiaChi");
-                    Date ngaySinh = r.getDate("NgaySinh");
-                    String SoDienThoai = r.getString("SoDienThoai");
-                    String password = r.getString("Password");
-                    int luong = r.getInt("Luong");
-                    String idChucVu = r.getString("IdchucVu");
-                    String hinhAnh = r.getString("HinhAnh");
-                    dsnv.add(new NhanVien(idNhanVien, ho, ten, diaChi, ngaySinh, SoDienThoai, password, luong, idChucVu, hinhAnh));
+                   NhanVien nv = new NhanVien();
+                   nv.setIdNhanVien(r.getString("IdNhanVien"));
+                   nv.setHo(r.getString("Ho"));
+                   nv.setTen(r.getString("Ten"));
+                   nv.setDiaChi(r.getString("DiaChi"));
+                   nv.setNgaySinh(r.getTimestamp("Ngaysinh"));
+                   nv.setSoDienThoai(r.getString("SoDienThoai"));
+                   nv.setPassword(r.getString("Password"));
+                   nv.setLuong(r.getInt("Luong"));
+                   nv.setIdChucVu(r.getString("IdChucVu"));
+                   nv.setHinhAnh(r.getString("HinhAnh"));
+                   dsnv.add(nv);
                 }
             }
 
@@ -57,17 +59,18 @@ public class NhanVienDAO {
             ResultSet r = qlnvConnection.sqlQuery(qry);
             if (r != null) {
                 while (r.next()) {
-                    String idNhanVien = r.getString("IdNhanVien");
-                    String ho = r.getString("Ho");
-                    String ten = r.getString("Ten");
-                    String diaChi = r.getString("DiaChi");
-                    Date ngaySinh = r.getDate("NgaySinh");
-                    String SoDienThoai = r.getString("SoDienThoai");
-                    String password = r.getString("Password");
-                    int luong = r.getInt("Luong");
-                    String idChucVu = r.getString("IdchucVu");
-                    String hinhAnh = r.getString("HinhAnh");
-                    dsnv.add(new NhanVien(idNhanVien, ho, ten, diaChi, ngaySinh, SoDienThoai, password, luong, idChucVu, hinhAnh));
+                    NhanVien nv = new NhanVien();
+                    nv.setIdNhanVien(r.getString("IdNhanVien"));
+                    nv.setHo(r.getString("Ho"));
+                    nv.setTen(r.getString("Ten"));
+                    nv.setDiaChi(r.getString("DiaChi"));
+                    nv.setNgaySinh(r.getTimestamp("Ngaysinh"));
+                    nv.setSoDienThoai(r.getString("SoDienThoai"));
+                    nv.setPassword(r.getString("Password"));
+                    nv.setLuong(r.getInt("Luong"));
+                    nv.setIdChucVu(r.getString("IdChucVu"));
+                    nv.setHinhAnh(r.getString("HinhAnh"));
+                    dsnv.add(nv);
                 }
             }
 
@@ -82,13 +85,15 @@ public class NhanVienDAO {
 
     public boolean addData(NhanVien nv)  {
         qlnvConnection = new ConnectSQL();
-        boolean ok = qlnvConnection.sqlUpdate("INSERT INTO NHANVIEN (`IdNhanVien`, 'Ho', `Ten`, 'DiaChi', `NgaySinh`, `SoDienThoai`, `Luong`, 'IdChucVu', 'HinhAnh') VALUES ('"
+        HandingBUS handingBUS = new HandingBUS();
+        boolean ok = qlnvConnection.sqlUpdate("INSERT INTO NHANVIEN (`IdNhanVien`, `Ho`, `Ten`, `DiaChi`, `NgaySinh`, `SoDienThoai`,`Password`, `Luong`, `IdChucVu`, `HinhAnh`) VALUES ('"
                 + nv.getIdNhanVien() + "', '"
                 + nv.getHo() + "', '"
                 + nv.getTen() + "', '"
                 + nv.getDiaChi() + "', '"
-                + nv.getNgaySinh() + "', '"
+                + handingBUS.standardDate(new Date(nv.getNgaySinh().getTime())) + "', '"
                 + nv.getSoDienThoai() + "', '"
+                + nv.getPassword() + "', '"
                 + nv.getLuong() + "', '"
                 + nv.getIdChucVu() + "', '"
                 + nv.getHinhAnh() + "');");
@@ -104,12 +109,14 @@ public class NhanVienDAO {
 
     public boolean updateData(NhanVien nv)  {
         qlnvConnection = new ConnectSQL();
+        HandingBUS handingBUS = new HandingBUS();
         boolean ok = qlnvConnection.sqlUpdate("UPDATE NHANVIEN SET "
                 + "Ho='" + nv.getHo()
-                + "Ten='" + nv.getTen()
+                + "',Ten='" + nv.getTen()
                 + "',DiaChi='" + nv.getDiaChi()
-                + "',NgaySinh='" + nv.getNgaySinh()
+                + "',NgaySinh='" + handingBUS.standardDate(new Date(nv.getNgaySinh().getTime()))
                 + "',SoDienThoai='" + nv.getSoDienThoai()
+                + "',Password='" + nv.getPassword()
                 + "',Luong='" + nv.getLuong()
                 + "',IdChucVu='" + nv.getIdChucVu()
                 + "',HinhAnh='" + nv.getHinhAnh()

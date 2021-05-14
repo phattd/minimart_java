@@ -62,7 +62,7 @@ public class SanPhamBUS {
         }
         return  false;
     }
-    public boolean updateDada(SanPham SanPham)
+    public boolean updateData(SanPham SanPham)
     {
         if(SanPhamDAO.updateData(SanPham))
         {

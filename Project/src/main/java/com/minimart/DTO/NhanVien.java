@@ -1,14 +1,13 @@
 package com.minimart.DTO;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class NhanVien {
     private String idNhanVien;
     private String ho;
     private String  ten;
     private String diaChi;
-    private Date ngaySinh;
+    private Timestamp ngaySinh;
     private String soDienThoai;
     private String password;
     private int luong;
@@ -28,7 +27,7 @@ public class NhanVien {
         this.idChucVu=null;
         this.hinhAnh=null;
     }
-    public NhanVien(String idNhanVien, String ho, String ten, String diaChi, Date ngaySinh, String soDienThoai, String password, int luong, String idChucVu,String hinhAnh)
+    public NhanVien(String idNhanVien, String ho, String ten, String diaChi, Timestamp ngaySinh, String soDienThoai, String password, int luong, String idChucVu,String hinhAnh)
     {
         this.idNhanVien=idNhanVien;
         this.ho=ho;
@@ -81,7 +80,7 @@ public class NhanVien {
         return idChucVu;
     }
 
-    public Date getNgaySinh() {
+    public Timestamp getNgaySinh() {
         return ngaySinh;
     }
 
@@ -113,14 +112,14 @@ public class NhanVien {
         this.luong = luong;
     }
 
-    public void setNgaySinh(Date ngaySinh) {
+    public void setNgaySinh(Timestamp ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 
     public void setIdChucVu(String idChucVu) {
         this.idChucVu = idChucVu;
     }
-    public  void setNhanVien(String idNhanVien, String ho, String ten, String diaChi, Date ngaySinh, String soDienThoai, String password, int luong, String idChucVu, String hinhAnh)
+    public  void setNhanVien(String idNhanVien, String ho, String ten, String diaChi, Timestamp ngaySinh, String soDienThoai, String password, int luong, String idChucVu, String hinhAnh)
     {
         this.idNhanVien=idNhanVien;
         this.ho=ho;

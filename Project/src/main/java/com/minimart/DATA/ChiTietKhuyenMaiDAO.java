@@ -25,7 +25,6 @@ public class ChiTietKhuyenMaiDAO {
                 {
                     ChiTietKhuyenMai chiTietKhuyenMai=new ChiTietKhuyenMai(
                             rs.getString("IdKhuyenMai"),
-                            rs.getString("TenKhuyenMai"),
                             rs.getByte("PhanTramKhuyenMai"),
                             rs.getString("NoiDungKhuyenMai"),
                             rs.getString("IdSanPham"));
@@ -45,9 +44,8 @@ public class ChiTietKhuyenMaiDAO {
 
         connectSQL = new ConnectSQL();
 
-        String query="INSERT INTO CHITIETKHUYENMAI('IdKhuyenMai','TenKhuyenMai','PhanTramKhuyenMai','NoiDungKhuyenMai','IdSanPham') " +
+        String query="INSERT INTO CHITIETKHUYENMAI(`IdKhuyenMai`,`PhanTramKhuyenMai`,`NoiDungKhuyenMai`,`IdSanPham`) " +
                 "VALUES ('"+chiTietKhuyenMai.getIdKhuyenMai()+
-                "','" + chiTietKhuyenMai.getTenKhuyenMai() +
                 "'," + chiTietKhuyenMai.getPhanTramKhuyenMai() +
                 ",'" + chiTietKhuyenMai.getNoiDungKhuyenMai() +
                 "','" + chiTietKhuyenMai.getIdSanPham() + "');";
@@ -64,17 +62,24 @@ public class ChiTietKhuyenMaiDAO {
         connectSQL.closeConnect();
         return  executeCommandSQL;
     }
+    public boolean removeAllData(String idKhuyenMai) {
+
+        connectSQL = new ConnectSQL();
+
+        boolean query = connectSQL.sqlUpdate("DELETE FROM CHITIETKHUYENMAI WHERE IdKhuyenMai='" + idKhuyenMai + "';");
+        connectSQL.closeConnect();
+        return query;
+    }
     public boolean updateData(ChiTietKhuyenMai chiTietKhuyenMai)
     {
 
         connectSQL = new ConnectSQL();
 
         boolean executeCommandSQL=connectSQL.sqlUpdate("UPDATE CHITIETKHUYENMAI SET " +
-                " TenKhuyenMai='" + chiTietKhuyenMai.getTenKhuyenMai() +
-                "',PhanTramKhuyenMai=" + chiTietKhuyenMai.getPhanTramKhuyenMai() +
+                "PhanTramKhuyenMai=" + chiTietKhuyenMai.getPhanTramKhuyenMai() +
                 ",NoiDungKhuyenMai='" + chiTietKhuyenMai.getNoiDungKhuyenMai() + "' " +
                 "WHERE IdKhuyenMai='" + chiTietKhuyenMai.getIdKhuyenMai() +
-                "' AND IdSanPham='" + chiTietKhuyenMai.getIdSanPham() + "';");
+                "'AND IdSanPham='" + chiTietKhuyenMai.getIdSanPham() + "';");
         connectSQL.closeConnect();
         return executeCommandSQL;
     }

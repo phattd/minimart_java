@@ -46,4 +46,12 @@ public class PhanQuyen {
     {
         return this;
     }
+    public  Object[] toArray()
+    {
+        return new Object[] {idQuyen,tenQuyen};
+    }
+    public static String[] getHeader()
+    {
+        return new String[] {"Id Quyền","Tên Quyền"};
+    }
 }

@@ -59,6 +59,21 @@ public class KhuyenMaiBUS {
         }
         return false;
     }
+    public boolean removeAll(String idDotKhuyenMai)
+    {
+        if(khuyenMaiDAO.removeAllData(idDotKhuyenMai))
+        {
+            for (int index=0;index<danhSachKhuyenMai.size();index++)
+            {
+                if (danhSachKhuyenMai.get(index).getIdKhuyenMai().equals(idDotKhuyenMai))
+                {
+                    danhSachKhuyenMai.remove(index);
+                }
+            }
+            return true;
+        }
+        return  false;
+    }
     public boolean updateData(KhuyenMai khuyenMai)
     {
         if (khuyenMaiDAO.updateData(khuyenMai))

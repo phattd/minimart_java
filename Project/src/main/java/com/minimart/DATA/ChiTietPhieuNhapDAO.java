@@ -48,12 +48,12 @@ public class ChiTietPhieuNhapDAO {
 
         connectSQL = new ConnectSQL();
 
-        boolean executeSQL = connectSQL.sqlUpdate("INSERT INTO CHITIETPHIEUNHAP('IdPhieuNhap','IdSanPham','SoLuong','DonGia','ThanhTien')" +
+        boolean executeSQL = connectSQL.sqlUpdate("INSERT INTO CHITIETPHIEUNHAP(`IdPhieuNhap`,`IdSanPham`,`SoLuong`,`DonGia`,`ThanhTien`)" +
                 " VALUES ('"+chiTietPhieuNhap.getIdPhieuNhap()+"','"
-                + chiTietPhieuNhap.getIdSanPham() + "',"
-                + chiTietPhieuNhap.getSoLuong() + ","
-                + chiTietPhieuNhap.getDonGia() + ","
-                + chiTietPhieuNhap.getThanhTien() + ",);");
+                + chiTietPhieuNhap.getIdSanPham() + "','"
+                + chiTietPhieuNhap.getSoLuong() + "','"
+                + chiTietPhieuNhap.getDonGia() + "','"
+                + chiTietPhieuNhap.getThanhTien() + "');");
         connectSQL.closeConnect();
         return executeSQL;
     }
@@ -82,7 +82,7 @@ public class ChiTietPhieuNhapDAO {
 
         connectSQL = new ConnectSQL();
 
-        boolean executeSQLCommand=connectSQL.sqlUpdate("UPDATE ChiTietHoaDon SET " +
+        boolean executeSQLCommand=connectSQL.sqlUpdate("UPDATE CHITIETPHIEUNHAP SET " +
                 " SoLuong='" + chiTietPhieuNhap.getSoLuong() +
                 "', DonGia='" + chiTietPhieuNhap.getDonGia() +
                 "', ThanhTien='" + chiTietPhieuNhap.getThanhTien() + "'" +

@@ -2,25 +2,28 @@ package com.minimart.DTO;
 
 public class KhuyenMai {
     private String idKhuyenMai;
+    private String tenKhuyenMai;
     private  String idDotKhuyenMai;
     private String moTaKhuyenMai;
 
     public KhuyenMai()
     {
-        idDotKhuyenMai=null;
         idKhuyenMai=null;
+        tenKhuyenMai = null;
+        idDotKhuyenMai=null;
         moTaKhuyenMai=null;
     }
-    public KhuyenMai(String idDotKhuyenMai,String idKhuyenMai,String moTaKhuyenMai)
+    public KhuyenMai(String idKhuyenMai,String tenKhuyenMai, String idDotKhuyenMai,String moTaKhuyenMai)
     {
-        this.idDotKhuyenMai=idDotKhuyenMai;
         this.idKhuyenMai=idKhuyenMai;
+        this.tenKhuyenMai = tenKhuyenMai;
+        this.idDotKhuyenMai=idDotKhuyenMai;
         this.moTaKhuyenMai=moTaKhuyenMai;
     }
 
     public  KhuyenMai(KhuyenMai khuyenMai)
     {
-        this(khuyenMai.idDotKhuyenMai, khuyenMai.idKhuyenMai, khuyenMai.moTaKhuyenMai);
+        this(khuyenMai.idKhuyenMai,khuyenMai.tenKhuyenMai, khuyenMai.idDotKhuyenMai, khuyenMai.moTaKhuyenMai);
     }
 
     public void setIdDotKhuyenMai(String idDotKhuyenMai) {
@@ -35,6 +38,10 @@ public class KhuyenMai {
         this.moTaKhuyenMai = moTaKhuyenMai;
     }
 
+    public void setTenKhuyenMai(String tenKhuyenMai) {
+        this.tenKhuyenMai = tenKhuyenMai;
+    }
+
     public String getIdDotKhuyenMai() {
         return idDotKhuyenMai;
     }
@@ -46,10 +53,16 @@ public class KhuyenMai {
     public String getMoTaKhuyenMai() {
         return moTaKhuyenMai;
     }
-    public void setKhuyenMai(String idDotKhuyenMai,String idKhuyenMai,String moTaKhuyenMai)
+
+    public String getTenKhuyenMai() {
+        return tenKhuyenMai;
+    }
+
+    public void setKhuyenMai(String idKhuyenMai,String tenKhuyenMai, String idDotKhuyenMai, String moTaKhuyenMai)
     {
-        this.idDotKhuyenMai=idDotKhuyenMai;
         this.idKhuyenMai=idKhuyenMai;
+        this.tenKhuyenMai = tenKhuyenMai;
+        this.idDotKhuyenMai=idDotKhuyenMai;
         this.moTaKhuyenMai=moTaKhuyenMai;
     }
     public KhuyenMai getKhuyenMai()
@@ -57,21 +70,12 @@ public class KhuyenMai {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return "KhuyenMai{" +
-                "idDotKhuyenMai='" + idDotKhuyenMai + '\'' +
-                ", idKhuyenMai='" + idKhuyenMai + '\'' +
-                ", moTaKhuyenMai='" + moTaKhuyenMai + '\'' +
-                '}';
-    }
-
     public Object[] toArray()
     {
-        return new Object[] {idDotKhuyenMai,idKhuyenMai,moTaKhuyenMai};
+        return new Object[] {idKhuyenMai,tenKhuyenMai,idDotKhuyenMai,moTaKhuyenMai};
     }
     public static String[] getHeader()
     {
-        return new String[] {"Id Đơtk Khuyến Mãi","Id Khuyến Mãi", "Mô Tả Khuyến Mãi"};
+        return new String[] {"Id Khuyến Mãi", "Tên Khuyến Mãi", "Id Đợt Khuyến Mãi", "Mô Tả Khuyến Mãi"};
     }
 }

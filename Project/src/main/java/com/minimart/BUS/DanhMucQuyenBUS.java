@@ -1,6 +1,7 @@
 package com.minimart.BUS;
 
 import com.minimart.DATA.DanhMucQuyenDAO;
+import com.minimart.DTO.ChucVu;
 import com.minimart.DTO.DanhMucQuyen;
 import com.minimart.Handing.HandingBUS;
 
@@ -61,6 +62,20 @@ public class DanhMucQuyenBUS {
                 }
             }
         }
+        return false;
+    }
+    public boolean updateData(DanhMucQuyen danhMucQuyen ,String idQuyen)
+    {
+            for (int index=0;index<danhSachDanhMucQuyen.size();index++)
+            {
+                if(danhSachDanhMucQuyen.get(index).getIdChucVu().equals(danhMucQuyen.getIdChucVu())
+                        && danhSachDanhMucQuyen.get(index).getIdQuyen().equals(danhMucQuyen.getIdQuyen()))
+                {
+                    removeData(danhMucQuyen);
+                    danhMucQuyen.setDanhMucQuyen(danhMucQuyen.getIdChucVu(),idQuyen);
+                    addData(danhMucQuyen);
+                }
+            }
         return false;
     }
     public ArrayList<String>  searchIdQuyenByIdChucVu(String idChucVu)

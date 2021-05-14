@@ -26,6 +26,7 @@ public class KhuyenMaiDAO {
                 while (rs.next())
                 {
                     KhuyenMai khuyenMai=new KhuyenMai(rs.getString("IdKhuyenMai"),
+                            rs.getString("TenKhuyenMai"),
                             rs.getString("IdDotKhuyenMai"),
                             rs.getString("MoTaKhuyenMai") );
                     danhSachKhuyenMai.add(khuyenMai);
@@ -42,8 +43,9 @@ public class KhuyenMaiDAO {
     public boolean addData(KhuyenMai khuyenMai)
     {
         connectSQL=new ConnectSQL();
-        boolean commandSQL=connectSQL.sqlUpdate("INSERT INTO KHUYENMAI ( `IdKhuyenMai`, `IdDotKhuyenMai`, `MoTaKhuyenMai`) VALUES ('"
+        boolean commandSQL=connectSQL.sqlUpdate("INSERT INTO KHUYENMAI ( `IdKhuyenMai`, `TenKhuyenMai`, `IdDotKhuyenMai`, `MoTaKhuyenMai`) VALUES ('"
                 + khuyenMai.getIdKhuyenMai()+"','"
+                + khuyenMai.getTenKhuyenMai()+"','"
                 + khuyenMai.getIdDotKhuyenMai()+"','"
                 + khuyenMai.getMoTaKhuyenMai()+"');");
         return commandSQL;
@@ -57,7 +59,7 @@ public class KhuyenMaiDAO {
     public boolean removeAllData(String idDotKhuyenMai)
     {
         connectSQL=new ConnectSQL();
-        boolean commandSQL=connectSQL.sqlUpdate("DELETE FROM KHUYENMAI WHERE IdKhuyenMai='"
+        boolean commandSQL=connectSQL.sqlUpdate("DELETE FROM KHUYENMAI WHERE IdDotKhuyenMai='"
                 +idDotKhuyenMai+"';");
         return commandSQL;
     }

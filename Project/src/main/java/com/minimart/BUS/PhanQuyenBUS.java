@@ -40,15 +40,13 @@ public class PhanQuyenBUS {
     }
     public boolean addData(PhanQuyen PhanQuyen) {
         HandingBUS handingBUS = new HandingBUS();
-        if (handingBUS.checkRepeat(PhanQuyen.getIdQuyen(), this.getKeyList())) {
+        if (handingBUS.checkRepeat(PhanQuyen.getIdQuyen(), this.getKeyList()) == false) {
             if (PhanQuyenDAO.addData(PhanQuyen)) {
                 dsq.add(PhanQuyen);
                 return true;
             }
         }
         return false;
-
-
     }
     public  boolean removeData(String idQuyen) {
         if (PhanQuyenDAO.removeData( idQuyen))
@@ -64,7 +62,7 @@ public class PhanQuyenBUS {
         }
         return  false;
     }
-    public boolean updateDada(PhanQuyen PhanQuyen)
+    public boolean updateData(PhanQuyen PhanQuyen)
     {
         if(PhanQuyenDAO.updateData(PhanQuyen))
         {

@@ -38,7 +38,7 @@ public class HandingBUS {
 
     public String standardDate(Date date)
     {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-M-dd hh:mm:ss");
         return formatter.format(date);
     }
 
@@ -46,7 +46,7 @@ public class HandingBUS {
     {
         Date date=null;
         try {
-            date= new SimpleDateFormat("dd-M-yyyy hh:mm:ss").parse(dateStr);
+            date= new SimpleDateFormat("yyyy-M-dd hh:mm:ss").parse(dateStr);
         } catch (ParseException e) {
             e.printStackTrace();
         }

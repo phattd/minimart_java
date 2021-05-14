@@ -9,15 +9,7 @@ public class SanPham {
     private int soLuong;
     private String hinhAnh;
 
-    public SanPham(String idSanPham, String idLoaiSanPham, String tenSanPham, int donGia, int soLuong, String hinhAnh){
-        this.idSanPham=null;
-        this.tenSanPham=null;
-        this.idLoaiSanPham=null;
-        this.donGia=0;
-        this.donViTinh=null;
-        this.soLuong=0;
-        this.hinhAnh=null;
-    }
+
     public SanPham(String idSanPham,String tenSanPham,String idLoaiSanPham,int donGia,String donViTinh, int soLuong,String hinhAnh)
     {
         this.idSanPham=idSanPham;

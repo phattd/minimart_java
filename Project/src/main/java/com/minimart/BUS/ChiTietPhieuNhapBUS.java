@@ -61,7 +61,7 @@ public class ChiTietPhieuNhapBUS {
         }
         return  false;
     }
-    public  boolean removeAllData(String idPhieuNhap)
+    public  boolean removeAll(String idPhieuNhap)
     {
         if(chiTietPhieuNhapDAO.removeAllData(idPhieuNhap))
         {

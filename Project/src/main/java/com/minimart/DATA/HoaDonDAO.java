@@ -3,10 +3,12 @@ package com.minimart.DATA;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import com.minimart.DTO.HoaDon;
+import com.minimart.Handing.HandingBUS;
 
 public class HoaDonDAO {
 
@@ -27,11 +29,12 @@ public class HoaDonDAO {
                     hd.setIdHoaDon(rs.getString("IdHoaDon"));
                     hd.setIdNhanVien(rs.getString("IdNhanVien"));
                     hd.setIdKhachHang(rs.getString("IdKhachHang"));
-                    hd.setNgayLapHoaDon(rs.getDate("NgayLapHoaDon"));
+                    hd.setNgayLapHoaDon((rs.getTimestamp("NgayLapHoaDon")));
                     hd.setTongTienKhuyenMai(rs.getInt("TongTienKhuyenMai"));
                     hd.setTongTien(rs.getInt("TongTien"));
                     hd.setTienKhachDua(rs.getInt("TienKhachDua"));
                     hd.setTienConLai(rs.getInt("TienConLai"));
+                    hd.setTienThua(rs.getInt("TienThua"));
                     dshd.add(hd);
                 }
             }
@@ -45,15 +48,17 @@ public class HoaDonDAO {
 
     public boolean addData(HoaDon hd)  {
         connection = new ConnectSQL();
-        boolean success = connection.sqlUpdate("INSERT INTO HOADOON('IdHoaDon','IdNhanVien','IdKhachHang','NgayLapHoaDon','TongTienKhuyenMai','TongTien','TienKhachDua','TienConLai') VALUES ('"
+        HandingBUS handingBUS = new HandingBUS();
+        boolean success = connection.sqlUpdate("INSERT INTO HOADON(`IdHoaDon`,`IdNhanVien`,`IdKhachHang`,`NgayLapHoaDon`,`TongTienKhuyenMai`,`TongTien`,`TienKhachDua`,`TienConLai`,`TienThua`) VALUES ('"
                 + hd.getIdHoaDon() + "','"
                 + hd.getIdNhanVien() + "','"
                 + hd.getIdKhachHang() + "','"
-                + hd.getNgayLapHoaDon()+ "','"
+                + handingBUS.standardDate(new Date(hd.getNgayLapHoaDon().getTime()))+ "','"
                 + hd.getTongTienKhuyenMai() + "','"
                 + hd.getTongTien() + "','"
                 + hd.getTienKhachDua() + "','"
-                + hd.getTienConLai() + "');");
+                + hd.getTienConLai() + "','"
+                + hd.getTienThua() + "');");
         connection.closeConnect();
         return success;
     }
@@ -71,14 +76,16 @@ public class HoaDonDAO {
 
     public boolean updateData(HoaDon hd)  {
         connection = new ConnectSQL();
+        HandingBUS handingBUS = new HandingBUS();
         boolean success = connection.sqlUpdate("UPDATE HOADON SET "
                 + "IdNhanVien='" + hd.getIdNhanVien()
                 + "', IdKhachHang='" + hd.getIdKhachHang()
-                + "', NgayLapHoaDon='" + hd.getNgayLapHoaDon()
+                + "', NgayLapHoaDon='" + handingBUS.standardDate(new Date(hd.getNgayLapHoaDon().getTime()))
                 + "', TongTienKhuyenMai='" + hd.getTongTienKhuyenMai()
                 + "', TongTien='" + hd.getTongTien()
                 + "', TienKhachDua='" + hd.getTienKhachDua()
                 + "', TienConLai='" + hd.getTienConLai()
+                + "', TienThua='" + hd.getTienThua()
                 + "' WHERE IdHoaDon='" + hd.getIdHoaDon() + "';");
         connection.closeConnect();
         return success;

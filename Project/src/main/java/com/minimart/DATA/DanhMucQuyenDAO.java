@@ -43,8 +43,9 @@ public class DanhMucQuyenDAO {
 
         connectSQL = new ConnectSQL();
 
-        String query = "INSERT INTO DANHMUCQUYEN('IdChucVu','IdQuyen') " +
-                "VALUES ('" + danhMucQuyen.getIdChucVu() + "','" + danhMucQuyen.getIdQuyen() + "');";
+        String query = "INSERT INTO DANHMUCQUYEN(`IdChucVu`,`IdQuyen`) " +
+                "VALUES ('" + danhMucQuyen.getIdChucVu() + "','" 
+                            + danhMucQuyen.getIdQuyen() + "');";
         boolean executeCommandSQL = connectSQL.sqlUpdate(query);
         connectSQL.closeConnect();
         return executeCommandSQL;
@@ -54,20 +55,8 @@ public class DanhMucQuyenDAO {
 
         connectSQL = new ConnectSQL();
 
-        boolean executeCommandSQL=connectSQL.sqlUpdate("DELETE FROM DANHMUCQUYEN WHERE IdChucVu='"+danhMucQuyen.getIdChucVu()+"' AND IdQuyen='"+danhMucQuyen.getIdQuyen()+"';");
+        boolean executeCommandSQL=connectSQL.sqlUpdate("DELETE FROM DANHMUCQUYEN WHERE IdChucVu='" + danhMucQuyen.getIdChucVu()+ "' AND IdQuyen='" + danhMucQuyen.getIdQuyen() + "';");
         connectSQL.closeConnect();
         return  executeCommandSQL;
     }
-    public boolean updateData(DanhMucQuyen dmq)
-    {
-
-        connectSQL = new ConnectSQL();
-
-        boolean executeSqlCommand = connectSQL.sqlUpdate("UPDATE DANHMUCQUYEN SET IdQuyen='"+dmq.getIdQuyen() +"'" +
-                "WHERE IdChucVU='"+dmq.getIdChucVu()+"';");
-        connectSQL.closeConnect();
-
-        return executeSqlCommand;
-    }
-
 }

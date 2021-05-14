@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -88,7 +89,7 @@ public class ImportFile {
 
     }
 
-    public void importNhanVien() throws IOException {
+ /*   public void importNhanVien() throws IOException {
         boolean bool = false;
         int count=0;
         NhanVienBUS  nhanVienBUS=new NhanVienBUS();
@@ -113,7 +114,7 @@ public class ImportFile {
                     String hoNV=cellIterator.next().getStringCellValue();
                     String tenNV=cellIterator.next().getStringCellValue();
                     String diaChi=cellIterator.next().getStringCellValue();
-                    Date ngaySinh=handingBUS.toDate(cellIterator.next().getStringCellValue());
+                    Timestamp ngaySinh=handingBUS.toDate(cellIterator.next().getStringCellValue());
                     String soDienThoai=cellIterator.next().getStringCellValue();
                     String password=cellIterator.next().getStringCellValue();
                     int luong=(int) cellIterator.next().getNumericCellValue();
@@ -135,7 +136,7 @@ public class ImportFile {
             JOptionPane.showMessageDialog(null,"File không phù hợp.");
         }
     }
-
+*/
     public void importKhachHang() throws IOException {
         boolean bool = false;
         int count=0;
@@ -220,7 +221,7 @@ public class ImportFile {
         }
     }
 
-    public void importHoaDon() throws IOException {
+  /*  public void importHoaDon() throws IOException {
         boolean bool = false;
         int count=0;
         HoaDonBUS hoaDonBUS=new HoaDonBUS();
@@ -263,7 +264,7 @@ public class ImportFile {
         {
             JOptionPane.showMessageDialog(null,"File không phù hợp.");
         }
-    }
+    }*/
 
     public void importChiTietHoaDon() throws IOException {
         boolean bool = false;
@@ -309,7 +310,7 @@ public class ImportFile {
         }
     }
 
-    public void importPhieuNhap() throws IOException {
+ /*   public void importPhieuNhap() throws IOException {
         boolean bool = false;
         int count=0;
         PhieuNhapBUS phieuNhapBUS=new PhieuNhapBUS();
@@ -353,7 +354,7 @@ public class ImportFile {
         }
     }
 
-
+*/
     public void importChiTietPhieuNhap() throws IOException {
         boolean bool = false;
         int count=0;

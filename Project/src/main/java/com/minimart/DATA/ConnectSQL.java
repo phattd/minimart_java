@@ -151,7 +151,7 @@ public class ConnectSQL {
         return headers;
     }
     public void ReadFile()  {
-        File myObj = new File("D:\\hk2-2021\\java\\minimart_java\\Java_Project\\src\\com\\minimart\\SQL");
+        File myObj = new File("D:\\minimart_java\\Project\\src\\main\\java\\com\\minimart\\SQL.txt");
         if (myObj.exists()) {
             try {
                 Scanner sc = new Scanner(myObj);

@@ -64,7 +64,7 @@ public class PhieuNhapBUS {
         return  false;
     }
 
-    public boolean updateDada(PhieuNhap PhieuNhap)
+    public boolean updateData(PhieuNhap PhieuNhap)
     {
         if(PhieuNhapDAO.updateData(PhieuNhap))
         {
