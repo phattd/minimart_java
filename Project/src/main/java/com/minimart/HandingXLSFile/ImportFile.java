@@ -43,7 +43,7 @@ public class ImportFile {
         }
         return null;
     }
-    public ArrayList<ArrayList<Object>> readData() throws IOException {
+    /*public ArrayList<ArrayList<Object>> readData() throws IOException {
         ArrayList<ArrayList<Object>> result=new ArrayList<>();
         File file=chooseFile();
         FileInputStream inputStream=new FileInputStream(file);
@@ -71,7 +71,7 @@ public class ImportFile {
         }
         return result;
 
-    }
+    }*/
 
     public String[] getHeader() throws IOException {
         ArrayList<String> result=new ArrayList<>();
@@ -89,7 +89,7 @@ public class ImportFile {
 
     }
 
- /*   public void importNhanVien() throws IOException {
+    public void importNhanVien() throws IOException {
         boolean bool = false;
         int count=0;
         NhanVienBUS  nhanVienBUS=new NhanVienBUS();
@@ -114,7 +114,7 @@ public class ImportFile {
                     String hoNV=cellIterator.next().getStringCellValue();
                     String tenNV=cellIterator.next().getStringCellValue();
                     String diaChi=cellIterator.next().getStringCellValue();
-                    Timestamp ngaySinh=handingBUS.toDate(cellIterator.next().getStringCellValue());
+                    Timestamp ngaySinh=handingBUS.toTimeStamp(cellIterator.next().getStringCellValue());
                     String soDienThoai=cellIterator.next().getStringCellValue();
                     String password=cellIterator.next().getStringCellValue();
                     int luong=(int) cellIterator.next().getNumericCellValue();
@@ -136,7 +136,7 @@ public class ImportFile {
             JOptionPane.showMessageDialog(null,"File không phù hợp.");
         }
     }
-*/
+
     public void importKhachHang() throws IOException {
         boolean bool = false;
         int count=0;
@@ -221,7 +221,7 @@ public class ImportFile {
         }
     }
 
-  /*  public void importHoaDon() throws IOException {
+    public void importHoaDon() throws IOException {
         boolean bool = false;
         int count=0;
         HoaDonBUS hoaDonBUS=new HoaDonBUS();
@@ -243,7 +243,7 @@ public class ImportFile {
                 {
                     HandingBUS handingBUS=new HandingBUS();
                     String idHoaDon=cellIterator.next().getStringCellValue();
-                    Date ngayLapHoaDon=handingBUS.toDate(cellIterator.next().getStringCellValue());
+                    Timestamp ngayLapHoaDon=handingBUS.toTimeStamp(cellIterator.next().getStringCellValue());
                     String idNhanVien=cellIterator.next().getStringCellValue();
                     int tongTien= (int) cellIterator.next().getNumericCellValue();
                     int tienKhachDua= (int) cellIterator.next().getNumericCellValue();
@@ -264,7 +264,7 @@ public class ImportFile {
         {
             JOptionPane.showMessageDialog(null,"File không phù hợp.");
         }
-    }*/
+    }
 
     public void importChiTietHoaDon() throws IOException {
         boolean bool = false;
@@ -310,7 +310,7 @@ public class ImportFile {
         }
     }
 
- /*   public void importPhieuNhap() throws IOException {
+    public void importPhieuNhap() throws IOException {
         boolean bool = false;
         int count=0;
         PhieuNhapBUS phieuNhapBUS=new PhieuNhapBUS();
@@ -333,7 +333,7 @@ public class ImportFile {
                     HandingBUS handingBUS=new HandingBUS();
                     String idPhieuNhap=cellIterator.next().getStringCellValue();
                     String idNhaCungCap=cellIterator.next().getStringCellValue();
-                    Date ngayNhap=handingBUS.toDate(cellIterator.next().getStringCellValue());
+                    Timestamp ngayNhap=handingBUS.toTimeStamp(cellIterator.next().getStringCellValue());
                     String idNhanVien=cellIterator.next().getStringCellValue();
                     int tongTien= (int) cellIterator.next().getNumericCellValue();
 
@@ -354,7 +354,7 @@ public class ImportFile {
         }
     }
 
-*/
+
     public void importChiTietPhieuNhap() throws IOException {
         boolean bool = false;
         int count=0;

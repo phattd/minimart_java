@@ -52,4 +52,18 @@ public class HandingBUS {
         }
         return date;    
     }
+
+
+    public Timestamp toTimeStamp(String dateStr)
+    {
+        Timestamp timestamp=null;
+
+        try {
+            Date temp=new SimpleDateFormat("yyyy-M-dd hh:mm:ss").parse(dateStr);
+            timestamp=new Timestamp(temp.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return  timestamp;
+    }
 }

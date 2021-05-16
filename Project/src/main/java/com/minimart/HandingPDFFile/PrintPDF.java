@@ -46,7 +46,7 @@ public class PrintPDF {
         Paragraph header =new Paragraph(address,new Font(font,12));
         headerTable.addCell(header);
         document.add(headerTable);
-        String info="Bill No. "+hoaDon.getIdHoaDon()+" \nEmployee No. "+hoaDon.getIdNhanVien()+"\nCustomer No. "+hoaDon.getIdKhachHang();
+        String info="Bill No. "+hoaDon.getIdHoaDon()+" \nEmployee No. "+hoaDon.getIdNhanVien()+"\nCustomer No. "+hoaDon.getIdKhachHang()+"\n Date."+ hoaDon.getNgayLapHoaDon();
         Paragraph infoHeader=new Paragraph(info);
         document.add(infoHeader);
         String line="=====================================================================";
