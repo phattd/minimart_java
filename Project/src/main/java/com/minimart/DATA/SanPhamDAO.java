@@ -29,8 +29,8 @@ public class SanPhamDAO {
                     int donGia = r.getInt("DonGia");
                     String donViTinh = r.getString("DonViTinh");
                     int soLuong = r.getInt("SoLuong");
-                    String hinhAnh = r.getString("HinhAnh");
-                    dssp.add(new SanPham(idSanPham, idLoaiSanPham, tenSanPham, donGia, donViTinh, soLuong, hinhAnh));
+
+                    dssp.add(new SanPham(idSanPham, idLoaiSanPham, tenSanPham, donGia, donViTinh, soLuong));
                 }
             }
 
@@ -57,8 +57,8 @@ public class SanPhamDAO {
                     int donGia = r.getInt("DonGia");
                     String donViTinh = r.getString("DonViTinh");
                     int soLuong = r.getInt("SoLuong");
-                    String hinhAnh  = r.getString("HinhAnh");
-                    dssp.add(new SanPham(idSanPham, idLoaiSanPham, tenSanPham, donGia, donViTinh, soLuong, hinhAnh));
+
+                    dssp.add(new SanPham(idSanPham, idLoaiSanPham, tenSanPham, donGia, donViTinh, soLuong));
                 }
             }
 
@@ -73,14 +73,13 @@ public class SanPhamDAO {
 
     public boolean addData(SanPham sp)  {
         sanPhamConnection = new ConnectSQL();
-        boolean ok = sanPhamConnection.sqlUpdate("INSERT INTO SANPHAM (`IdSanPham`, `IdLoaiSanPham`, `TenSanPham`, `DonGia`, `DonViTinh`, `SoLuong`, `HinhAnh`) VALUES ('"
+        boolean ok = sanPhamConnection.sqlUpdate("INSERT INTO SANPHAM (`IdSanPham`, `IdLoaiSanPham`, `TenSanPham`, `DonGia`, `DonViTinh`, `SoLuong`) VALUES ('"
                 + sp.getIdSanPham() + "', '"
                 + sp.getIdLoaiSanPham() + "', '"
                 + sp.getTenSanPham() + "', '"
                 + sp.getDonGia() + "', '"
                 + sp.getDonViTinh() + "', '"
-                + sp.getSoLuong() + "', '"
-                + sp.getHinhAnh() + "');");
+                + sp.getSoLuong() + "');");
         sanPhamConnection.closeConnect();
         return ok;
     }
@@ -100,7 +99,7 @@ public class SanPhamDAO {
                 + "',DonGia='" + sp.getDonGia()
                 + "',DonViTinh='" + sp.getDonViTinh()
                 + "',SoLuong='" + sp.getSoLuong()
-                + "',HinhAnh='" + sp.getHinhAnh()
+
                 + "' WHERE IdSanPham='" + sp.getIdSanPham() + "'");
         sanPhamConnection.closeConnect();
         return ok;

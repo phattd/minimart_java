@@ -7,10 +7,10 @@ public class SanPham {
     private int donGia;
     private String donViTinh;
     private int soLuong;
-    private String hinhAnh;
 
 
-    public SanPham(String idSanPham,String tenSanPham,String idLoaiSanPham,int donGia,String donViTinh, int soLuong,String hinhAnh)
+
+    public SanPham(String idSanPham,String tenSanPham,String idLoaiSanPham,int donGia,String donViTinh, int soLuong)
     {
         this.idSanPham=idSanPham;
         this.tenSanPham=tenSanPham;
@@ -18,11 +18,11 @@ public class SanPham {
         this.donGia=donGia;
         this.donViTinh=donViTinh;
         this.soLuong=soLuong;
-        this.hinhAnh=hinhAnh;
+
     }
     public SanPham(SanPham sanPham)
     {
-        this(sanPham.idSanPham, sanPham.tenSanPham, sanPham.idLoaiSanPham, sanPham.donGia,sanPham.donViTinh, sanPham.soLuong, sanPham.hinhAnh);
+        this(sanPham.idSanPham, sanPham.tenSanPham, sanPham.idLoaiSanPham, sanPham.donGia,sanPham.donViTinh, sanPham.soLuong);
     }
 
     public String getIdSanPham() {
@@ -73,15 +73,11 @@ public class SanPham {
         this.soLuong = soLuong;
     }
 
-    public String getHinhAnh() {
-        return hinhAnh;
-    }
 
-    public void setHinhAnh(String hinhAnh) {
-        this.hinhAnh = hinhAnh;
-    }
 
-    public void setSanPham(String idSanPham, String tenSanPham, String idLoaiSanPham, int donGia, String donViTinh, int soLuong, String hinhAnh)
+
+
+    public void setSanPham(String idSanPham, String tenSanPham, String idLoaiSanPham, int donGia, String donViTinh, int soLuong)
     {
         this.idSanPham=idSanPham;
         this.tenSanPham=tenSanPham;
@@ -89,7 +85,6 @@ public class SanPham {
         this.donGia=donGia;
         this.donViTinh=donViTinh;
         this.soLuong=soLuong;
-        this.hinhAnh=hinhAnh;
     }
     public void setSanPham(SanPham sanPham)
     {
@@ -99,7 +94,6 @@ public class SanPham {
         this.donGia=sanPham.donGia;
         this.donViTinh=sanPham.donViTinh;
         this.soLuong=sanPham.soLuong;
-        this.hinhAnh=sanPham.hinhAnh;
     }
     public SanPham getSanPham()
     {
@@ -107,10 +101,10 @@ public class SanPham {
     }
     public Object[] toArray()
     {
-        return new Object[] {idSanPham,tenSanPham,idLoaiSanPham,donGia,donViTinh,soLuong,hinhAnh};
+        return new Object[] {idSanPham,tenSanPham,idLoaiSanPham,donGia,donViTinh,soLuong};
     }
     public static String[] getHeader()
     {
-        return new String[] {"ID Sản Phẩm","Tên Sản Phẩm", "Id Loại Sản Phẩm","Đơn Giá","Đơn Vị Tính","Số Lượng","Hình Ảnh"};
+        return new String[] {"ID Sản Phẩm","Tên Sản Phẩm", "Id Loại Sản Phẩm","Đơn Giá","Đơn Vị Tính","Số Lượng"};
     }
 }

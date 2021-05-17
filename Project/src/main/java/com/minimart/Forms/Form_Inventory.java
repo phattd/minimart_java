@@ -5,6 +5,8 @@
  */
 package com.minimart.Forms;
 
+import com.minimart.DTO.UNIT;
+
 /**
  *
  * @author Pero
@@ -21,8 +23,60 @@ public class Form_Inventory extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
         //Set Icon
+        setModelUnit();
         inven_form_close.setIcon(new javax.swing.ImageIcon("./IMAGES/payment_close.png"));
     }
+    public void setBarCode(String barcode)
+    {
+        text_barcode.setText(barcode);
+    }
+    public String getBarCode()
+    {
+        return text_barcode.getText();
+    }
+    public void setProductName(String name)
+    {
+        text_productname.setText(name);
+    }
+    
+    public String getProductName()
+    {
+        return text_productname.getText();
+    }
+    public void setPrice(int price)
+    {
+        text_price.setText(price+"");
+    }
+    public int getPrice()
+    {
+        int result= Integer.parseInt(text_price.getText());
+        return  result;
+    }
+    public void setQuantity(int quantity)
+    {
+        text_quantity.setText(quantity+"");
+    }
+    public void setUnit(String choose)
+    {
+        unit.setSelectedItem(choose);
+    }
+    public void setCategory(String choose)
+    {
+        unit.setSelectedItem(choose);
+    }
+    public String getUnit()
+    {
+        return (String) unit.getSelectedItem();
+    }
+    public  String getCategory()
+    {
+        return  (String) category.getSelectedItem();
+    }
+    public void setModelUnit()
+    {
+        unit.setModel(new javax.swing.DefaultComboBoxModel<>(UNIT.getUnitArray()));
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,23 +93,22 @@ public class Form_Inventory extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         inven_title = new javax.swing.JLabel();
         login_user_panel = new javax.swing.JPanel();
-        text_username = new javax.swing.JTextField();
+        text_barcode = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         login_user_panel1 = new javax.swing.JPanel();
-        text_username1 = new javax.swing.JTextField();
+        text_productname = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
-        login_user_panel2 = new javax.swing.JPanel();
-        text_username2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        category = new javax.swing.JComboBox<>();
         jLabel35 = new javax.swing.JLabel();
         login_user_panel3 = new javax.swing.JPanel();
-        text_username3 = new javax.swing.JTextField();
+        text_price = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        unit = new javax.swing.JComboBox<>();
+        jLabel37 = new javax.swing.JLabel();
+        text_quantity = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -91,7 +144,7 @@ public class Form_Inventory extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(inven_title, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 436, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(inven_form_close, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -109,10 +162,15 @@ public class Form_Inventory extends javax.swing.JFrame {
 
         login_user_panel.setBackground(new java.awt.Color(221, 220, 220));
 
-        text_username.setBackground(new java.awt.Color(221, 220, 220));
-        text_username.setFont(new java.awt.Font("iCiel Gotham Medium", 0, 18)); // NOI18N
-        text_username.setForeground(new java.awt.Color(51, 51, 51));
-        text_username.setBorder(null);
+        text_barcode.setBackground(new java.awt.Color(221, 220, 220));
+        text_barcode.setFont(new java.awt.Font("iCiel Gotham Medium", 0, 18)); // NOI18N
+        text_barcode.setForeground(new java.awt.Color(51, 51, 51));
+        text_barcode.setBorder(null);
+        text_barcode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                text_barcodeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout login_user_panelLayout = new javax.swing.GroupLayout(login_user_panel);
         login_user_panel.setLayout(login_user_panelLayout);
@@ -120,14 +178,14 @@ public class Form_Inventory extends javax.swing.JFrame {
             login_user_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(login_user_panelLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(text_username, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text_barcode, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         login_user_panelLayout.setVerticalGroup(
             login_user_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(login_user_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(text_username, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text_barcode, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -141,25 +199,25 @@ public class Form_Inventory extends javax.swing.JFrame {
 
         login_user_panel1.setBackground(new java.awt.Color(221, 220, 220));
 
-        text_username1.setBackground(new java.awt.Color(221, 220, 220));
-        text_username1.setFont(new java.awt.Font("iCiel Gotham Medium", 0, 18)); // NOI18N
-        text_username1.setForeground(new java.awt.Color(51, 51, 51));
-        text_username1.setBorder(null);
+        text_productname.setBackground(new java.awt.Color(221, 220, 220));
+        text_productname.setFont(new java.awt.Font("iCiel Gotham Medium", 0, 18)); // NOI18N
+        text_productname.setForeground(new java.awt.Color(51, 51, 51));
+        text_productname.setBorder(null);
 
         javax.swing.GroupLayout login_user_panel1Layout = new javax.swing.GroupLayout(login_user_panel1);
         login_user_panel1.setLayout(login_user_panel1Layout);
         login_user_panel1Layout.setHorizontalGroup(
             login_user_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, login_user_panel1Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(text_username1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(text_productname, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         login_user_panel1Layout.setVerticalGroup(
             login_user_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(login_user_panel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(text_username1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text_productname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -167,45 +225,21 @@ public class Form_Inventory extends javax.swing.JFrame {
         jLabel34.setForeground(new java.awt.Color(236, 112, 255));
         jLabel34.setText("Category:");
 
-        login_user_panel2.setBackground(new java.awt.Color(221, 220, 220));
-
-        text_username2.setBackground(new java.awt.Color(221, 220, 220));
-        text_username2.setFont(new java.awt.Font("iCiel Gotham Medium", 0, 18)); // NOI18N
-        text_username2.setForeground(new java.awt.Color(51, 51, 51));
-        text_username2.setBorder(null);
-
-        javax.swing.GroupLayout login_user_panel2Layout = new javax.swing.GroupLayout(login_user_panel2);
-        login_user_panel2.setLayout(login_user_panel2Layout);
-        login_user_panel2Layout.setHorizontalGroup(
-            login_user_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(login_user_panel2Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(text_username2)
-                .addContainerGap())
-        );
-        login_user_panel2Layout.setVerticalGroup(
-            login_user_panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(login_user_panel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(text_username2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jComboBox1.setBackground(new java.awt.Color(221, 220, 220));
-        jComboBox1.setFont(new java.awt.Font("iCiel Gotham Medium", 0, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(51, 51, 51));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soft Drink", "Mineral Water", "Noodles", "Milk", "Snack", "Non-food", " " }));
+        category.setBackground(new java.awt.Color(221, 220, 220));
+        category.setFont(new java.awt.Font("iCiel Gotham Medium", 0, 18)); // NOI18N
+        category.setForeground(new java.awt.Color(51, 51, 51));
+        category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soft Drink", "Mineral Water", "Noodles", "Milk", "Snack", "Non-food", " " }));
 
         jLabel35.setFont(new java.awt.Font("Myriad Pro Light", 1, 18)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(236, 112, 255));
-        jLabel35.setText("Provider:");
+        jLabel35.setText("Unit:");
 
         login_user_panel3.setBackground(new java.awt.Color(221, 220, 220));
 
-        text_username3.setBackground(new java.awt.Color(221, 220, 220));
-        text_username3.setFont(new java.awt.Font("iCiel Gotham Medium", 0, 18)); // NOI18N
-        text_username3.setForeground(new java.awt.Color(51, 51, 51));
-        text_username3.setBorder(null);
+        text_price.setBackground(new java.awt.Color(221, 220, 220));
+        text_price.setFont(new java.awt.Font("iCiel Gotham Medium", 0, 18)); // NOI18N
+        text_price.setForeground(new java.awt.Color(51, 51, 51));
+        text_price.setBorder(null);
 
         javax.swing.GroupLayout login_user_panel3Layout = new javax.swing.GroupLayout(login_user_panel3);
         login_user_panel3.setLayout(login_user_panel3Layout);
@@ -213,44 +247,20 @@ public class Form_Inventory extends javax.swing.JFrame {
             login_user_panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(login_user_panel3Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(text_username3, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+                .addComponent(text_price)
                 .addContainerGap())
         );
         login_user_panel3Layout.setVerticalGroup(
             login_user_panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(login_user_panel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(text_username3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text_price, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel36.setFont(new java.awt.Font("Myriad Pro Light", 1, 18)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(236, 112, 255));
         jLabel36.setText("Price:");
-
-        jPanel3.setBackground(new java.awt.Color(255, 200, 255));
-
-        jLabel1.setFont(new java.awt.Font("iCiel Gotham Medium", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(153, 0, 153));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("VND");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
 
         jPanel4.setBackground(new java.awt.Color(153, 0, 255));
         jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -277,35 +287,58 @@ public class Form_Inventory extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        unit.setBackground(new java.awt.Color(221, 220, 220));
+        unit.setFont(new java.awt.Font("iCiel Gotham Medium", 0, 18)); // NOI18N
+        unit.setForeground(new java.awt.Color(51, 51, 51));
+        unit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soft Drink", "Mineral Water", "Noodles", "Milk", "Snack", "Non-food", " " }));
+        unit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unitActionPerformed(evt);
+            }
+        });
+
+        jLabel37.setFont(new java.awt.Font("Myriad Pro Light", 1, 18)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(236, 112, 255));
+        jLabel37.setText("Quantity");
+
+        text_quantity.setBackground(new java.awt.Color(221, 220, 220));
+        text_quantity.setFont(new java.awt.Font("iCiel Gotham Medium", 0, 18)); // NOI18N
+        text_quantity.setForeground(new java.awt.Color(51, 51, 51));
+        text_quantity.setBorder(null);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(login_user_panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(login_user_panel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(490, 490, 490))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(login_user_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(category, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(login_user_panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(login_user_panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addContainerGap(52, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(login_user_panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(unit, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(text_quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,21 +355,22 @@ public class Form_Inventory extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(login_user_panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel34)
-                            .addComponent(jLabel35))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(login_user_panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(jLabel35))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(unit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel36)
+                    .addComponent(jLabel37))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(login_user_panel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                    .addComponent(login_user_panel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(text_quantity))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );
@@ -358,6 +392,14 @@ public class Form_Inventory extends javax.swing.JFrame {
     private void inven_form_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inven_form_closeMouseClicked
         this.dispose();
     }//GEN-LAST:event_inven_form_closeMouseClicked
+
+    private void unitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_unitActionPerformed
+
+    private void text_barcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_barcodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_barcodeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -395,10 +437,9 @@ public class Form_Inventory extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> category;
     private javax.swing.JLabel inven_form_close;
     private javax.swing.JLabel inven_title;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel32;
@@ -406,17 +447,17 @@ public class Form_Inventory extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel login_user_panel;
     private javax.swing.JPanel login_user_panel1;
-    private javax.swing.JPanel login_user_panel2;
     private javax.swing.JPanel login_user_panel3;
-    private javax.swing.JTextField text_username;
-    private javax.swing.JTextField text_username1;
-    private javax.swing.JTextField text_username2;
-    private javax.swing.JTextField text_username3;
+    private javax.swing.JTextField text_barcode;
+    private javax.swing.JTextField text_price;
+    private javax.swing.JTextField text_productname;
+    private javax.swing.JTextField text_quantity;
+    private javax.swing.JComboBox<String> unit;
     // End of variables declaration//GEN-END:variables
 }
