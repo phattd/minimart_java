@@ -43,7 +43,7 @@ public class HandingCalculate {
         int result=0;
         for (ChiTietPhieuNhap index : phieuNhaps)
         {
-            result+=index.getThanhTien()
+            result+=index.getThanhTien();
         }
         return result;
     }

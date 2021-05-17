@@ -10,7 +10,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -234,7 +233,7 @@ public class ExportFile {
         }
 
     }
-    public void exportDotKhuyenMai(String[] header,String[] headerKM,String[] headerCT,ArrayList<DotKhuyenMai> data,ArrayList<KhuyenMai> dataKM,ArrayList<ChiTietKhuyenMai> dataCT)
+    public void exportDotKhuyenMai(String[] header, String[] headerKM, String[] headerCT, ArrayList<KhuyenMai> data, ArrayList<KhuyenMai> dataKM, ArrayList<ChiTietKhuyenMai> dataCT)
     {
         ArrayList<Object[]> result=new ArrayList<>();
         result.add(header);

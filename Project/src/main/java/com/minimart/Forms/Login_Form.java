@@ -5,6 +5,8 @@
  */
 package com.minimart.Forms;
 
+import com.minimart.BUS.NhanVienBUS;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,8 +52,6 @@ public class Login_Form extends javax.swing.JFrame {
         icon_warning_close.setIcon(new javax.swing.ImageIcon("./IMAGES/login_closewarning.png"));
 
     }
-    
-                
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -308,7 +308,6 @@ public class Login_Form extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     //Timer to show the warning
     Timer timerDown = new Timer(10, new ActionListener() {
         @Override
@@ -322,7 +321,6 @@ public class Login_Form extends javax.swing.JFrame {
             }
         }
     });
-    
     private void icon_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_icon_closeMouseClicked
         System.exit(0);
     }//GEN-LAST:event_icon_closeMouseClicked
@@ -330,23 +328,17 @@ public class Login_Form extends javax.swing.JFrame {
     private void Login_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Login_buttonMouseClicked
         String username = text_username.getText().trim();
         String password = String.valueOf(text_pass.getPassword());
-
-        /*
         NhanVienBUS nhanVienBus=new NhanVienBUS();
         int bool=nhanVienBus.login(username,password);
-
-         */
         if(username.equals(""))
         {
-
             warning_message.setText("Enter your username!");
         }
         else if (password.equals(""))
         {
-
             warning_message.setText("Enter your password!");
         }
-        /*else if (bool ==1 )
+        else if (bool==1 )
         {
             this.dispose();
             Dashboard_Form  dashboard1 = new Dashboard_Form();
@@ -361,7 +353,7 @@ public class Login_Form extends javax.swing.JFrame {
         else
         {
             warning_message.setText("Invalid username or password!");
-        }*/
+        }
         //show the warning message
         timerDown.start();
     }//GEN-LAST:event_Login_buttonMouseClicked

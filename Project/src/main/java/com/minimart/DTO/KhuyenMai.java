@@ -1,81 +1,95 @@
 package com.minimart.DTO;
 
+import java.sql.Timestamp;
+
+
+
 public class KhuyenMai {
-    private String idKhuyenMai;
-    private String tenKhuyenMai;
-    private  String idDotKhuyenMai;
-    private String moTaKhuyenMai;
+            private String idKhuyenMai;
+            private String tenKhuyenMai;
+            private Timestamp  ngayBatDau;
+            private Timestamp  ngayKetThuc;
+            private String moTa;
 
-    public KhuyenMai()
-    {
-        idKhuyenMai=null;
-        tenKhuyenMai = null;
-        idDotKhuyenMai=null;
-        moTaKhuyenMai=null;
-    }
-    public KhuyenMai(String idKhuyenMai,String tenKhuyenMai, String idDotKhuyenMai,String moTaKhuyenMai)
-    {
-        this.idKhuyenMai=idKhuyenMai;
-        this.tenKhuyenMai = tenKhuyenMai;
-        this.idDotKhuyenMai=idDotKhuyenMai;
-        this.moTaKhuyenMai=moTaKhuyenMai;
-    }
+            public KhuyenMai(String idKhuyenMai, String tenKhuyenMai, Timestamp ngayBatDau, Timestamp ngayKetThuc, String moTa){
+                this.idKhuyenMai=null;
+                this.tenKhuyenMai=null;
+                this.ngayBatDau=null;
+                this.ngayKetThuc=null;
+                this.moTa = null;
+            }
 
-    public  KhuyenMai(KhuyenMai khuyenMai)
-    {
-        this(khuyenMai.idKhuyenMai,khuyenMai.tenKhuyenMai, khuyenMai.idDotKhuyenMai, khuyenMai.moTaKhuyenMai);
-    }
 
-    public void setIdDotKhuyenMai(String idDotKhuyenMai) {
-        this.idDotKhuyenMai = idDotKhuyenMai;
-    }
+            public KhuyenMai(KhuyenMai KhuyenMai)
+            {
+                this(KhuyenMai.idKhuyenMai, KhuyenMai.tenKhuyenMai, KhuyenMai.ngayBatDau, KhuyenMai.ngayKetThuc , KhuyenMai.moTa);
+            }
 
-    public void setIdKhuyenMai(String idKhuyenMai) {
-        this.idKhuyenMai = idKhuyenMai;
-    }
+            public String getIdKhuyenMai() {
+                return idKhuyenMai;
+            }
 
-    public void setMoTaKhuyenMai(String moTaKhuyenMai) {
-        this.moTaKhuyenMai = moTaKhuyenMai;
-    }
+            public String getTenKhuyenMai() {
+                return tenKhuyenMai;
+            }
 
-    public void setTenKhuyenMai(String tenKhuyenMai) {
-        this.tenKhuyenMai = tenKhuyenMai;
-    }
+            public Timestamp getNgayBatDau() {
+                return ngayBatDau;
+            }
 
-    public String getIdDotKhuyenMai() {
-        return idDotKhuyenMai;
-    }
+            public Timestamp getNgayKetThuc() {
+                return ngayKetThuc;
+            }
 
-    public String getIdKhuyenMai() {
-        return idKhuyenMai;
-    }
+            public void setIdKhuyenMai(String idKhuyenMai) {
+                this.idKhuyenMai = idKhuyenMai;
+            }
 
-    public String getMoTaKhuyenMai() {
-        return moTaKhuyenMai;
-    }
+            public void setTenKhuyenMai(String tenKhuyenMai) {
+                this.tenKhuyenMai = tenKhuyenMai;
+            }
 
-    public String getTenKhuyenMai() {
-        return tenKhuyenMai;
-    }
+            public void setNgayBatDau(Timestamp ngayBatDau) {
+                this.ngayBatDau = ngayBatDau;
+            }
 
-    public void setKhuyenMai(String idKhuyenMai,String tenKhuyenMai, String idDotKhuyenMai, String moTaKhuyenMai)
-    {
-        this.idKhuyenMai=idKhuyenMai;
-        this.tenKhuyenMai = tenKhuyenMai;
-        this.idDotKhuyenMai=idDotKhuyenMai;
-        this.moTaKhuyenMai=moTaKhuyenMai;
-    }
-    public KhuyenMai getKhuyenMai()
-    {
-        return this;
-    }
+            public void setMoTa(String moTa) {
+                this.moTa = moTa;
+            }
 
-    public Object[] toArray()
-    {
-        return new Object[] {idKhuyenMai,tenKhuyenMai,idDotKhuyenMai,moTaKhuyenMai};
-    }
-    public static String[] getHeader()
-    {
-        return new String[] {"Id Khuyến Mãi", "Tên Khuyến Mãi", "Id Đợt Khuyến Mãi", "Mô Tả Khuyến Mãi"};
-    }
-}
+            public String getMoTa() {
+                return moTa;
+            }
+
+            public void setNgayKetThuc(Timestamp ngayKetThuc) {
+                this.ngayKetThuc = ngayKetThuc;
+            }
+            public void setKhuyenMai(KhuyenMai khuyenMai)
+            {
+                this.idKhuyenMai= khuyenMai.idKhuyenMai;
+                this.tenKhuyenMai= khuyenMai.tenKhuyenMai;
+                this.ngayBatDau= khuyenMai.ngayBatDau;
+                this.ngayKetThuc= khuyenMai.ngayKetThuc;
+                this.moTa = khuyenMai.moTa;
+            }
+            public  void setKhuyenMai(String idKhuyenMai,String tenKhuyenMai,Timestamp ngayBatDau,Timestamp ngayKetThuc,String moTa)
+            {
+                this.idKhuyenMai=idKhuyenMai;
+                this.tenKhuyenMai=tenKhuyenMai;
+                this.ngayBatDau=ngayBatDau;
+                this.ngayKetThuc=ngayKetThuc;
+                this.moTa = moTa;
+            }
+            public KhuyenMai getKhuyenMai()
+            {
+                return this;
+            }
+            public Object[] toArray()
+            {
+                return new Object[] {idKhuyenMai,tenKhuyenMai,ngayBatDau,ngayKetThuc,moTa};
+            }
+            public static  String[] getHeader()
+            {
+                return new String[] {"Id Đợt Khuyến Mãi","Tên Đợt Khuyến Mãi","Ngày Bắt Đầu","Ngày Kết Thúc","Mô Tả"};
+            }
+        }

@@ -2,26 +2,30 @@ package com.minimart.DTO;
 
 public class ChiTietKhuyenMai {
     private String idKhuyenMai;
-    private byte phanTramKhuyenMai;
-    private String noiDungKhuyenMai;
     private String idSanPham;
+    private byte phanTramKhuyenMai;
+    private int dieuKienSL;
+    private String dieuKienKH;
 
     public ChiTietKhuyenMai(){
         idKhuyenMai=null;
+        idSanPham = null;
         phanTramKhuyenMai=0;
-        noiDungKhuyenMai=null;
-        idSanPham=null;
+        dieuKienSL = 0;
+        dieuKienKH = null;
     }
-    public ChiTietKhuyenMai(String idKhuyenMai,byte phanTramKhuyenMai,String noiDungKhuyenMai,String idSanPham)
+    public ChiTietKhuyenMai(String idKhuyenMai,String idSanPham, byte phanTramKhuyenMai,int dieuKienSL, String dieuKienKH)
     {
         this.idKhuyenMai=idKhuyenMai;
-        this.phanTramKhuyenMai=phanTramKhuyenMai;
-        this.noiDungKhuyenMai=noiDungKhuyenMai;
         this.idSanPham=idSanPham;
+        this.phanTramKhuyenMai=phanTramKhuyenMai;
+        this.dieuKienSL = dieuKienSL;
+        this.dieuKienKH=dieuKienKH;
+
     }
     public ChiTietKhuyenMai(ChiTietKhuyenMai chiTietKhuyenMai)
     {
-        this(chiTietKhuyenMai.idKhuyenMai, chiTietKhuyenMai.phanTramKhuyenMai, chiTietKhuyenMai.noiDungKhuyenMai, chiTietKhuyenMai.idSanPham);
+        this(chiTietKhuyenMai.idKhuyenMai,chiTietKhuyenMai.idSanPham, chiTietKhuyenMai.phanTramKhuyenMai, chiTietKhuyenMai.dieuKienSL, chiTietKhuyenMai.dieuKienKH);
     }
 
     public String getIdKhuyenMai() {
@@ -30,10 +34,6 @@ public class ChiTietKhuyenMai {
 
     public byte getPhanTramKhuyenMai() {
         return phanTramKhuyenMai;
-    }
-
-    public String getNoiDungKhuyenMai() {
-        return noiDungKhuyenMai;
     }
 
     public String getIdSanPham() {
@@ -48,49 +48,55 @@ public class ChiTietKhuyenMai {
         this.phanTramKhuyenMai = phanTramKhuyenMai;
     }
 
-    public void setNoiDungKhuyenMai(String noiDungKhuyenMai) {
-        this.noiDungKhuyenMai = noiDungKhuyenMai;
-    }
-
     public void setIdSanPham(String idSanPham) {
         this.idSanPham = idSanPham;
     }
+
+    public void setDieuKienKH(String dieuKienKH) {
+        this.dieuKienKH = dieuKienKH;
+    }
+
+    public void setDieuKienSL(int dieuKienSL) {
+        this.dieuKienSL = dieuKienSL;
+    }
+
+    public int getDieuKienSL() {
+        return dieuKienSL;
+    }
+
+    public String getDieuKienKH() {
+        return dieuKienKH;
+    }
+
     public void setChiTietKhuyenMai(ChiTietKhuyenMai chiTietKhuyenMai)
     {
         this.idKhuyenMai= chiTietKhuyenMai.idKhuyenMai;
-        this.phanTramKhuyenMai= chiTietKhuyenMai.phanTramKhuyenMai;
-        this.noiDungKhuyenMai= chiTietKhuyenMai.noiDungKhuyenMai;
         this.idSanPham= chiTietKhuyenMai.idSanPham;
+        this.phanTramKhuyenMai= chiTietKhuyenMai.phanTramKhuyenMai;
+        this.dieuKienSL = chiTietKhuyenMai.dieuKienSL;
+        this.dieuKienKH= chiTietKhuyenMai.dieuKienKH;
+
     }
-    public void setChiTietKhuyenMai(String idKhuyenMai,byte phanTramKhuyenMai,String noiDungKhuyenMai,String idSanPham)
+    public void setChiTietKhuyenMai(String idKhuyenMai,String idSanPham, byte phanTramKhuyenMai,int dieuKienSL, String dieuKienKH)
     {
         this.idKhuyenMai=idKhuyenMai;
-        this.phanTramKhuyenMai=phanTramKhuyenMai;
-        this.noiDungKhuyenMai=noiDungKhuyenMai;
         this.idSanPham=idSanPham;
+        this.phanTramKhuyenMai=phanTramKhuyenMai;
+        this.dieuKienSL = dieuKienSL;
+        this.dieuKienKH=dieuKienKH;
+
     }
     public ChiTietKhuyenMai getChiTietKhuyenMai()
     {
         return this;
     }
 
-
-    @Override
-    public String toString() {
-        return "ChiTietKhuyenMai{" +
-                "idKhuyenMai='" + idKhuyenMai + '\'' +
-                ", phanTramKhuyenMai=" + phanTramKhuyenMai +
-                ", noiDungKhuyenMai='" + noiDungKhuyenMai + '\'' +
-                ", idSanPham='" + idSanPham + '\'' +
-                '}';
-    }
-
     public Object[] toArray()
     {
-        return new Object[] {idKhuyenMai,phanTramKhuyenMai,noiDungKhuyenMai,idSanPham};
+        return new Object[] {idKhuyenMai, idSanPham, phanTramKhuyenMai, dieuKienSL, dieuKienKH};
     }
     public static String[] getHeader()
     {
-        return new String[] {"Id Khuyến Mãi","Phần Trăm Khuyến Mãi","Nội Dung Khuyến Mãi","Id Sản Phẩm"};
+        return new String[] {"Id Khuyến Mãi","Id Sản Phẩm","Phần Trăm Khuyến Mãi", "Điều Kiện Số Lượng","Điều Kiện Khách Hàng"};
     }
 }
