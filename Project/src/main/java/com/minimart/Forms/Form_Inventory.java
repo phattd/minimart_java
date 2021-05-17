@@ -5,7 +5,10 @@
  */
 package com.minimart.Forms;
 
+import com.minimart.DTO.SanPham;
 import com.minimart.DTO.UNIT;
+
+import javax.swing.*;
 
 /**
  *
@@ -16,6 +19,9 @@ public class Form_Inventory extends javax.swing.JFrame {
     /**
      * Creates new form Form_Inventory
      */
+    //Variable
+    private SanPham value=null;
+
     public Form_Inventory() {
         initComponents();
         
@@ -26,55 +32,93 @@ public class Form_Inventory extends javax.swing.JFrame {
         setModelUnit();
         inven_form_close.setIcon(new javax.swing.ImageIcon("./IMAGES/payment_close.png"));
     }
-    public void setBarCode(String barcode)
+    private void setBarCode(String barcode)
     {
         text_barcode.setText(barcode);
     }
-    public String getBarCode()
+    private String getBarCode()
     {
         return text_barcode.getText();
     }
-    public void setProductName(String name)
+    private void setProductName(String name)
     {
         text_productname.setText(name);
     }
     
-    public String getProductName()
+    private String getProductName()
     {
         return text_productname.getText();
     }
-    public void setPrice(int price)
+    private void setPrice(int price)
     {
         text_price.setText(price+"");
     }
-    public int getPrice()
+    private int getPrice()
     {
-        int result= Integer.parseInt(text_price.getText());
-        return  result;
+        if(!text_price.getText().equals("")) {
+            int result = Integer.parseInt(text_price.getText());
+            return result;
+        }
+        return  -1;
     }
-    public void setQuantity(int quantity)
+
+    private void setQuantity(int quantity)
     {
         text_quantity.setText(quantity+"");
     }
-    public void setUnit(String choose)
+    private int getQuantity()
+    {
+        if (!text_quantity.getText().equals(""))
+            return Integer.parseInt(text_quantity.getText());
+        return -1;
+    }
+    private void setUnit(String choose)
     {
         unit.setSelectedItem(choose);
     }
-    public void setCategory(String choose)
+    private void setCategory(String choose)
     {
         unit.setSelectedItem(choose);
     }
-    public String getUnit()
+    private String getUnit()
     {
         return (String) unit.getSelectedItem();
     }
-    public  String getCategory()
+    private   String getCategory()
     {
         return  (String) category.getSelectedItem();
     }
-    public void setModelUnit()
+    private void setModelUnit()
     {
         unit.setModel(new javax.swing.DefaultComboBoxModel<>(UNIT.getUnitArray()));
+    }
+    private void resetData()
+    {
+        this.value=null;
+        text_price.setText("");
+        text_barcode.setText("");
+        text_productname.setText("");
+        text_quantity.setText("");
+        unit.setSelectedIndex(0);
+        category.setSelectedIndex(0);
+    }
+    private void initSanPham()
+    {
+        if (!getBarCode().equals("") && !getProductName().equals("") && getPrice()!=-1 && getQuantity()!=-1)
+        {
+            SanPham sanPham = new SanPham(getBarCode(), getProductName(), getCategory(), getPrice(), getUnit(), getQuantity());
+            this.value=sanPham;
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Vui lòng nhập đầy đủ thông tin cần thiết");
+        }
+    }
+    public SanPham getValue()
+    {
+        SanPham result=value;
+        resetData();
+        return  result;
     }
 
 
@@ -269,6 +313,11 @@ public class Form_Inventory extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Save");
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -390,6 +439,7 @@ public class Form_Inventory extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inven_form_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inven_form_closeMouseClicked
+
         this.dispose();
     }//GEN-LAST:event_inven_form_closeMouseClicked
 
@@ -400,6 +450,11 @@ public class Form_Inventory extends javax.swing.JFrame {
     private void text_barcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_barcodeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_text_barcodeActionPerformed
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        this.setVisible(false);
+
+    }//GEN-LAST:event_jLabel10MouseClicked
 
     /**
      * @param args the command line arguments
@@ -434,6 +489,7 @@ public class Form_Inventory extends javax.swing.JFrame {
                 new Form_Inventory().setVisible(true);
             }
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -203,9 +203,9 @@ public class ImportFile {
                     int donGia= (int) cellIterator.next().getNumericCellValue();
                     String donViTinh=cellIterator.next().getStringCellValue();
                     int soLuong= (int) cellIterator.next().getNumericCellValue();
-                    String hinhAnh=cellIterator.next().getStringCellValue();
+       
 
-                    SanPham sanPham=new SanPham(idSanPham,tenSanPham,idLoaiSanPham,donGia,donViTinh,soLuong,hinhAnh);
+                    SanPham sanPham=new SanPham(idSanPham,tenSanPham,idLoaiSanPham,donGia,donViTinh,soLuong);
 
                     if (sanPhamBUS.addData(sanPham) == true)
                     {

@@ -31,10 +31,10 @@ public final class Dashboard_Form extends javax.swing.JFrame {
      * Creates new form Dashboard_Form
      */
     // var developer delare//
-    ArrayList<SanPham> sanPhamArrayList=new ArrayList<>();
-    Form_Inventory product_win=new Form_Inventory();
-    DefaultTableModel renderProduct=new DefaultTableModel();
-    int indexProductTable=-1;
+    private ArrayList<SanPham> sanPhamArrayList=new ArrayList<>();
+    private Form_Inventory product_win=new Form_Inventory();
+    private DefaultTableModel renderProduct=new DefaultTableModel();
+    private int indexProductTable=-1;
 
     public Dashboard_Form() {
 
@@ -475,7 +475,12 @@ public final class Dashboard_Form extends javax.swing.JFrame {
     {
         //SanPhamBUS sanPhamBUS=new SanPhamBUS();
         //sanPhamArrayList=sanPhamBUS.getdssp();
-
+        SanPham s1=new SanPham("1","Nuoc Suoi","Soft Drink",5000,"Chai",5);
+        SanPham s2=new SanPham("2","Bia","Soft Drink",25000,"Chai",5);
+        SanPham s3=new SanPham("3","Nuoc String","Soft Drink",10000,"Chai",5);
+        sanPhamArrayList.add(s1);
+        sanPhamArrayList.add(s2);
+        sanPhamArrayList.add(s3);
         renderProduct= (DefaultTableModel) inventory_table.getModel();
         for (SanPham index : sanPhamArrayList)
         {
@@ -483,9 +488,13 @@ public final class Dashboard_Form extends javax.swing.JFrame {
         }
         inventory_table.setModel(renderProduct);
     }
-    public void chooseProductTable()
+    public void addDataTableProduct()
     {
-        Vector product=new Vector();
+        product_win.show();
+        SanPham sanPham=product_win.getValue();
+        renderProduct= (DefaultTableModel) inventory_table.getModel();
+        renderProduct.addRow(sanPham.toArray());
+        inventory_table.setModel(renderProduct);
     }
 
 
@@ -3626,8 +3635,7 @@ public final class Dashboard_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void inven_new_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inven_new_btnMouseClicked
-        Form_Inventory inven1 = new Form_Inventory();
-        inven1.show();
+        product_win.show();
     }//GEN-LAST:event_inven_new_btnMouseClicked
 
     private void inven_edit_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inven_edit_btnMouseClicked
