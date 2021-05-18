@@ -32,12 +32,12 @@ public class NhanVienDAO {
                    nv.setHo(r.getString("Ho"));
                    nv.setTen(r.getString("Ten"));
                    nv.setDiaChi(r.getString("DiaChi"));
-                   nv.setNgaySinh(r.getTimestamp("Ngaysinh"));
+                   nv.setGioiTinh(r.getString("GioiTinh"));
                    nv.setSoDienThoai(r.getString("SoDienThoai"));
                    nv.setPassword(r.getString("Password"));
                    nv.setLuong(r.getInt("Luong"));
                    nv.setIdChucVu(r.getString("IdChucVu"));
-                   nv.setHinhAnh(r.getString("HinhAnh"));
+
                    dsnv.add(nv);
                 }
             }
@@ -64,12 +64,11 @@ public class NhanVienDAO {
                     nv.setHo(r.getString("Ho"));
                     nv.setTen(r.getString("Ten"));
                     nv.setDiaChi(r.getString("DiaChi"));
-                    nv.setNgaySinh(r.getTimestamp("Ngaysinh"));
+                    nv.setGioiTinh(r.getString("GioiTinh"));
                     nv.setSoDienThoai(r.getString("SoDienThoai"));
                     nv.setPassword(r.getString("Password"));
                     nv.setLuong(r.getInt("Luong"));
                     nv.setIdChucVu(r.getString("IdChucVu"));
-                    nv.setHinhAnh(r.getString("HinhAnh"));
                     dsnv.add(nv);
                 }
             }
@@ -86,17 +85,16 @@ public class NhanVienDAO {
     public boolean addData(NhanVien nv)  {
         qlnvConnection = new ConnectSQL();
         HandingBUS handingBUS = new HandingBUS();
-        boolean ok = qlnvConnection.sqlUpdate("INSERT INTO NHANVIEN (`IdNhanVien`, `Ho`, `Ten`, `DiaChi`, `NgaySinh`, `SoDienThoai`,`Password`, `Luong`, `IdChucVu`, `HinhAnh`) VALUES ('"
+        boolean ok = qlnvConnection.sqlUpdate("INSERT INTO NHANVIEN (`IdNhanVien`, `Ho`, `Ten`, `DiaChi`, `GioiTinh`, `SoDienThoai`,`Password`, `Luong`, `IdChucVu`, `HinhAnh`) VALUES ('"
                 + nv.getIdNhanVien() + "', '"
                 + nv.getHo() + "', '"
                 + nv.getTen() + "', '"
                 + nv.getDiaChi() + "', '"
-                + handingBUS.standardDate(new Date(nv.getNgaySinh().getTime())) + "', '"
+                + nv.getGioiTinh() + "', '"
                 + nv.getSoDienThoai() + "', '"
                 + nv.getPassword() + "', '"
                 + nv.getLuong() + "', '"
-                + nv.getIdChucVu() + "', '"
-                + nv.getHinhAnh() + "');");
+                + nv.getIdChucVu() + "');");
         qlnvConnection.closeConnect();
         return ok;
     }
@@ -114,12 +112,11 @@ public class NhanVienDAO {
                 + "Ho='" + nv.getHo()
                 + "',Ten='" + nv.getTen()
                 + "',DiaChi='" + nv.getDiaChi()
-                + "',NgaySinh='" + handingBUS.standardDate(new Date(nv.getNgaySinh().getTime()))
+                + "',GioiTinh='" + nv.getGioiTinh()
                 + "',SoDienThoai='" + nv.getSoDienThoai()
                 + "',Password='" + nv.getPassword()
                 + "',Luong='" + nv.getLuong()
                 + "',IdChucVu='" + nv.getIdChucVu()
-                + "',HinhAnh='" + nv.getHinhAnh()
                 + "' where IdNhanVien='" + nv.getIdNhanVien() + "'");
         qlnvConnection.closeConnect();
         return ok;

@@ -1,18 +1,18 @@
 package com.minimart.DTO;
 
-import java.sql.Timestamp;
+
 
 public class NhanVien {
     private String idNhanVien;
     private String ho;
     private String  ten;
     private String diaChi;
-    private Timestamp ngaySinh;
+    private String gioiTinh;
     private String soDienThoai;
     private String password;
     private int luong;
     private String idChucVu;
-    private String hinhAnh;
+
 
     public NhanVien()
     {
@@ -20,25 +20,24 @@ public class NhanVien {
         this.ho=null;
         this.ten=null;
         this.diaChi=null;
-        this.ngaySinh = null;
+        this.gioiTinh = null;
         this.soDienThoai=null;
         this.password=null;
         this.luong=0;
         this.idChucVu=null;
-        this.hinhAnh=null;
+
     }
-    public NhanVien(String idNhanVien, String ho, String ten, String diaChi, Timestamp ngaySinh, String soDienThoai, String password, int luong, String idChucVu,String hinhAnh)
+    public NhanVien(String idNhanVien, String ho, String ten, String diaChi, String gioiTinh, String soDienThoai, String password, int luong, String idChucVu)
     {
         this.idNhanVien=idNhanVien;
         this.ho=ho;
         this.ten=ten;
         this.diaChi=diaChi;
-        this.ngaySinh = ngaySinh;
+        this.gioiTinh=gioiTinh;
         this.soDienThoai=soDienThoai;
         this.password=password;
         this.luong=luong;
         this.idChucVu=idChucVu;
-        this.hinhAnh=hinhAnh;
     }
     public String getIdNhanVien() {
         return idNhanVien;
@@ -64,12 +63,12 @@ public class NhanVien {
         return password;
     }
 
-    public String getHinhAnh() {
-        return hinhAnh;
+    public String getGioiTinh() {
+        return gioiTinh;
     }
 
-    public void setHinhAnh(String hinhAnh) {
-        this.hinhAnh = hinhAnh;
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
     }
 
     public int getLuong() {
@@ -80,9 +79,7 @@ public class NhanVien {
         return idChucVu;
     }
 
-    public Timestamp getNgaySinh() {
-        return ngaySinh;
-    }
+
 
     public void setIdNhanVien(String idNhanVien) {
         this.idNhanVien = idNhanVien;
@@ -112,25 +109,22 @@ public class NhanVien {
         this.luong = luong;
     }
 
-    public void setNgaySinh(Timestamp ngaySinh) {
-        this.ngaySinh = ngaySinh;
-    }
+
 
     public void setIdChucVu(String idChucVu) {
         this.idChucVu = idChucVu;
     }
-    public  void setNhanVien(String idNhanVien, String ho, String ten, String diaChi, Timestamp ngaySinh, String soDienThoai, String password, int luong, String idChucVu, String hinhAnh)
+    public  void setNhanVien(String idNhanVien, String ho, String ten, String diaChi, String ngaySinh, String soDienThoai, String password, int luong, String idChucVu, String hinhAnh)
     {
         this.idNhanVien=idNhanVien;
         this.ho=ho;
         this.ten=ten;
         this.diaChi=diaChi;
-        this.ngaySinh = ngaySinh;
         this.soDienThoai=soDienThoai;
         this.password=password;
         this.luong=luong;
         this.idChucVu=idChucVu;
-        this.hinhAnh=hinhAnh;
+
     }
     public  void setNhanVien(NhanVien nhanVien)
     {
@@ -138,12 +132,12 @@ public class NhanVien {
         this.ho=nhanVien.ho;
         this.ten=nhanVien.ten;
         this.diaChi=nhanVien.diaChi;
-        this.ngaySinh = ngaySinh;
+        this.gioiTinh= gioiTinh;
         this.soDienThoai=nhanVien.soDienThoai;
         this.password=nhanVien.password;
         this.luong=nhanVien.luong;
         this.idChucVu=nhanVien.idChucVu;
-        this.hinhAnh=nhanVien.hinhAnh;
+
     }
     public NhanVien getNhanVien()
     {
@@ -151,10 +145,10 @@ public class NhanVien {
     }
     public  Object[] toArray()
     {
-        return new Object[] {idNhanVien,ho,ten,diaChi,ngaySinh,soDienThoai,password,luong,idChucVu,hinhAnh};
+        return new Object[] {idNhanVien,ho,ten,diaChi,gioiTinh,soDienThoai,password,luong,idChucVu};
     }
     public static String[] getHeader()
     {
-        return new String[] {"Id Nhân Viên","Họ","Tên","Địa Chỉ","Ngày Sinh","Số Điện Thoại","Password","Lương","Id Chức Vụ","Hình Ảnh"};
+        return new String[] {"Id Nhân Viên","Họ","Tên","Địa Chỉ","Giới Tính","Số Điện Thoại","Password","Lương","Id Chức Vụ","Hình Ảnh"};
     }
 }

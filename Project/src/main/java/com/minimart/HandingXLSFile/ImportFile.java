@@ -114,14 +114,14 @@ public class ImportFile {
                     String hoNV=cellIterator.next().getStringCellValue();
                     String tenNV=cellIterator.next().getStringCellValue();
                     String diaChi=cellIterator.next().getStringCellValue();
-                    Timestamp ngaySinh=handingBUS.toTimeStamp(cellIterator.next().getStringCellValue());
+                    String gioiTinh=cellIterator.next().getStringCellValue();
                     String soDienThoai=cellIterator.next().getStringCellValue();
                     String password=cellIterator.next().getStringCellValue();
                     int luong=(int) cellIterator.next().getNumericCellValue();
                     String idChucVu=cellIterator.next().getStringCellValue();
-                    String hinhAnh=cellIterator.next().getStringCellValue();
 
-                    NhanVien nhanVien=new NhanVien(idNhanVien,hoNV,tenNV,diaChi,ngaySinh,soDienThoai,password,luong,idChucVu,hinhAnh);
+
+                    NhanVien nhanVien=new NhanVien(idNhanVien,hoNV,tenNV,diaChi,gioiTinh,soDienThoai,password,luong,idChucVu);
 
                     if (nhanVienBUS.addData(nhanVien) == true)
                     {
@@ -336,8 +336,9 @@ public class ImportFile {
                     Timestamp ngayNhap=handingBUS.toTimeStamp(cellIterator.next().getStringCellValue());
                     String idNhanVien=cellIterator.next().getStringCellValue();
                     int tongTien= (int) cellIterator.next().getNumericCellValue();
+                    String trangThai=cellIterator.next().getStringCellValue();
 
-                    PhieuNhap phieuNhap=new PhieuNhap(idPhieuNhap,idNhaCungCap,ngayNhap,idNhanVien,tongTien);
+                    PhieuNhap phieuNhap=new PhieuNhap(idPhieuNhap,idNhaCungCap,ngayNhap,idNhanVien,tongTien,trangThai);
 
                     if (phieuNhapBUS.addData(phieuNhap))
                     {

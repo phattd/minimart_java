@@ -8,24 +8,27 @@ public class PhieuNhap {
     private Timestamp ngayNhap;
     private String idNhanVien;
     private int tongTien;
+    private String trangThai;
     public PhieuNhap(){
         this.idPhieuNhap=null;
         this.idNhaCungCap=null;
         this.ngayNhap=null;
         this.idNhanVien=null;
         this.tongTien=0;
+        this.trangThai="processing";
     }
-    public PhieuNhap(String idPhieuNhap, String idNhaCungCap, Timestamp ngayNhap, String idNhanVien, int tongTien)
+    public PhieuNhap(String idPhieuNhap, String idNhaCungCap, Timestamp ngayNhap, String idNhanVien, int tongTien, String trangThai)
     {
         this.idPhieuNhap=idPhieuNhap;
         this.idNhaCungCap=idNhaCungCap;
         this.ngayNhap=ngayNhap;
         this.idNhanVien=idNhanVien;
         this.tongTien=tongTien;
+        this.trangThai=trangThai;
     }
     public PhieuNhap(PhieuNhap phieuNhap)
     {
-        this(phieuNhap.idPhieuNhap, phieuNhap.idNhaCungCap, phieuNhap.ngayNhap, phieuNhap.idNhanVien, phieuNhap.tongTien);
+        this(phieuNhap.idPhieuNhap, phieuNhap.idNhaCungCap, phieuNhap.ngayNhap, phieuNhap.idNhanVien, phieuNhap.tongTien,phieuNhap.trangThai);
 
     }
 
@@ -68,13 +71,23 @@ public class PhieuNhap {
     public void setTongTien(int tongTien) {
         this.tongTien = tongTien;
     }
-    public  void setPhieuNhap(String idPhieuNhap, String idNhaCungCap, Timestamp ngayNhap, String idNhanVien, int tongTien)
+
+    public String getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public  void setPhieuNhap(String idPhieuNhap, String idNhaCungCap, Timestamp ngayNhap, String idNhanVien, int tongTien,String trangThai)
     {
         this.idPhieuNhap=idPhieuNhap;
         this.idNhaCungCap=idNhaCungCap;
         this.ngayNhap=ngayNhap;
         this.idNhanVien=idNhanVien;
         this.tongTien=tongTien;
+        this.trangThai=trangThai;
     }
     public  void setPhieuNhap(PhieuNhap phieuNhap)
     {
@@ -83,6 +96,7 @@ public class PhieuNhap {
         this.ngayNhap=phieuNhap.ngayNhap;
         this.idNhanVien=phieuNhap.idNhanVien;
         this.tongTien=phieuNhap.tongTien;
+        this.trangThai=trangThai;
     }
     public PhieuNhap getPhieuNhap()
     {
